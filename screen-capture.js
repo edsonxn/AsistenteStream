@@ -3,8 +3,9 @@ import fs from 'fs';
 import path from 'path';
 
 class ScreenCapture {
-    constructor(screenshotsDir = 'screenshots') {
+    constructor(screenshotsDir = 'screenshots', monitorIndex = 0) {
         this.screenshotsDir = screenshotsDir;
+        this.monitorIndex = monitorIndex; // 0 = todos los monitores, 1 = monitor principal, 2 = segundo monitor, etc.
         this.ensureDirectoryExists();
     }
 
@@ -14,15 +15,44 @@ class ScreenCapture {
         }
     }
 
+    // Método para listar monitores disponibles
+    async listDisplays() {
+        try {
+            const displays = await screenshot.listDisplays();
+            console.log('🖥️ Monitores disponibles:');
+            displays.forEach((display, index) => {
+                console.log(`   Monitor ${index + 1}: ${display.width}x${display.height} (ID: ${display.id})`);
+            });
+            return displays;
+        } catch (error) {
+            console.error('❌ Error listando monitores:', error.message);
+            return [];
+        }
+    }
+
+    // Método para cambiar el monitor objetivo
+    setMonitor(monitorIndex) {
+        this.monitorIndex = monitorIndex;
+        const monitorText = monitorIndex === 0 ? 'todos los monitores' : `monitor ${monitorIndex}`;
+        console.log(`🖥️ Monitor configurado: ${monitorText}`);
+    }
+
     async captureScreen() {
         try {
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             const filename = `screenshot-${timestamp}.png`;
             const filepath = path.join(this.screenshotsDir, filename);
 
-            console.log('📸 Capturando pantalla...');
+            const monitorText = this.monitorIndex === 0 ? 'todos los monitores' : `monitor ${this.monitorIndex}`;
+            console.log(`📸 Capturando pantalla (${monitorText})...`);
             
-            const imgBuffer = await screenshot({ format: 'png' });
+            // Configurar opciones de captura
+            const options = { format: 'png' };
+            if (this.monitorIndex > 0) {
+                options.screen = this.monitorIndex - 1; // La librería usa índice base 0
+            }
+            
+            const imgBuffer = await screenshot(options);
             fs.writeFileSync(filepath, imgBuffer);
             
             console.log(`✅ Captura guardada: ${filepath}`);
@@ -31,7 +61,8 @@ class ScreenCapture {
                 success: true,
                 filepath,
                 filename,
-                size: imgBuffer.length
+                size: imgBuffer.length,
+                monitor: this.monitorIndex
             };
         } catch (error) {
             console.error('❌ Error capturando pantalla:', error.message);
@@ -41,9 +72,16 @@ class ScreenCapture {
 
     async captureToBase64() {
         try {
-            console.log('📸 Capturando pantalla (base64)...');
+            const monitorText = this.monitorIndex === 0 ? 'todos los monitores' : `monitor ${this.monitorIndex}`;
+            console.log(`📸 Capturando pantalla (base64, ${monitorText})...`);
             
-            const imgBuffer = await screenshot({ format: 'png' });
+            // Configurar opciones de captura
+            const options = { format: 'png' };
+            if (this.monitorIndex > 0) {
+                options.screen = this.monitorIndex - 1; // La librería usa índice base 0
+            }
+            
+            const imgBuffer = await screenshot(options);
             const base64 = imgBuffer.toString('base64');
             
             console.log(`✅ Captura en base64 (${(base64.length / 1024).toFixed(1)} KB)`);
@@ -51,7 +89,8 @@ class ScreenCapture {
             return {
                 success: true,
                 base64,
-                size: imgBuffer.length
+                size: imgBuffer.length,
+                monitor: this.monitorIndex
             };
         } catch (error) {
             console.error('❌ Error capturando pantalla:', error.message);

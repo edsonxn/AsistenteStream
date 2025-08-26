@@ -5,8 +5,10 @@ Un asistente inteligente que analiza tu pantalla periódicamente y genera coment
 ## 🚀 Características
 
 - **Captura automática de pantalla** cada 30 segundos (configurable)
+- **Selección de monitor específico** (monitor 1, 2, 3 o todos)
 - **Análisis inteligente** usando OpenAI GPT-4 Vision
 - **Generación de comentarios** contextual y conversacional con personalidad sarcástica
+- **Personalidad personalizable** desde la interfaz web
 - **Síntesis de voz** usando Applio TTS
 - **Reproducción automática** de comentarios por voz
 - **Interfaz web completa** para control en tiempo real
@@ -44,6 +46,7 @@ OPENAI_API_KEY=tu_api_key_de_openai_aqui
 SCREENSHOT_INTERVAL=30000
 APPLIO_URL=http://127.0.0.1:6969
 TTS_MODEL=fr-FR-RemyMultilingualNeural
+MONITOR_INDEX=1
 SCREENSHOTS_DIR=screenshots
 AUDIO_DIR=audio
 AUTO_PLAY=true
@@ -102,6 +105,7 @@ AsistenteStream/
 | `SCREENSHOT_INTERVAL` | Intervalo en milisegundos | `30000` (30s) |
 | `APPLIO_URL` | URL de Applio para TTS | `http://127.0.0.1:6969` |
 | `TTS_MODEL` | Modelo de voz | `fr-FR-RemyMultilingualNeural` |
+| `MONITOR_INDEX` | Monitor a capturar (0=todos, 1=principal, 2=segundo, etc.) | `1` |
 | `SCREENSHOTS_DIR` | Directorio de capturas | `screenshots` |
 | `AUDIO_DIR` | Directorio de audio | `audio` |
 | `AUTO_PLAY` | Reproducir audio automáticamente | `true` |
@@ -139,7 +143,9 @@ La interfaz web proporciona control completo sobre el asistente:
 
 ### 🎮 Características del Panel Web:
 - **Control en tiempo real**: Iniciar/detener el asistente
-- **Configuración dinámica**: Cambiar intervalo, método de reproducción, etc.
+- **Configuración dinámica**: Cambiar intervalo, método de reproducción, monitor, etc.
+- **Selección de monitor**: Cambiar qué monitor capturar en tiempo real
+- **Personalidad personalizable**: Modificar la personalidad del asistente desde la interfaz
 - **Logs en vivo**: Ver la actividad del asistente en tiempo real
 - **Gestión de audios**: Reproducir y descargar comentarios generados
 - **Estadísticas**: Ciclos ejecutados, archivos generados, estado del sistema

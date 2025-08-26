@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node web-standalone.js",
-    "dev": "node --watch web-standalone.js",
+    "start": "node web-standalone-clean.js",
+    "dev": "node --watch web-standalone-clean.js",
     "direct": "node index.js"
   },
   "keywords": [

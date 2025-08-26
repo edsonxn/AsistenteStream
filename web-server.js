@@ -156,6 +156,57 @@ class WebInterface {
                 res.json({ success: false, error: error.message });
             }
         });
+
+        // API para listar monitores disponibles
+        this.app.get('/api/monitors', async (req, res) => {
+            if (!this.asistente?.screenCapture) {
+                return res.json({ success: false, error: 'Screen Capture no disponible' });
+            }
+            
+            try {
+                const displays = await this.asistente.screenCapture.listDisplays();
+                const currentMonitor = this.asistente.config.monitorIndex;
+                
+                res.json({ 
+                    success: true, 
+                    displays: displays,
+                    currentMonitor: currentMonitor
+                });
+            } catch (error) {
+                res.json({ success: false, error: error.message });
+            }
+        });
+
+        // API para cambiar monitor
+        this.app.post('/api/monitor', (req, res) => {
+            const { monitorIndex } = req.body;
+            
+            if (!this.asistente?.screenCapture) {
+                return res.json({ success: false, error: 'Screen Capture no disponible' });
+            }
+            
+            if (typeof monitorIndex !== 'number' || monitorIndex < 0) {
+                return res.json({ success: false, error: 'Índice de monitor inválido' });
+            }
+            
+            try {
+                // Actualizar configuración
+                this.asistente.config.monitorIndex = monitorIndex;
+                this.asistente.screenCapture.setMonitor(monitorIndex);
+                
+                // Actualizar variable de entorno
+                this.updateConfig({ monitorIndex: monitorIndex });
+                
+                const monitorText = monitorIndex === 0 ? 'todos los monitores' : `monitor ${monitorIndex}`;
+                res.json({ 
+                    success: true, 
+                    message: `Monitor cambiado a: ${monitorText}`,
+                    currentMonitor: monitorIndex
+                });
+            } catch (error) {
+                res.json({ success: false, error: error.message });
+            }
+        });
     }
 
     setupSocketIO() {
@@ -193,7 +244,8 @@ class WebInterface {
             applioUrl: process.env.APPLIO_URL || 'http://127.0.0.1:6969',
             screenshotsDir: process.env.SCREENSHOTS_DIR || 'screenshots',
             audioDir: process.env.AUDIO_DIR || 'audio',
-            webPort: process.env.WEB_PORT || 3000
+            webPort: process.env.WEB_PORT || 3000,
+            monitorIndex: parseInt(process.env.MONITOR_INDEX) || 1
         };
     }
 
@@ -207,7 +259,8 @@ class WebInterface {
             AUTO_PLAY: newConfig.autoPlay !== false,
             PLAYBACK_METHOD: newConfig.playbackMethod || 'auto',
             TTS_MODEL: newConfig.ttsModel || 'fr-FR-RemyMultilingualNeural',
-            WEB_PORT: newConfig.webPort || 3000
+            WEB_PORT: newConfig.webPort || 3000,
+            MONITOR_INDEX: newConfig.monitorIndex || 1
         };
 
         for (const [key, value] of Object.entries(updates)) {

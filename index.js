@@ -20,10 +20,11 @@ class AsistenteStream {
             screenshotsDir: process.env.SCREENSHOTS_DIR || 'screenshots',
             audioDir: process.env.AUDIO_DIR || 'audio',
             autoPlay: process.env.AUTO_PLAY !== 'false', // Por defecto true
-            playbackMethod: process.env.PLAYBACK_METHOD || 'auto' // auto, powershell, simple, wmp
+            playbackMethod: process.env.PLAYBACK_METHOD || 'auto', // auto, powershell, simple, wmp
+            monitorIndex: parseInt(process.env.MONITOR_INDEX) || 1 // 0 = todos, 1 = monitor principal, 2 = segundo, etc.
         };
 
-        this.screenCapture = new ScreenCapture(this.config.screenshotsDir);
+        this.screenCapture = new ScreenCapture(this.config.screenshotsDir, this.config.monitorIndex);
         this.visionAnalyzer = new VisionAnalyzer(this.config.openaiApiKey);
         this.applioClient = new ApplioClient(this.config.applioUrl);
         this.audioPlayer = new AudioPlayer();
@@ -258,6 +259,14 @@ class AsistenteStream {
     updateConfig(newConfig) {
         // Actualizar configuración interna
         Object.assign(this.config, newConfig);
+        
+        // Actualizar monitor si cambió
+        if (newConfig.MONITOR_INDEX !== undefined) {
+            this.config.monitorIndex = parseInt(newConfig.MONITOR_INDEX);
+            this.screenCapture.setMonitor(this.config.monitorIndex);
+            console.log(`🖥️ Monitor actualizado a: ${this.config.monitorIndex === 0 ? 'todos los monitores' : `monitor ${this.config.monitorIndex}`}`);
+            this.webInterface?.broadcastLog('info', `Monitor actualizado a: ${this.config.monitorIndex === 0 ? 'todos los monitores' : `monitor ${this.config.monitorIndex}`}`);
+        }
         
         // Reiniciar intervalo si está ejecutándose y cambió el intervalo
         if (this.isRunning && newConfig.SCREENSHOT_INTERVAL) {

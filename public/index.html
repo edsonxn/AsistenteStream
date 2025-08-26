@@ -483,6 +483,17 @@
                 </div>
                 
                 <div class="form-group">
+                    <label>Monitor a capturar</label>
+                    <select id="monitorSelect">
+                        <option value="0">Todos los monitores</option>
+                        <option value="1">Monitor 1 (Principal)</option>
+                        <option value="2">Monitor 2</option>
+                        <option value="3">Monitor 3</option>
+                    </select>
+                    <button class="btn secondary btn-small" onclick="refreshMonitors()" style="margin-top: 5px;">🔄 Actualizar Lista</button>
+                </div>
+                
+                <div class="form-group">
                     <label>Método de reproducción</label>
                     <select id="playbackMethod">
                         <option value="auto">Automático</option>
@@ -638,7 +649,8 @@
             const config = {
                 screenshotInterval: parseInt(document.getElementById('screenshotInterval').value) * 1000,
                 autoPlay: document.getElementById('autoPlay').checked,
-                playbackMethod: document.getElementById('playbackMethod').value
+                playbackMethod: document.getElementById('playbackMethod').value,
+                monitorIndex: parseInt(document.getElementById('monitorSelect').value)
             };
 
             fetch('/api/config', {
@@ -666,6 +678,7 @@
             document.getElementById('screenshotInterval').value = (config.screenshotInterval || 30000) / 1000;
             document.getElementById('autoPlay').checked = config.autoPlay !== false;
             document.getElementById('playbackMethod').value = config.playbackMethod || 'auto';
+            document.getElementById('monitorSelect').value = config.monitorIndex || 1;
             document.getElementById('intervalStat').textContent = (config.screenshotInterval || 30000) / 1000;
         }
 
@@ -878,9 +891,64 @@
             addLog('info', 'Personalidad actualizada remotamente');
         });
 
+        // Funciones para manejo de monitores
+        function refreshMonitors() {
+            fetch('/api/monitors')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const select = document.getElementById('monitorSelect');
+                        select.innerHTML = '<option value="0">Todos los monitores</option>';
+                        
+                        data.displays.forEach((display, index) => {
+                            const option = document.createElement('option');
+                            option.value = index + 1;
+                            option.textContent = `Monitor ${index + 1} (${display.width}x${display.height})`;
+                            select.appendChild(option);
+                        });
+                        
+                        select.value = data.currentMonitor;
+                        addLog('success', `${data.displays.length} monitores detectados`);
+                    } else {
+                        addLog('error', 'Error listando monitores: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    addLog('error', 'Error de conexión listando monitores');
+                    console.error('Error:', error);
+                });
+        }
+
+        function changeMonitor() {
+            const monitorIndex = parseInt(document.getElementById('monitorSelect').value);
+            
+            fetch('/api/monitor', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ monitorIndex: monitorIndex })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showNotification(data.message, 'success');
+                    addLog('success', data.message);
+                } else {
+                    showNotification('Error cambiando monitor: ' + data.error, 'error');
+                }
+            })
+            .catch(error => {
+                showNotification('Error de conexión cambiando monitor', 'error');
+                console.error('Error:', error);
+            });
+        }
+
         // Inicialización
         document.addEventListener('DOMContentLoaded', () => {
             addLog('info', 'Interfaz web cargada');
+            refreshMonitors(); // Cargar lista de monitores al inicio
+            
+            // Event listener para cambio de monitor
+            document.getElementById('monitorSelect').addEventListener('change', changeMonitor);
             
             // Actualizar estado cada 5 segundos
             setInterval(() => {
