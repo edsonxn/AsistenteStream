@@ -215,7 +215,7 @@ class VisionAnalyzer {
                                 ]
                             }
                         ],
-                        max_tokens: Math.max(50, this.maxWords + 10),
+                        max_tokens: Math.max(150, this.maxWords * 2),
                         temperature: 0.7
                     });
                     return response.choices[0].message.content;
@@ -224,7 +224,7 @@ class VisionAnalyzer {
                     const response = await this.openai.chat.completions.create({
                         model: "gpt-4o-mini",
                         messages: [{ role: "user", content: messages }],
-                        max_tokens: Math.max(50, this.maxWords + 10),
+                        max_tokens: Math.max(150, this.maxWords * 2),
                         temperature: 0.8
                     });
                     return response.choices[0].message.content;
