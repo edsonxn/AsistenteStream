@@ -509,6 +509,12 @@
                     </label>
                 </div>
 
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="saveScreenshots"> Guardar capturas de pantalla
+                    </label>
+                </div>
+
                 <button class="btn" onclick="saveConfig()">💾 Guardar Configuración</button>
                 <button class="btn secondary" onclick="loadConfig()">🔄 Recargar</button>
             </div>
@@ -650,7 +656,8 @@
                 screenshotInterval: parseInt(document.getElementById('screenshotInterval').value) * 1000,
                 autoPlay: document.getElementById('autoPlay').checked,
                 playbackMethod: document.getElementById('playbackMethod').value,
-                monitorIndex: parseInt(document.getElementById('monitorSelect').value)
+                monitorIndex: parseInt(document.getElementById('monitorSelect').value),
+                saveScreenshots: document.getElementById('saveScreenshots').checked
             };
 
             fetch('/api/config', {
@@ -679,6 +686,7 @@
             document.getElementById('autoPlay').checked = config.autoPlay !== false;
             document.getElementById('playbackMethod').value = config.playbackMethod || 'auto';
             document.getElementById('monitorSelect').value = config.monitorIndex || 1;
+            document.getElementById('saveScreenshots').checked = config.saveScreenshots !== false;
             document.getElementById('intervalStat').textContent = (config.screenshotInterval || 30000) / 1000;
         }
 

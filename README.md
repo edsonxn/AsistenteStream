@@ -106,6 +106,7 @@ AsistenteStream/
 | `APPLIO_URL` | URL de Applio para TTS | `http://127.0.0.1:6969` |
 | `TTS_MODEL` | Modelo de voz | `fr-FR-RemyMultilingualNeural` |
 | `MONITOR_INDEX` | Monitor a capturar (0=todos, 1=principal, 2=segundo, etc.) | `1` |
+| `SAVE_SCREENSHOTS` | Guardar capturas como archivos PNG | `true` |
 | `SCREENSHOTS_DIR` | Directorio de capturas | `screenshots` |
 | `AUDIO_DIR` | Directorio de audio | `audio` |
 | `AUTO_PLAY` | Reproducir audio automáticamente | `true` |

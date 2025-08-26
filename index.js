@@ -21,7 +21,8 @@ class AsistenteStream {
             audioDir: process.env.AUDIO_DIR || 'audio',
             autoPlay: process.env.AUTO_PLAY !== 'false', // Por defecto true
             playbackMethod: process.env.PLAYBACK_METHOD || 'auto', // auto, powershell, simple, wmp
-            monitorIndex: parseInt(process.env.MONITOR_INDEX) || 1 // 0 = todos, 1 = monitor principal, 2 = segundo, etc.
+            monitorIndex: parseInt(process.env.MONITOR_INDEX) || 1, // 0 = todos, 1 = monitor principal, 2 = segundo, etc.
+            saveScreenshots: process.env.SAVE_SCREENSHOTS !== 'false' // Por defecto true
         };
 
         this.screenCapture = new ScreenCapture(this.config.screenshotsDir, this.config.monitorIndex);
@@ -78,7 +79,7 @@ class AsistenteStream {
             this.webInterface?.broadcastLog('info', `Iniciando ciclo ${this.cycleCount}`);
 
             // 1. Capturar pantalla
-            const capture = await this.screenCapture.captureToBase64();
+            const capture = await this.screenCapture.captureToBase64(this.config.saveScreenshots);
             this.webInterface?.broadcastLog('success', `Captura realizada: ${(capture.size / 1024).toFixed(1)} KB`);
             
             // 2. Analizar con OpenAI
@@ -259,6 +260,13 @@ class AsistenteStream {
     updateConfig(newConfig) {
         // Actualizar configuración interna
         Object.assign(this.config, newConfig);
+        
+        // Actualizar configuración de guardado de screenshots
+        if (newConfig.SAVE_SCREENSHOTS !== undefined) {
+            this.config.saveScreenshots = newConfig.SAVE_SCREENSHOTS !== 'false';
+            console.log(`💾 Guardado de capturas: ${this.config.saveScreenshots ? 'activado' : 'desactivado'}`);
+            this.webInterface?.broadcastLog('info', `Guardado de capturas: ${this.config.saveScreenshots ? 'activado' : 'desactivado'}`);
+        }
         
         // Actualizar monitor si cambió
         if (newConfig.MONITOR_INDEX !== undefined) {

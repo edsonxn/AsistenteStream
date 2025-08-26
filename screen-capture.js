@@ -70,7 +70,7 @@ class ScreenCapture {
         }
     }
 
-    async captureToBase64() {
+    async captureToBase64(saveFile = true) {
         try {
             const monitorText = this.monitorIndex === 0 ? 'todos los monitores' : `monitor ${this.monitorIndex}`;
             console.log(`📸 Capturando pantalla (base64, ${monitorText})...`);
@@ -85,6 +85,20 @@ class ScreenCapture {
             const base64 = imgBuffer.toString('base64');
             
             console.log(`✅ Captura en base64 (${(base64.length / 1024).toFixed(1)} KB)`);
+            
+            // Opcionalmente guardar también como archivo
+            if (saveFile) {
+                try {
+                    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                    const filename = `screenshot-${timestamp}.png`;
+                    const filepath = path.join(this.screenshotsDir, filename);
+                    
+                    fs.writeFileSync(filepath, imgBuffer);
+                    console.log(`💾 Captura guardada: ${filepath}`);
+                } catch (saveError) {
+                    console.log(`⚠️ No se pudo guardar archivo: ${saveError.message}`);
+                }
+            }
             
             return {
                 success: true,

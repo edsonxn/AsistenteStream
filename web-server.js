@@ -245,7 +245,8 @@ class WebInterface {
             screenshotsDir: process.env.SCREENSHOTS_DIR || 'screenshots',
             audioDir: process.env.AUDIO_DIR || 'audio',
             webPort: process.env.WEB_PORT || 3000,
-            monitorIndex: parseInt(process.env.MONITOR_INDEX) || 1
+            monitorIndex: parseInt(process.env.MONITOR_INDEX) || 1,
+            saveScreenshots: process.env.SAVE_SCREENSHOTS !== 'false'
         };
     }
 
@@ -260,7 +261,8 @@ class WebInterface {
             PLAYBACK_METHOD: newConfig.playbackMethod || 'auto',
             TTS_MODEL: newConfig.ttsModel || 'fr-FR-RemyMultilingualNeural',
             WEB_PORT: newConfig.webPort || 3000,
-            MONITOR_INDEX: newConfig.monitorIndex || 1
+            MONITOR_INDEX: newConfig.monitorIndex || 1,
+            SAVE_SCREENSHOTS: newConfig.saveScreenshots !== false
         };
 
         for (const [key, value] of Object.entries(updates)) {
