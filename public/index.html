@@ -550,6 +550,26 @@
         </div>
 
         <div class="grid">
+            <!-- Historial de Comentarios -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <h3>📚 Historial de Comentarios</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; align-items: center;">
+                    <button class="btn secondary" onclick="loadHistoryStats()">📊 Ver Estadísticas</button>
+                    <button class="btn secondary" onclick="loadRecentHistory()">🔄 Cargar Recientes</button>
+                    <button class="btn secondary" onclick="exportHistory()">💾 Exportar Historial</button>
+                    <button class="btn danger" onclick="clearFullHistory()">🗑️ Limpiar Todo</button>
+                    <span id="historyStats" style="color: #94a3b8; font-size: 14px;"></span>
+                </div>
+                
+                <div class="history-container" id="historyContainer" style="max-height: 400px; overflow-y: auto; border: 2px solid #475569; border-radius: 8px; background: #0f172a; padding: 15px;">
+                    <div style="color: #718096; text-align: center; padding: 20px;">
+                        Cargando historial...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
             <!-- Logs en tiempo real -->
             <div class="card">
                 <h3>📋 Logs del Sistema</h3>
@@ -965,6 +985,118 @@
                     .then(status => updateStatus(status))
                     .catch(() => {});
             }, 5000);
+
+            // Cargar estadísticas del historial al iniciar
+            loadHistoryStats();
+        });
+
+        // 📚 FUNCIONES DE HISTORIAL
+
+        // Cargar estadísticas del historial
+        function loadHistoryStats() {
+            fetch('/api/history/stats')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const stats = data.stats;
+                        document.getElementById('historyStats').textContent = 
+                            `Total: ${stats.totalComments} comentarios | En memoria: ${stats.memoryComments} | Archivo: ${(stats.fileSize / 1024).toFixed(1)} KB`;
+                        addLog('success', `Estadísticas de historial cargadas: ${stats.totalComments} comentarios`);
+                    } else {
+                        addLog('error', 'Error cargando estadísticas: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    addLog('error', 'Error de conexión obteniendo estadísticas');
+                    console.error('Error:', error);
+                });
+        }
+
+        // Cargar historial reciente
+        function loadRecentHistory(count = 15) {
+            fetch(`/api/history/recent/${count}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        displayHistory(data.history);
+                        addLog('success', `Historial cargado: ${data.count} comentarios recientes`);
+                    } else {
+                        addLog('error', 'Error cargando historial: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    addLog('error', 'Error de conexión cargando historial');
+                    console.error('Error:', error);
+                });
+        }
+
+        // Mostrar historial en la interfaz
+        function displayHistory(history) {
+            const container = document.getElementById('historyContainer');
+            
+            if (history.length === 0) {
+                container.innerHTML = '<div style="color: #718096; text-align: center; padding: 20px;">No hay comentarios en el historial</div>';
+                return;
+            }
+
+            let html = '';
+            history.reverse().forEach((entry, index) => {
+                const timestamp = new Date(entry.timestamp).toLocaleString();
+                const isRepeated = entry.isRepeatedImage ? '🔄' : '';
+                
+                html += `
+                    <div style="margin-bottom: 15px; padding: 10px; border-left: 3px solid #3b82f6; background: rgba(59, 130, 246, 0.05); border-radius: 0 8px 8px 0;">
+                        <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 5px;">
+                            <span style="color: #3b82f6; font-size: 12px; font-weight: bold;">
+                                #${history.length - index} ${isRepeated} | ${timestamp}
+                            </span>
+                            <span style="color: #94a3b8; font-size: 11px;">
+                                ${entry.analysis.length} chars
+                            </span>
+                        </div>
+                        <div style="color: #e2e8f0; font-size: 14px; line-height: 1.4;">
+                            ${entry.analysis}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Exportar historial completo
+        function exportHistory() {
+            window.open('/api/history/export', '_blank');
+            addLog('success', 'Exportando historial completo...');
+        }
+
+        // Limpiar historial completo
+        function clearFullHistory() {
+            if (confirm('¿Estás seguro de que quieres eliminar TODO el historial de comentarios? Esta acción no se puede deshacer.')) {
+                fetch('/api/history', { method: 'DELETE' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('Historial limpiado completamente', 'success');
+                            loadHistoryStats();
+                            loadRecentHistory();
+                            addLog('success', 'Historial completo eliminado');
+                        } else {
+                            showNotification('Error limpiando historial: ' + data.error, 'error');
+                        }
+                    })
+                    .catch(error => {
+                        showNotification('Error de conexión limpiando historial', 'error');
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        // Event listener para actualizaciones del historial
+        socket.on('historyCleared', () => {
+            loadHistoryStats();
+            loadRecentHistory();
+            showNotification('Historial limpiado desde otra sesión', 'info');
         });
     </script>
 </body>

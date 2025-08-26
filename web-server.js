@@ -138,6 +138,76 @@ class WebInterface {
             }
         });
 
+        // 📂 ENDPOINTS DE HISTORIAL
+
+        // Obtener estadísticas del historial
+        this.app.get('/api/history/stats', (req, res) => {
+            if (!this.asistente?.visionAnalyzer) {
+                return res.json({ success: false, error: 'Vision Analyzer no disponible' });
+            }
+            
+            try {
+                const stats = this.asistente.visionAnalyzer.getHistoryStats();
+                res.json({ success: true, stats });
+            } catch (error) {
+                res.json({ success: false, error: error.message });
+            }
+        });
+
+        // Obtener historial reciente (últimos N comentarios)
+        this.app.get('/api/history/recent/:count?', (req, res) => {
+            if (!this.asistente?.visionAnalyzer) {
+                return res.json({ success: false, error: 'Vision Analyzer no disponible' });
+            }
+            
+            try {
+                const count = parseInt(req.params.count) || 10;
+                const recentHistory = this.asistente.visionAnalyzer.conversationHistory.slice(-count);
+                res.json({ 
+                    success: true, 
+                    history: recentHistory,
+                    count: recentHistory.length
+                });
+            } catch (error) {
+                res.json({ success: false, error: error.message });
+            }
+        });
+
+        // Exportar historial completo
+        this.app.get('/api/history/export', (req, res) => {
+            if (!this.asistente?.visionAnalyzer) {
+                return res.json({ success: false, error: 'Vision Analyzer no disponible' });
+            }
+            
+            try {
+                const fullHistory = this.asistente.visionAnalyzer.exportFullHistory();
+                if (fullHistory) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.setHeader('Content-Disposition', `attachment; filename="historial-asistente-${new Date().toISOString().split('T')[0]}.json"`);
+                    res.json(fullHistory);
+                } else {
+                    res.json({ success: false, error: 'No hay historial disponible' });
+                }
+            } catch (error) {
+                res.json({ success: false, error: error.message });
+            }
+        });
+
+        // Limpiar historial
+        this.app.delete('/api/history', (req, res) => {
+            if (!this.asistente?.visionAnalyzer) {
+                return res.json({ success: false, error: 'Vision Analyzer no disponible' });
+            }
+            
+            try {
+                this.asistente.visionAnalyzer.clearHistory();
+                this.io.emit('historyCleared');
+                res.json({ success: true, message: 'Historial limpiado correctamente' });
+            } catch (error) {
+                res.json({ success: false, error: error.message });
+            }
+        });
+
         // Endpoint para resetear a personalidad por defecto
         this.app.post('/api/personality/reset', (req, res) => {
             if (!this.asistente?.visionAnalyzer) {
