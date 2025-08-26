@@ -1,5 +1,15 @@
 {
-  "currentStory": null,
-  "storyPartIndex": 0,
-  "lastUpdate": "2025-08-26T21:02:04.463Z"
+  "currentStory": {
+    "id": "wow_addiction",
+    "title": "Cuando WoW se convierte en trabajo",
+    "parts": [
+      "Mi compa empezó jugando WoW por diversión...",
+      "Después se volvió recolector de oro profesional...",
+      "Tenía horarios, metas diarias y hasta Excel...",
+      "Su 'trabajo' en WoW era más estresante que su trabajo real...",
+      "Ahora vende cuentas y dice que es 'empresario jugador'."
+    ]
+  },
+  "storyPartIndex": 1,
+  "lastUpdate": "2025-08-26T21:59:11.947Z"
 }

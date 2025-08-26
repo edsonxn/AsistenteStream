@@ -22,7 +22,7 @@ class AudioPlayer {
 
             console.log(`🔊 Reproduciendo: ${path.basename(audioPath)}`);
 
-            // En Windows, usar PowerShell para reproducir audio
+            // En Windows, usar PowerShell para reproducir audio - Versión mejorada
             const command = 'powershell';
             const args = [
                 '-Command',
@@ -31,10 +31,16 @@ class AudioPlayer {
                 `$mediaPlayer.open([uri]"${audioPath.replace(/\\/g, '\\\\')}"); ` +
                 `$mediaPlayer.Play(); ` +
                 `Start-Sleep -Seconds 1; ` +
-                `while($mediaPlayer.NaturalDuration.HasTimeSpan -eq $false) { Start-Sleep -Milliseconds 100 }; ` +
-                `$duration = $mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds; ` +
-                `Start-Sleep -Seconds $duration; ` +
-                `$mediaPlayer.Stop()`
+                `$timeout = 0; ` +
+                `while($mediaPlayer.NaturalDuration.HasTimeSpan -eq $false -and $timeout -lt 50) { Start-Sleep -Milliseconds 100; $timeout++ }; ` +
+                `if($mediaPlayer.NaturalDuration.HasTimeSpan) { ` +
+                `    $duration = [Math]::Ceiling($mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds); ` +
+                `    Start-Sleep -Seconds $duration; ` +
+                `} else { ` +
+                `    Start-Sleep -Seconds 20; ` +
+                `}; ` +
+                `$mediaPlayer.Stop(); ` +
+                `$mediaPlayer.Close()`
             ];
 
             return new Promise((resolve, reject) => {
@@ -64,14 +70,14 @@ class AudioPlayer {
                     reject(error);
                 });
 
-                // Timeout de seguridad (máximo 60 segundos) - pero no cancelar automáticamente
+                // Timeout de seguridad (máximo 120 segundos) - pero no cancelar automáticamente
                 setTimeout(() => {
                     if (this.isPlaying) {
-                        console.log('⏰ Timeout de reproducción alcanzado');
+                        console.log('⏰ Timeout de reproducción alcanzado (120s)');
                         // NO cancelar automáticamente - solo registrar
                         console.log('💡 Continuando reproducción (sin límite de tiempo)');
                     }
-                }, 60000); // Aumentamos a 60 segundos
+                }, 120000); // Aumentamos a 120 segundos
             });
 
         } catch (error) {

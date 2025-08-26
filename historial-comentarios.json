@@ -1,229 +1,219 @@
 {
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2025-08-26T21:02:55.587Z",
+    "lastUpdated": "2025-08-26T21:59:22.463Z",
     "totalConversations": 20
   },
   "conversations": [
     {
-      "timestamp": "2025-08-26T20:51:36.336Z",
-      "analysis": "Por cierto, ¿te imaginas si los NPCs hicieran misiones de pesca? Sería como ver a tu primo en acción, pero en lugar de algas, ¡atrapando dragones! Aunque, a ese ritmo, seguro le darían un pez de papel. ¿Qué tipo",
+      "timestamp": "2025-08-26T21:26:22.623Z",
+      "analysis": "Híjole, esos paisajes parecen más confusos que las direcciones de mi primo Pedro cuando quiere ir al OXXO. En esta zona, los \"troggs\" son como esos amigos que siempre llegan a la fiesta sin invitación. ¿Sabías que pueden ser un",
+      "imageHash": "5333868_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6/spmxIZF2IaQbEImZUajoCGdjKBS8aNcD6DSokAqoTItSGNWKD7WqF9GEG6mcR0BvtuBbgV1CIJdkA1OZHU5rCCU1uDWHDKp/7U_aA4W93ZIpSvZ66LeDizs65TBGB7fBMi8v0vXj34j47HJXHXo0fZhfucizG2bj9beNjy28DH8/wN0W5qXWl97AAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 227
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:26:41.026Z",
+      "analysis": "Chale, al día siguiente Pedro seguía ahí, pero ya hablaba con los NPCs como si fueran sus amigos de la primaria. Y hablando de rarezas, ¿sabías que en esta zona hay un bicho llamado \"murloc\"? Se dice que sus gritos son la versión",
       "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 211,
+        "responseLength": 229,
         "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:58:40.682Z",
-      "analysis": "A todo esto, ¿alguna vez pensaste en la cantidad de polígonos que tiene cada flor? Capaz que por eso tu primo prefiere los dragones, menos detalles que arruinen la tasa de frames.",
+      "timestamp": "2025-08-26T21:36:48.446Z",
+      "analysis": "No manches, esos árboles se ven más tristes que la cara de alguien que se pierde en un laberinto. Y hablando de laberintos, ¿sabías que en esta zona se encuentran los \"elementales de aire\"? Se dice que son más escurridizos que tu primo cuando",
+      "imageHash": "6284416_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_2eHZxWhJ6Mm06Ez2H58f4ubZufSPXt4cCzB99vIcf/j1FX75/Qs8f3GOp89P8dNPz/APf36Ln354ht//8EyAL6Hwy1fnGM36ODia_3uHuswfYe3qEu88f4tGXz3D39RM8/PBMeoG//eU9/vy37/HtL1/ixdevcPz+OQ5fPcLU2gL+/5pyrwUQjMjeAAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 242
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:39:30.413Z",
+      "analysis": "Chale, esos campos se ven más vacíos que una fiesta sin comida. Y hablando de soledad, ¿sabías que en esta zona los “murlocs” son unos verdaderos fanáticos de los bailes? Se dice que en sus fiestas hacen un desmadre que ni el",
+      "imageHash": "6214124_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_mQFB3/n8m32yOtCNdEe1EgPB/Z8JVr8/jxswXc25rDUXcOrZIRvdICWsVFVHMLKGXmkU3MIRW9ikpmEVt1CsAcBLPTkEIyhwPEf2_nm1Ad7YZnal2cfy2JLvQn0VlGzM0J/pYICk2yLk6kKNHXYITo+kGtGbQb2zGXIEVZb814v8H0TytBcKgnCsAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 225
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:39:48.778Z",
+      "analysis": "Está cabrón ver esos árboles tan tristes, parecen los únicos que no recibieron la invitación a la fiesta. Y ya que estamos en eso, en esta zona los “guardabosques” son unos expertos en espiar a los curiosos, como Pedro cuando cree que nadie lo",
+      "imageHash": "7064588_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_5XxbFbHcNaQKuUkVshUZWIYstAS34cUzbRxaWp/GHMGUO/bT9jpnh2/PGKqLYaSGU9omXeLQUdWQdLZCMUy1Yojd2qGNZ9WawG89_c6ZezH7ZCgQf8xykw7yDI/atnKzbzYmqXQw6d3HCu4dR145ZEGxdT69pLZ26tbRq1uDLXMb/By6PfKUAUhN3AAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 243
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:40:18.031Z",
+      "analysis": "Chale, esos paisajes se ven más vacíos que el inventario de un novato. Y ya que andamos en eso, ¿sabías que en esta área los “goblin” son unos negocia-dores geniales? Te venden hasta el aire que respiras, aunque",
+      "imageHash": "6670460_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_IL7YVY7czDoYESTNX5caC3ACNVXkzUeTDb6EOVV46Jeg9Gq5wYrnDiQF8BFluzMNXg4/eF0r+kfx6s8qC3zInmXCMD8jyzCAf6it_S5ioTePkUBkrbTns6y0UKL3amsPJ0UqODpbQUxRLf3kSR4crWGrL4cpSs9jCB3pKBBgrw/j/B3PLT7+GHNyOAAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 211
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:40:46.820Z",
+      "analysis": "Chale, esos árboles parecen sacados de una película de terror. Recuerdo que en el Páramo de Poniente, hasta los “no-muertos” se sienten más alegres que ellos. Y hablando de eso, ¿sabías que esta zona tiene unos “cuervos”",
+      "imageHash": "6377804_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_/X4e+T6pBcwj4o61iONkvgO6p/T8LfgvY9yrr3ZBp4yn6BOX8jy9G6AvrhSBsvyu1fQ+C3tW5eTfTzdKyfh6PieF0fSylh1Ouh5B_R278JopTNlO5azuN+TF0lCYuA+AMRhsymW7JY7a9SEJg0Qm80F1CQ24kmyM8eC/YljBvS/4fNpiUlTuBpiEAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 220
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:41:11.382Z",
+      "analysis": "Compadre, ya recordé otra cosa. En el Páramo de Poniente, hasta los “no-muertos” se sienten más alegres que esos árboles. Por cierto, ¿sabías que los “cuervos” aquí son más escurridizos que tu primo cuando le",
       "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 179,
+        "responseLength": 208,
         "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:59:16.415Z",
-      "analysis": "Oye, cambiando de tema, ¿recuerdas cuando Pedro intentó vender pieles de dragón \"exclusivas\" a los NPCs? Terminó baneado por \"estafa creativa\". Como te iba diciendo, mi primo tiene unas ideas...",
+      "timestamp": "2025-08-26T21:41:46.018Z",
+      "analysis": "Ay mijo, esa playa parece un paraíso para los “no-muertos” en vacaciones. Recuerdo una vez que intenté pescar ahí, pero los peces me miraban como si fuera un buffoon. Por cierto, ¿sabías que en esta zona hay barcos hundidos llen",
+      "imageHash": "5705776_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_zTW+2/xvCvuj6V5np3RUuoDn5sOYmPKLi5Riv+wU3b+TAYwx+ncygBGR4vwcnAhiaDKIgZk4omtLiGxkENlYPaFjsFemfJk2VhHb_9vuWCIeVzl72ARPmVsxfGr/yWFRioW2Mg+b65JoCdhVYrMRIK0OAb78Cjjkf1+Hge50RE/6/+feJOY094eIAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 228
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:42:22.594Z",
+      "analysis": "Qué raro ese lugar, parece que las olas están en modo chill. Me recuerda cuando mi primito Pedro intentó construir un castillo de arena y terminó con un búnker. Por cierto, ¿sabías que en esta playa hay un barco hundido que es hogar de unos tibur",
+      "imageHash": "5050056_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_lDDZdA5pJ63Tc2iE29EIXZZ18p5LqAUvYynehVqoG0UfIW6HEldsvyjxzbRCuRQjlwZuSDFz2W/L5zQivZijVRjtkY5RxgUz4pm2_YWWNgy9A2BbUAwHhPLDLFpwGEifgqwxlXlfCUpyC7RYs5+AEfQ9VwPweCMz7xAYa/ohLw/8CnLkQkQnKTZMAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 246
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:42:48.456Z",
+      "analysis": "Híjole, ese lugar se ve como un spa para los \"no-muertos\". Me acuerdo de una vez que un amigo trató de nadar ahí y terminó buscando su alma. Por cierto, ¿sabías que en esa playa hay un montón de tesoros hundidos? ¡",
+      "imageHash": "4969920_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_do9APEJ6BcNF9Axe6gCY+EdTCKJgRpllHCDNXHswb8zXy/V7IW0+CM4dv4/2OM5JoYzb/E9EB4JpNr3/We1/9hmImw949wDhAxym_DDBmXjVSOuOpBYcT9KbtG9tnfjvbW5vU+nmcCYB17IqY9vHUtVkcsl0YwYDhhSG7a6DT/i/lBcq4hdIt8wAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 214
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:48:30.592Z",
+      "analysis": "Está cabrón ese paisaje, parece que el otoño decidió quedarse un rato. Me recuerda cuando mi primo fue a recoger hojas y terminó en una pelea con un gato. Por cierto, ¿sabías que en esta zona hay un montón de criaturas raras que sueltan un botín chido",
+      "imageHash": "6598736_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_v8GVn9b254HNgx1Jg9ieYmR7iolrVSoO5xp5r9GHf9o/iK82urEn2cjeFCNXivW836LlYZ2KD7qUbE8VEN3IA7uKIzk6HjSqWBlt_DnGAhyKpNlQTRfo7ZTAYEOzOB8YWGhAcAgiulQ/sAsFOPrADgvvVzgj+Gej7c/VTEBwb7Kv/D8Ggh6M6y38VAAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 251
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:50:45.044Z",
+      "analysis": "Como te iba diciendo, esa zona tiene su encanto macabroso. Recuerdo a un compa que intentó explorarla y salió corriendo tras encontrarse con un espectro. Ah, y hablando de eso, ¿sabías que en World of Warcraft, los fantasmas pueden tener más vida",
       "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 194,
+        "responseLength": 246,
         "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:59:25.944Z",
-      "analysis": "Como te iba diciendo, mi primo y sus \"ideas\". Al día siguiente Pedro seguía ahí, pero ya hablaba con los NPCs sobre texturas. ¿Habrá intentado venderles polígonos sueltos?\n",
+      "timestamp": "2025-08-26T21:52:25.684Z",
+      "analysis": "Está cabrón volar por esa zona dorada, parece que los árboles se pusieron de acuerdo para hacer un desfile de hojas. Me recuerda cuando mi primo se perdió en un bosque y terminó hablando con un ciervo. Por cierto, ¿sabías que aquí a veces aparecen bonitos y",
+      "imageHash": "6209868_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_x/FEtOi/BKMgRm03d+YRo+vxczcxMwW4xwuhcwMzcp0M4LxNx5F2E266E3KmCzm2CxjkKjGYbJpMeEwyLw0TPTFjhMMsxYlKL165_8FkIZriZK7IyIsaa1Ghu5bhZKHKzWOHmTqGVmzlmJnJszOZa2Shx8o81dl5U21kqchJMsfH/w26s/xbQk4wAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 257
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:53:44.884Z",
+      "analysis": "Ay mijo, esa zona de los Páramos de Poniente es como un mar de oro, pero sin el riesgo de que se te aparezca un pirata. Recuerda una vez que un amigo se perdió ahí y terminó hablando con un ciervo, como si fuera un experto en botánica. Por cierto, en World of Warcraft, en esta área suelen aparecer gnomos perdidos",
+      "imageHash": "5933264_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_jHZGjFVqLWfEWAxKkPUrOcCmBnKJ2spxaitLUItI0CSXMKGqw0JU4jqU4pMoRMidrEOdWsJpGVaTcqwkqOlMewAUbtPPSlGLyrAU_1cr6JcahQpUYixYCRFuTusSQnQ4rJToc1bD/WIWxfDu6SX5k7UPoNia88WgnCSfbgep7Jvz/AaiMuFT85Fm+AAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 314
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:55:34.216Z",
+      "analysis": "Ay mijo, esa zona de la Finca de Saldean es como la casa de mi abuelita, siempre llena de nostalgia. Me acuerdo cuando mi primo, en su afán de explorar, terminó intentando hablar con un árbol. Por cierto, en World of Warcraft, aquí puedes encontrar a los cultivos más raros, como si fueran los secretos mejor guardados de la naturaleza.",
+      "imageHash": "6058340_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_P83R8M8Hd/kOCV9RF+MnqG/+LtM/yXnz/Hv3r5GD/OPkbw5H18d6ngH//uAIfkCPef6Xh2rOO41cHdz7+Gu7//Ndz90S/h7u+/j4_eFimxnFAjcdlahwF1Nj2a3G/XIGHlQohYdytVeO0noRKDZZjSjE97kT4OzV42aPCeuEZ/H/JbGb/3JKtGQAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 336
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:56:50.682Z",
+      "analysis": "Oye, carnal, hablando de esos árboles que parecen tener vida propia, me acuerdo de cuando un amigo trató de cultivar un \"item\" que resultó ser más inútil que un paraguas en el desierto. En World of Warcraft, hay plantas que realmente pueden ayudarte, aunque algunas solo sirven para adornar. ¿Te imaginas si fueran tan sencillas de cuidar como las de",
       "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 172,
+        "responseLength": 350,
         "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T21:00:07.774Z",
-      "analysis": "Ya recordé otra cosa... hablando de polígonos, su mamá le llevó comida y Pedro le dijo 'espera, estoy en raid', ¡seguro estaba negociando UVs de dragón!\n",
-      "imageHash": "conversational",
+      "timestamp": "2025-08-26T21:57:22.864Z",
+      "analysis": "Qué pedo con esa mina, parece que hasta los gnomos se olvidaron de ella. Me recuerda a mi primo Pedro, que siempre se pierde en lugares así, buscando oro... y solo encuentra piedras. En World of Warcraft, este sitio es famoso por su botín, pero a veces es más fácil encontrar un tesoro en el fondo del mar que aquí. ¿Te imaginas si",
+      "imageHash": "6332684_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_WLaDffjZ7lZ7EW/ih1msjAyySjXpYrGb720lkut5+i//wVlh0dfLA6y998GuOfP3YqCPzvf7HFP/5yn3/84z3+zY+L/OUHEZ5l+x_m6TBNbVG6r7SaD5qpbfIQjTbrtDVoSxNifmRTKsS4yNZkpCWteih5ZhR9W9Ld3t7sYXawyb+Dznbi8gWmw81AAAAAElFTkSuQmCC",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 153,
-        "type": "conversational"
+        "responseLength": 331
       }
     },
     {
-      "timestamp": "2025-08-26T21:00:40.638Z",
-      "analysis": "Ya que estamos, ¿te acuerdas de la vez que Pedro intentó \"rolear\" como un goblin financiero? Cuando por fin se levantó, Pedro caminaba como si fuera su personaje...\n",
-      "imageHash": "conversational",
+      "timestamp": "2025-08-26T21:57:55.943Z",
+      "analysis": "Chale, esa interfaz parece más complicada que la tarea de un mago en una incursión. Me recuerda a la vez que mi compa intentó ajustar su equipo y terminó sonando como un robot desafinado. ¿Sabías que en WoW hay un jefe que usa habilidades de sonido? Suena raro, pero es cierto. ¿Te imaginas lidiando con eso mientras tratas de",
+      "imageHash": "287320_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_EAADAAAAAAAAAAAA2BZiBjmsYqjbBQEwAAAAAAAAAAAAgG0hZpDDKoa6XRAAAwAAAAAAAAAAANgWYgY5rGKo2wUBMAAAAAAAAAAA_KIpaVikwGCBcXCb3lb1y7+ywFqjrBigG+sb+DnhR/sbx3D10VPQCqMnHa/G+qH2Bvt7+/wMNlTbfbdJyrAAAAABJRU5ErkJggg==",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 165,
-        "type": "conversational"
+        "responseLength": 326
       }
     },
     {
-      "timestamp": "2025-08-26T21:00:45.279Z",
-      "analysis": "Oye, hablando de goblins financieros, ¿seguirá creyendo que las monedas de oro son inversión? Y desde entonces, Pedro cree que es un paladín en la vida real, vaya ironía.\n",
-      "imageHash": "conversational",
+      "timestamp": "2025-08-26T21:59:22.463Z",
+      "analysis": "Chin, esa área desértica me recuerda a cuando un amigo se volvió recolector de oro profesional, pero solo encontró basura. Aquí, en el juego, esos paisajes son perfectos para que aparezcan criaturas raras como los elementales. ¿Sabías que algunos de ellos pueden ser un verdadero dolor de cabeza en las incursiones? Como si no tuviéramos suficiente drama ya",
+      "imageHash": "6818372_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_ifhCjYDoezd5w6dg9vmGJxZIvhzYl7Hi3u+nT4fETC7VrC4lIATKHyCXsgCbmtxfOgDB+HafFDiy0pnvgpAJUzspA2hU5c0TixEx_VpoSbAxlCv3OQnN8qBEs88+hdHmNmhhMFxKclI6M9GeYGM2W140ExUJOtdKcYCF41Ez6HgP/L4D7lLe2KkYeAAAAAElFTkSuQmCC",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 171,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:03.504Z",
-      "analysis": "¿Cuál es la cosa más random que has visto en chat general, carnal?",
-      "imageHash": "7636160_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_pLWNtKudtLuDpLuDuKeDjBDFfH1E3SIDsYdcdFBy9ooSTt+Qt4mQr4mAS3NQbuHM1eIXjmBvCxFvuyToVpKTEjY1GxsjkxyXRJiQ_oWNEniUz8zgZz/AJZvcusPv9HV7+YyYPv72J71EanavJ9G+mEHiSzvDzswSfnmVw9ywtE2n8H6DmZgWQjC81AAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 66
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:05.479Z",
-      "analysis": "A todo esto, ¿será más raro que Pedro creyéndose paladín o los ninjas looteando en raid? Apuesto a que si los juntas, harían un buen grupo de farmeo.\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 150,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:15.704Z",
-      "analysis": "Como te iba diciendo, el chat general es un circo. He visto gente pidiendo \"novia elfa\" más seguido de lo que debería ser socialmente aceptable. Y pensar que luego se quejan de los ninjas.\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 189,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:25.574Z",
-      "analysis": "Oye, cambiando de tema, ¿te acuerdas cuando aquel mago intentó vender pociones de invisibilidad \"premium\"? Una vez fue al super y le pidió descuento al 'vendor' argumentando que era un NPC.\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 190,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:41.187Z",
-      "analysis": "Ahí va, ¿será que Pedro también intentó vender esas pociones?\nEn el trabajo intentaba hacer 'trade' con los compañeros...",
-      "imageHash": "7489856_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_3nvVvKwT51SyLfzGkxx++FQ0kn0yX/hlvgiIpVJ8xaK5q4TIbol3tRLvxcBAhcQDgRIvTeLMxRKu6Ve1at54dLyt1/NZ0MjHmIVf_ScY32FD2c/BHLzpAhOkWQfGTA8mgDTtbFhzumBHxmRAj7GVP4liPpTrUi/vH+jHCZ0L00IT/D3qQivpfAld9AAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 121
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:54.378Z",
-      "analysis": "Ay güey, esa caminata me recuerda que su novia lo dejó. \"Necesito más maná\", le decía...",
-      "imageHash": "7391320_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_MyUjW0UtS+mT8Fcgn0UAvCIawDkRABuZi+vI/xwAi9snbme9RWRuZrYLjVxcbOPSYju3NrqJuR2/vR8jnQYS404qXhcrfifbMzb2_ROO3+ep7IJyuOfBQceCBn88NW+yNr5i4F1isPs738Tn8IUf4q4up/rbgwjt23Zd9mGe8+H+MAuq1n4JAUQAAAABJRU5ErkJggg==",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 88
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:01:55.722Z",
-      "analysis": "Oye, cambiando de tema, esa soledad del personaje me recuerda a tu primo. Pero al final encontró amor... con una maga nivel 80. ¿Será que ahora pide \"maná\" para dos?\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 166,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:02:05.590Z",
-      "analysis": "Por cierto, hablando de magos y \"maná\", chin, a ver si esta vez no le toca farmear ingredientes raros como la otra vez. ¿Te acuerdas cuando juntó 50 colas de escorpión? El pobre sudaba frío.\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 191,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:02:15.906Z",
-      "analysis": "A todo esto, ¿crees que el \"maná\" sea tan esencial como las horas que Pedro gasta farmeando oro? Por cierto, hablando de vicios... ¿qué addon no puedes vivir sin él?\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 166,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:02:30.245Z",
-      "analysis": "Está cabrón que siempre andes en esas zonas tan... \"campestres\".",
-      "imageHash": "7361304_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_pEnHZwkGDQzuLAweWaiNrNSSE5zj+qKWbMNINGTAL5PcQT07awbm56ZZXzWwt2dkbUPP6qaJoByztxfINZfwpW0k+i7S+3Jc5CZY_jCYq+hcY/PBXGIwjGBCM7vio6Ad303p0N9bj+7GePIjtffXp/UhPH0T6/VGkN79Fqv7/e4j/Dz1OVKwWGn3jAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 64
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:02:43.742Z",
-      "analysis": "Mijo, ¿andas buscando setas mágicas como tu primo \"accidentalmente\"?",
-      "imageHash": "7894312_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_tlNTZzcHNRqa7LQ226mrslNUZCcxw06M30FKoZPGXi+dI0Fs3oxg6+k2Jm6F0zQfRmFXMKk1Pk7JyfpMF1XtIQx2h9BeZqOxxEZb_vrWPDgHBZ/fSMLWX+qG91HfvoalzH+OTr3P/o8j/AQAn8qu/jeYXfxvMxz8/zNVHb9I99gz/D76MPqs6avNHAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 68
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:02:55.350Z",
-      "analysis": "Se ve que dejaste las \"setas\" de tu primo, ¿no?",
-      "imageHash": "7833972_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_L09PO5FImzSRIXk0QH9U+9vtESV+Mk7iRI3IqVuCz6fkMlLsVIXHdI3BYpYfG4xkjMBclM+JuYDrWwO9jM6ViVcwky55NlDjskHc_ozh3N919+ynI/SV9ZfFEfG5aml9jZHw/Q32ZRIZLiFzIZXH1NDful/DFEz+/+59WPv22kr8Ccz/zv6adKywAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 47
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:02:55.587Z",
-      "analysis": "Oye, cambiando de tema, ¿ya checaste si ese chamán tiene el \"encantar\" de velocidad aumentado? Igual y corres más rápido que Pedro huyendo de sus responsabilidades.\n",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 165,
-        "type": "conversational"
+        "responseLength": 357
       }
     }
   ],
-  "lastAnalysis": "Se ve que dejaste las \"setas\" de tu primo, ¿no?",
+  "lastAnalysis": "Oye, carnal, hablando de esos árboles que parecen tener vida propia, me acuerdo de cuando un amigo trató de cultivar un \"item\" que resultó ser más inútil que un paraguas en el desierto. En World of Warcraft, hay plantas que realmente pueden ayudarte, aunque algunas solo sirven para adornar. ¿Te imaginas si fueran tan sencillas de cuidar como las de",
   "statistics": {
     "totalComments": 20,
-    "firstComment": "2025-08-26T20:51:36.336Z",
-    "lastComment": "2025-08-26T21:02:55.587Z"
+    "firstComment": "2025-08-26T21:26:22.623Z",
+    "lastComment": "2025-08-26T21:59:22.463Z"
   }
 }

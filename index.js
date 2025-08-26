@@ -28,11 +28,14 @@ class AsistenteStream {
 
         this.screenCapture = new ScreenCapture(this.config.screenshotsDir, this.config.monitorIndex);
         // Usar Google AI por defecto, fallback a OpenAI si no está disponible
-        const apiKey = this.config.googleApiKey || this.config.openaiApiKey;
-        if (!apiKey) {
+        const primaryApiKey = this.config.googleApiKey || this.config.openaiApiKey;
+        const fallbackApiKey = this.config.googleApiKey ? this.config.openaiApiKey : null;
+        
+        if (!primaryApiKey) {
             throw new Error('Se requiere GOOGLE_API_KEY o OPENAI_API_KEY en el archivo .env');
         }
-        this.visionAnalyzer = new VisionAnalyzer(apiKey);
+        
+        this.visionAnalyzer = new VisionAnalyzer(primaryApiKey, fallbackApiKey);
         this.applioClient = new ApplioClient(this.config.applioUrl);
         this.audioPlayer = new AudioPlayer();
         
@@ -115,6 +118,7 @@ class AsistenteStream {
             
             // 3. Convertir a voz y reproducir
             if (analysis.success) {
+                console.log(`💭 Respuesta generada: "${analysis.analysis}"`);
                 const audioResult = await this.generateAndPlayVoiceComment(analysis.analysis);
                 if (audioResult) {
                     this.webInterface?.broadcastNewAudio({
@@ -152,11 +156,17 @@ class AsistenteStream {
             const audioPath = path.join(this.config.audioDir, audioFilename);
 
             console.log('🔊 Generando audio...');
+            console.log('📝 TEXTO COMPLETO A SINTETIZAR:');
+            console.log('━'.repeat(80));
+            console.log(`"${text}"`);
+            console.log('━'.repeat(80));
+            console.log(`📊 Longitud: ${text.length} caracteres, ${text.split(' ').length} palabras`);
+            console.log('');
 
             const result = await this.applioClient.textToSpeech(text, audioPath, {
                 model: this.config.ttsModel,
                 speed: 0,
-                pitch: 0
+                pitch: parseInt(process.env.TTS_PITCH) || 0
             });
 
             if (result.success) {

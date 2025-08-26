@@ -26,23 +26,24 @@ class ApplioClient {
 
         console.log(`\n🎬 Iniciando TTS: «${text.substring(0, 100)}...»`);
         console.log(`🎛️ Modelo: ${model}`);
+        console.log(`🎵 Pitch: ${pitch}`);
         console.log(`🔑 Session: ${this.sessionHash}\n`);
 
         try {
             // Obtener timestamp del archivo antes de la solicitud
             const beforeTimestamp = await this._getFileTimestamp();
             
-            // Payload para Applio
+            // Payload para Applio - Configuración optimizada para audios largos
             const data = [
                 true,                           // enable_vc
                 "",                             // speaker_wav
                 text,                           // input_text
                 model,                          // model_name  
                 pitch,                          // pitch
-                0,                              // filter_radius
-                0.75,                           // index_rate
-                1,                              // volume_envelope
-                0.5,                            // protect
+                parseFloat(process.env.TTS_FILTER_RADIUS) || 0,              // filter_radius
+                parseFloat(process.env.TTS_INDEX_RATE) || 0.75,              // index_rate
+                parseFloat(process.env.TTS_VOLUME_ENVELOPE) || 0.8,          // volume_envelope
+                parseFloat(process.env.TTS_PROTECT) || 0.5,                  // protect
                 "rmvpe",                        // f0_method
                 "C:\\applio2\\Applio\\assets\\audios\\tts_output.wav",
                 "C:\\applio2\\Applio\\assets\\audios\\tts_rvc_output.wav",
@@ -50,11 +51,11 @@ class ApplioClient {
                 "logs\\VOCES\\esponja.index",
                 false,                          // split_audio
                 false,                          // autotune
-                1,                              // clean_audio
+                parseFloat(process.env.TTS_CLEAN_AUDIO) || 0.5,              // clean_audio
                 false,                          
-                155,                            // clean_strength
+                parseInt(process.env.TTS_CLEAN_STRENGTH) || 100,             // clean_strength
                 false,                          // export_format_enabled
-                0.5,                            // upscale_audio
+                parseFloat(process.env.TTS_UPSCALE_AUDIO) || 0.33,           // upscale_audio
                 "WAV",                          // export_format
                 "contentvec",                   // embedder_model
                 null,                           // custom_model

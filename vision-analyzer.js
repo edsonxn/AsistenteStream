@@ -1,12 +1,23 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
 
 class VisionAnalyzer {
-    constructor(apiKey) {
-        // Inicializar Google AI (Gemini)
+    constructor(apiKey, fallbackApiKey = null) {
+        // Configurar Google AI como principal
         this.genAI = new GoogleGenerativeAI(apiKey);
         this.model = this.genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+        this.useGemini = true;
+        this.quotaExceeded = false;
+        
+        // Configurar OpenAI como fallback
+        this.openaiApiKey = fallbackApiKey || process.env.OPENAI_API_KEY;
+        if (this.openaiApiKey) {
+            this.openai = new OpenAI({ apiKey: this.openaiApiKey });
+        }
+        
+        console.log(`🤖 Configurado: Gemini principal${this.openaiApiKey ? ' + OpenAI fallback' : ' (sin fallback)'}`);
         
         // Configuración desde variables de entorno
         this.maxWords = parseInt(process.env.MAX_WORDS) || 20; // Por defecto 20 palabras si no está configurado
@@ -14,6 +25,7 @@ class VisionAnalyzer {
         // 📊 CONFIGURACIÓN DE PROBABILIDADES desde .env
         this.storyChance = parseFloat(process.env.STORY_PROBABILITY) || 0.15; // 15% por defecto
         this.questionChance = parseFloat(process.env.QUESTION_PROBABILITY) || 0.20; // 20% por defecto
+        this.pedroJokesChance = parseFloat(process.env.PEDRO_JOKES_PROBABILITY) || 0.30; // 30% por defecto
         
         // Archivo de historial JSON
         this.historyFile = path.join(process.cwd(), 'historial-comentarios.json');
@@ -39,18 +51,18 @@ class VisionAnalyzer {
                 parts: [
                     "Mi primito Pedro una vez se quedó 16 horas seguidas jugando WoW...",
                     "Al día siguiente Pedro seguía ahí, pero ya hablaba con los NPCs...",
-                    "Su mamá le llevó comida y Pedro le dijo 'espera, estoy en raid'...",
+                    "Su mamá le llevó comida y Pedro le dijo 'espera, estoy en incursión'...",
                     "Cuando por fin se levantó, Pedro caminaba como si fuera su personaje...",
                     "Y desde entonces, Pedro cree que es un paladín en la vida real."
                 ]
             },
             {
                 id: 'carnal_epic_fail',
-                title: 'El fail épico del carnal',
+                title: 'La falla épica del carnal',
                 parts: [
                     "Un carnal una vez me contó que era pro en WoW...",
                     "Resulta que llevaba 3 años jugando mal su clase...",
-                    "Todo el guild se burlaba pero él no entendía por qué...",
+                    "Toda la hermandad se burlaba pero él no entendía por qué...",
                     "Un día un niño de 12 años le explicó como jugar...",
                     "Ahora el carnal da coaching... a NPCs."
                 ]
@@ -60,20 +72,20 @@ class VisionAnalyzer {
                 title: 'Cuando WoW se vuelve muy real',
                 parts: [
                     "Conocí a un wey que confundía WoW con la vida real...",
-                    "Una vez fue al super y le pidió descuento al 'vendor'...",
-                    "En el trabajo intentaba hacer 'trade' con los compañeros...",
+                    "Una vez fue al super y le pidió descuento al 'vendedor'...",
+                    "En el trabajo intentaba hacer intercambios con los compañeros...",
                     "Su novia lo dejó porque le decía 'necesito más mana'...",
                     "Pero al final encontró amor... con una maga nivel 80."
                 ]
             },
             {
                 id: 'guild_drama',
-                title: 'El drama más tonto del guild',
+                title: 'El drama más tonto de la hermandad',
                 parts: [
-                    "En mi guild pasó el drama más pendejo de la historia...",
+                    "En mi hermandad pasó el drama más pendejo de la historia...",
                     "Dos weyes se pelearon por un item virtual...",
                     "La pelea escaló hasta insultar a las familias...",
-                    "El líder del guild los kickeó a los dos...",
+                    "El líder de la hermandad los expulsó a los dos...",
                     "Al final el item ni servía para sus clases."
                 ]
             },
@@ -82,10 +94,10 @@ class VisionAnalyzer {
                 title: 'Cuando WoW se convierte en trabajo',
                 parts: [
                     "Mi compa empezó jugando WoW por diversión...",
-                    "Después se volvió farming de oro profesional...",
+                    "Después se volvió recolector de oro profesional...",
                     "Tenía horarios, metas diarias y hasta Excel...",
                     "Su 'trabajo' en WoW era más estresante que su trabajo real...",
-                    "Ahora vende cuentas y dice que es 'empresario gamer'."
+                    "Ahora vende cuentas y dice que es 'empresario jugador'."
                 ]
             }
         ];
@@ -101,43 +113,130 @@ class VisionAnalyzer {
         
         this.wowQuestions = [
             // Preguntas sobre gameplay
-            "¿Cuál ha sido tu peor wipe en raid, carnal?",
+            "¿Cuál ha sido tu peor derrota en incursión, carnal?",
             "Oye, ¿qué clase odias más enfrentar en PvP?",
-            "¿Alguna vez has rage quiteado por culpa de un tank pendejo?",
+            "¿Alguna vez te has salido enojado por culpa de un tanque pendejo?",
             "¿Cuál es el logro más mamón que has conseguido?",
-            "¿Has tenido dramas épicos en tu guild?",
+            "¿Has tenido dramas épicos en tu hermandad?",
             
             // Preguntas sobre experiencias
-            "¿Recuerdas tu primera vez en una raid de 40?",
-            "¿Cuál ha sido tu drop más épico?",
-            "¿Alguna vez te han kickeado injustamente de un grupo?",
-            "¿Qué addon no puedes vivir sin él?",
+            "¿Recuerdas tu primera vez en una incursión de 40?",
+            "¿Cuál ha sido tu botín más épico?",
+            "¿Alguna vez te han expulsado injustamente de un grupo?",
+            "¿Qué complemento no puedes vivir sin él?",
             "¿Has llorado por algún nerf a tu clase?",
             
             // Preguntas casuales/divertidas
-            "¿Tu main actual es el mismo desde que empezaste?",
+            "¿Tu personaje principal actual es el mismo desde que empezaste?",
             "¿Cuánto oro tienes acumulado, millonario?",
-            "¿Prefieres Horde o Alliance y por qué?",
+            "¿Prefieres Horda o Alianza y por qué?",
             "¿Cuál es la zona que más odias de todo WoW?",
             "¿Has intentado explicar WoW a alguien que no juega?",
             
             // Preguntas sobre la comunidad
             "¿Cuál es la cosa más random que has visto en chat general?",
             "¿Has hecho amigos reales gracias a WoW?",
-            "¿Qué opinas de los que compran gold?",
+            "¿Qué opinas de los que compran oro?",
             "¿Tu familia entiende tu adicción a WoW?",
             "¿Cuántas horas has jugado esta semana?",
             
-            // Preguntas sobre el stream
-            "¿Los viewers te dan buenos consejos o puro spam?",
-            "¿Alguna vez has streamado estando mamado?",
-            "¿Cuál ha sido tu momento más vergonzoso en stream?",
+            // Preguntas sobre el streaming
+            "¿Los que te ven te dan buenos consejos o puro spam?",
+            "¿Alguna vez has transmitido estando mamado?",
+            "¿Cuál ha sido tu momento más vergonzoso transmitiendo?",
             "¿Prefieres hacer contenido casual o hardcore?",
-            "¿Te da pena cuando los viewers te ven morir de forma tonta?"
+            "¿Te da pena cuando la gente te ve morir de forma tonta?"
         ]; // Si es null, usa la personalidad por defecto
         
         // Cargar historial al inicializar
         this.loadHistoryFromFile();
+    }
+
+    // 🔄 MÉTODO DE FALLBACK AUTOMÁTICO
+    async callAIWithFallback(messages, imageData = null) {
+        try {
+            // Intentar con Gemini primero si no hemos excedido la cuota
+            if (this.useGemini && !this.quotaExceeded) {
+                try {
+                    let response;
+                    if (imageData) {
+                        // Para análisis de imagen con Gemini
+                        response = await this.model.generateContent([
+                            messages,
+                            {
+                                inlineData: {
+                                    mimeType: "image/png",
+                                    data: imageData
+                                }
+                            }
+                        ]);
+                    } else {
+                        // Para texto simple con Gemini
+                        response = await this.model.generateContent(messages);
+                    }
+                    
+                    const text = response.response.text();
+                    console.log('✅ Respuesta generada con Gemini');
+                    return text;
+                    
+                } catch (geminiError) {
+                    // Detectar error de cuota
+                    if (geminiError.message.includes('429') || geminiError.message.includes('quota')) {
+                        console.log('⚠️ Cuota de Gemini excedida, cambiando a OpenAI...');
+                        this.quotaExceeded = true;
+                        this.useGemini = false;
+                    } else {
+                        console.log(`⚠️ Error de Gemini (${geminiError.message.substring(0, 50)}...), intentando OpenAI...`);
+                    }
+                    // Continuar al fallback
+                }
+            }
+            
+            // Usar OpenAI como fallback
+            if (this.openai) {
+                console.log('🔄 Usando OpenAI como fallback...');
+                
+                if (imageData) {
+                    // Para análisis de imagen con OpenAI
+                    const response = await this.openai.chat.completions.create({
+                        model: "gpt-4o-mini",
+                        messages: [
+                            {
+                                role: "user",
+                                content: [
+                                    { type: "text", text: messages },
+                                    {
+                                        type: "image_url",
+                                        image_url: {
+                                            url: `data:image/png;base64,${imageData}`,
+                                            detail: "high"
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        max_tokens: Math.max(50, this.maxWords + 10),
+                        temperature: 0.7
+                    });
+                    return response.choices[0].message.content;
+                } else {
+                    // Para texto simple con OpenAI
+                    const response = await this.openai.chat.completions.create({
+                        model: "gpt-4o-mini",
+                        messages: [{ role: "user", content: messages }],
+                        max_tokens: Math.max(50, this.maxWords + 10),
+                        temperature: 0.8
+                    });
+                    return response.choices[0].message.content;
+                }
+            } else {
+                throw new Error('No hay API disponible (Gemini agotado y OpenAI no configurado)');
+            }
+            
+        } catch (error) {
+            console.error('❌ Error en ambas APIs:', error.message);
+            throw error;
+        }
     }
 
     async analyzeScreenshot(base64Image) {
@@ -148,12 +247,15 @@ class VisionAnalyzer {
             const currentImageHash = this.createSimpleImageHash(base64Image);
             const isRepeatedImage = this.isImageSimilar(currentImageHash);
 
-            const systemPrompt = this.getSystemPrompt();
+            // Determinar si se debe usar chistes de Pedro para este análisis
+            const usePedroJokes = this.shouldUsePedroJoke();
+            
+            const systemPrompt = this.getSystemPrompt(usePedroJokes);
             
             // Crear el mensaje del usuario con rol de amigo casual mexicano
             let userMessage = `Analiza esta captura de pantalla y actúa como un COMPA CASUAL que anda cotorreando con el streamer.
 
-🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. Cuenta cada palabra antes de responder.
+🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. COMPLETA siempre tus frases - no las cortes a la mitad.
 
 🚫 PROHIBIDO ABSOLUTO:
 - NO uses EMOTICONES (😂, 😎, 🎮, 💀, etc.) - JAMÁS
@@ -168,12 +270,12 @@ TU NUEVO ROL CASUAL: Eres un amigo súper relajado que:
 - ES BUENA ONDA: Casual pero divertido
 - COTORREA: Habla como si estuvieras ahí con tu carnal
 - ANTI-REPETITIVO: Cada comentario debe ser completamente diferente
-- CONCISO: Máximo ${this.maxWords} palabras SIEMPRE
+- CONCISO: Máximo ${this.maxWords} palabras SIEMPRE - pero COMPLETA las frases
 - SIN EMOTICONES: Solo texto, nada de emojis
 
 la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
-en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
+${usePedroJokes ? 'en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"' : ''}
 
 FORMAS DE DIRIGIRTE AL STREAMER (ROTA SIEMPRE - USA UNA DIFERENTE CADA VEZ):
 🚨 IMPORTANTE: "Órale" SOLO 1 vez cada 10 comentarios - Usa otras opciones primero
@@ -251,18 +353,18 @@ ESTILOS CASUALES QUE DEBES ROTAR (NUNCA REPITAS EL MISMO):
 - "Tómatelo con calma..."
 - "Hazle como te digo..."
 
-5. CHISTES DEL PRIMITO PEDRO:
+${usePedroJokes ? `5. CHISTES DEL PRIMITO PEDRO:
 - "Seguro es mi primito Pedro jugando..."
 - "Se parece a Pedro cuando juega..."
 - "Pedro hace lo mismo de pendejo..."
 - "Ahí anda Pedro otra vez..."
 - "Típico de Pedro eso..."
 
-6. PREGUNTAS CONVERSACIONALES WoW:
-- "¿Cuál ha sido tu peor wipe, carnal?"
+` : ''}6. PREGUNTAS CONVERSACIONALES WoW:
+- "¿Cuál ha sido tu peor derrota, carnal?"
 - "Oye, ¿qué clase odias en PvP?"
-- "¿Has tenido dramas en tu guild?"
-- "¿Recuerdas tu primera raid?"
+- "¿Has tenido dramas en tu hermandad?"
+- "¿Recuerdas tu primera incursión?"
 - "¿Cuánto oro tienes acumulado?"
 
 REGLAS ANTI-REPETICION ABSOLUTAS:
@@ -353,7 +455,7 @@ IMPORTANTE! Haz un comentario SARCASTICO sobre ver lo mismo:
 ✨ REFERENCIAS implícitas y comparaciones naturales
  maximo 10 palabras por comentario, la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
-en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
+${usePedroJokes ? 'en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"' : ''}
 EJEMPLOS DE CONEXIONES SUTILES (VARÍA SIEMPRE):
 - Menciona elementos anteriores naturalmente sin "después de"
 - Comparaciones irónicas que muestren memoria contextual
@@ -438,7 +540,7 @@ OBJETIVO: Comentario 100% ORIGINAL sin repetir ni una sola palabra de los anteri
 ✨ HAZ que la historia se sienta NATURAL, no forzada
 ✨ USA tu estilo casual mexicano para contar la historia
 
-EJEMPLO: "Chin, esa zona me recuerda que mi primito Pedro una vez..."
+${usePedroJokes ? 'EJEMPLO: "Chin, esa zona me recuerda que mi primito Pedro una vez..."' : 'EJEMPLO: "Chin, esa zona me recuerda una vez que..."'}
 OBJETIVO: Que la historia fluya naturalmente con tu comentario`;
                 }
 
@@ -456,25 +558,15 @@ OBJETIVO: Que la historia fluya naturalmente con tu comentario`;
 ✨ USA tu estilo casual mexicano para hacer la pregunta
 ✨ HAZ que se sienta como una conversación entre amigos
 
-EJEMPLO: "Oye carnal, hablando de raids... ¿cuál ha sido tu peor wipe?"
+EJEMPLO: "Oye carnal, hablando de incursiones... ¿cuál ha sido tu peor derrota?"
 OBJETIVO: Generar conversación y interacción con el streamer`;
                 }
             }
 
-            // Crear prompt combinado para Gemini
+            // Crear prompt combinado para AI
             const fullPrompt = `${systemPrompt}\n\n${userMessage}`;
             
-            const response = await this.model.generateContent([
-                fullPrompt,
-                {
-                    inlineData: {
-                        mimeType: "image/png",
-                        data: base64Image
-                    }
-                }
-            ]);
-
-            const analysis = response.response.text();
+            const analysis = await this.callAIWithFallback(fullPrompt, base64Image);
             
             // Crear entrada de historial con metadata completa
             const historyEntry = {
@@ -607,12 +699,10 @@ COMPORTAMIENTOS CONVERSACIONALES:
 ✨ ÚSA un conector para hacer esta pregunta naturalmente`;
             }
 
-            // Crear prompt combinado para Gemini
+            // Crear prompt combinado para AI
             const fullPrompt = `${systemPrompt}\n\n${userMessage}`;
             
-            const response = await this.model.generateContent(fullPrompt);
-
-            const analysis = response.response.text();
+            const analysis = await this.callAIWithFallback(fullPrompt);
             
             // Crear entrada de historial
             const historyEntry = {
@@ -655,17 +745,17 @@ COMPORTAMIENTOS CONVERSACIONALES:
         }
     }
 
-    getSystemPrompt() {
+    getSystemPrompt(usePedroJokes = null) {
         // Si hay una personalidad personalizada, usarla
         if (this.customPersonality) {
             return this.customPersonality;
         }
         
         // Personalidad por defecto
-        return this.getDefaultPersonality();
+        return this.getDefaultPersonality(usePedroJokes);
     }
 
-    getDefaultPersonality() {
+    getDefaultPersonality(usePedroJokes = null) {
         // Crear contexto narrativo mejorado con los últimos comentarios
         let contextInfo = '';
         if (this.conversationHistory.length > 0) {
@@ -685,11 +775,11 @@ COMPORTAMIENTOS CONVERSACIONALES:
             }
         }
 
-        return `Eres un COMPANERO DE STREAMING sarcástico e inteligente con MEMORIA NARRATIVA. Tu trabajo es crear comentarios que CONECTEN las experiencias del streamer.
+        return `Eres un COMPANERO DE TRANSMISIÓN sarcástico e inteligente con MEMORIA NARRATIVA. Tu trabajo es crear comentarios que CONECTEN las experiencias del transmisor.
 
         la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
-en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
+${usePedroJokes !== null ? (usePedroJokes ? 'en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"' : '') : (this.shouldUsePedroJoke() ? 'en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"' : '')}
 
 🎭 PERSONALIDAD NARRATIVA:
 - Máximo ${this.maxWords} palabras por comentario
@@ -697,6 +787,14 @@ en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "m
 - SIEMPRE conectas con experiencias anteriores de forma SUTIL y VARIADA
 - Construyes una historia coherente SIN frases repetitivas de transición
 - EVITAS frases como "Después de...", "Tras...", "Recordando..."
+
+🚫 REGLA CRÍTICA DE IDIOMA:
+- PROHIBIDO usar palabras en inglés
+- USA SOLO ESPAÑOL MEXICANO en todo momento
+- Cambia cualquier anglicismo por equivalente en español
+- Ejemplos: NO "raid" → SÍ "incursión", NO "boss" → SÍ "jefe", NO "loot" → SÍ "botín"
+- NO uses términos como "gameplay", "streamer", "farming", "grinding", etc.
+- SIEMPRE habla como mexicano que solo conoce español
 
 🧠 HABILIDADES ESPECIALES:
 ✨ MEMORIA SUTIL: Referencias naturales sin palabras de transición obvias
@@ -1406,6 +1504,11 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         if (this.imageHistory.length > 5) {
             this.imageHistory = this.imageHistory.slice(-5);
         }
+    }
+
+    // Determinar si se debe usar un chiste de Pedro basado en la probabilidad configurada
+    shouldUsePedroJoke() {
+        return Math.random() < this.pedroJokesChance;
     }
 }
 
