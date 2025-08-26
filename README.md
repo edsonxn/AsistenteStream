@@ -6,8 +6,11 @@ Un asistente inteligente que analiza tu pantalla periódicamente y genera coment
 
 - **Captura automática de pantalla** cada 30 segundos (configurable)
 - **Selección de monitor específico** (monitor 1, 2, 3 o todos)
-- **Análisis inteligente** usando OpenAI GPT-4 Vision
-- **Generación de comentarios** contextual y conversacional con personalidad sarcástica
+- **Análisis inteligente** usando Google AI Gemini 2.0 (o OpenAI como fallback)
+- **Generación de comentarios** contextual y conversacional con personalidad sarcástica mexicana
+- **Sistema anti-repetición** para evitar comentarios duplicados
+- **Historias secuenciales** y preguntas conversacionales WoW
+- **Sistema de probabilidades configurable** (capturas, historias, preguntas)
 - **Personalidad personalizable** desde la interfaz web
 - **Síntesis de voz** usando Applio TTS
 - **Reproducción automática** de comentarios por voz
@@ -17,7 +20,7 @@ Un asistente inteligente que analiza tu pantalla periódicamente y genera coment
 ## 📋 Requisitos
 
 - Node.js 18 o superior
-- API Key de OpenAI
+- API Key de Google AI (recomendado) o OpenAI (fallback)
 - Applio ejecutándose en puerto 6969 (para TTS)
 
 ## 🛠️ Instalación
@@ -37,21 +40,63 @@ npm install
 # Copia el archivo de ejemplo
 copy .env.example .env
 
-# Edita .env y agrega tu API key de OpenAI
+# Edita .env y agrega tu API key
 ```
 
 4. **Configura tu archivo .env**
 ```env
+# Google AI (Recomendado - Gratis y rápido)
+GOOGLE_API_KEY=tu_api_key_de_google_ai_aqui
+
+# OpenAI (Fallback - Requiere pagos)
 OPENAI_API_KEY=tu_api_key_de_openai_aqui
+
+# Configuración del sistema
 SCREENSHOT_INTERVAL=30000
 APPLIO_URL=http://127.0.0.1:6969
 TTS_MODEL=fr-FR-RemyMultilingualNeural
 MONITOR_INDEX=1
 SCREENSHOTS_DIR=screenshots
+
+# Configuración de comportamiento
+MAX_WORDS=50
+SCREENSHOT_PROBABILITY=0.30
+STORY_PROBABILITY=0.15
+QUESTION_PROBABILITY=0.20
 AUDIO_DIR=audio
 AUTO_PLAY=true
 PLAYBACK_METHOD=auto
 ```
+
+## 🔑 Configuración de API Keys
+
+### Google AI (Recomendado) 🆓
+
+1. **Ve a Google AI Studio**: https://makersuite.google.com/app/apikey
+2. **Inicia sesión** con tu cuenta de Google
+3. **Crea una nueva API key**
+4. **Copia la API key** y agrégala a tu archivo `.env`:
+   ```env
+   GOOGLE_API_KEY=tu_api_key_de_google_ai_aqui
+   ```
+
+**Ventajas de Google AI:**
+- ✅ **Gratis** con cuota generosa
+- ✅ **Más rápido** que OpenAI
+- ✅ **Mejor análisis multimodal** (texto + imagen)
+- ✅ **Disponible globalmente** sin restricciones
+- ✅ **Modelo más moderno** (Gemini 2.0)
+
+### OpenAI (Fallback) 💰
+
+1. **Ve a OpenAI**: https://platform.openai.com/api-keys
+2. **Crea una nueva API key**
+3. **Agrégala a tu archivo `.env`**:
+   ```env
+   OPENAI_API_KEY=tu_api_key_de_openai_aqui
+   ```
+
+**Nota**: El sistema usa Google AI por defecto, y OpenAI como respaldo si la primera no está disponible.
 
 ## 🎯 Uso
 

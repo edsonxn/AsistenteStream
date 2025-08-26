@@ -8,6 +8,9 @@ class AudioPlayer {
         this.currentProcess = null;
         this.audioQueue = [];
         this.isProcessingQueue = false;
+        // 🚫 SISTEMA ANTI-DUPLICADOS
+        this.recentAudioFiles = new Set(); // Cache de archivos recientes
+        this.audioDeduplicationTimeout = 5000; // 5 segundos para considerar duplicado
     }
 
     async playAudio(audioPath) {
@@ -236,16 +239,76 @@ class AudioPlayer {
         };
     }
 
+    // 🚫 FUNCIÓN ANTI-DUPLICADOS ADICIONAL: Detectar archivos con nombres muy similares
+    isFilenameSimilar(audioPath) {
+        const fileName = path.basename(audioPath, '.wav');
+        const currentQueueFiles = this.audioQueue.map(item => path.basename(item.audioPath, '.wav'));
+        
+        // Verificar si hay un archivo muy similar en la cola (diferencia de menos de 2 segundos en el timestamp)
+        for (const queueFile of currentQueueFiles) {
+            if (this.areTimestampsSimilar(fileName, queueFile)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    areTimestampsSimilar(filename1, filename2) {
+        try {
+            // Extraer timestamps de nombres como "comment-2025-08-26T20-40-33-004Z"
+            const timestamp1Match = filename1.match(/(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z)/);
+            const timestamp2Match = filename2.match(/(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z)/);
+            
+            if (!timestamp1Match || !timestamp2Match) return false;
+            
+            const time1 = new Date(timestamp1Match[1].replace(/T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z/, 'T$1:$2:$3.$4Z'));
+            const time2 = new Date(timestamp2Match[1].replace(/T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z/, 'T$1:$2:$3.$4Z'));
+            
+            const timeDiff = Math.abs(time1.getTime() - time2.getTime());
+            
+            // Considerar similar si la diferencia es menor a 3 segundos
+            return timeDiff < 3000;
+        } catch (error) {
+            return false;
+        }
+    }
+
     // Método principal que intenta diferentes enfoques con cola
     async play(audioPath, method = 'auto') {
         return new Promise((resolve, reject) => {
+            // 🚫 VERIFICAR DUPLICADOS POR CONTENIDO
+            const audioContent = this.getAudioContentIdentifier(audioPath);
+            
+            if (this.recentAudioFiles.has(audioContent)) {
+                console.log(`🚫 Audio duplicado detectado (contenido), omitiendo: ${path.basename(audioPath)}`);
+                resolve({ success: true, skipped: true, reason: 'duplicate_content' });
+                return;
+            }
+
+            // 🚫 VERIFICAR DUPLICADOS POR NOMBRE SIMILAR
+            if (this.isFilenameSimilar(audioPath)) {
+                console.log(`🚫 Audio duplicado detectado (nombre similar), omitiendo: ${path.basename(audioPath)}`);
+                resolve({ success: true, skipped: true, reason: 'duplicate_filename' });
+                return;
+            }
+
+            // Agregar a cache de archivos recientes
+            this.recentAudioFiles.add(audioContent);
+            
+            // Limpiar cache después del timeout
+            setTimeout(() => {
+                this.recentAudioFiles.delete(audioContent);
+            }, this.audioDeduplicationTimeout);
+
             // Agregar a la cola
             this.audioQueue.push({
                 audioPath,
                 method,
                 resolve,
                 reject,
-                timestamp: new Date()
+                timestamp: new Date(),
+                contentId: audioContent
             });
 
             console.log(`🎵 Audio agregado a la cola (posición ${this.audioQueue.length})`);
@@ -329,6 +392,28 @@ class AudioPlayer {
         } catch (error) {
             console.error('❌ Todos los métodos de reproducción fallaron:', error.message);
             throw error;
+        }
+    }
+
+    // 🚫 FUNCIÓN ANTI-DUPLICADOS: Crear identificador de contenido de audio
+    getAudioContentIdentifier(audioPath) {
+        try {
+            if (!fs.existsSync(audioPath)) {
+                return `missing-${Date.now()}`;
+            }
+
+            const stats = fs.statSync(audioPath);
+            
+            // Usar tamaño del archivo + timestamp de creación como identificador
+            // Si dos archivos tienen el mismo tamaño Y fueron creados muy cerca en tiempo, 
+            // probablemente son duplicados
+            const size = stats.size;
+            const roundedTime = Math.floor(stats.mtime.getTime() / 1000) * 1000; // Redondear a segundos
+            
+            return `${size}-${roundedTime}`;
+        } catch (error) {
+            // Si hay error, usar timestamp actual para permitir la reproducción
+            return `error-${Date.now()}`;
         }
     }
 

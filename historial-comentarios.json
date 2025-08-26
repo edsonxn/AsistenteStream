@@ -1,104 +1,144 @@
 {
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2025-08-26T20:18:40.281Z",
+    "lastUpdated": "2025-08-26T21:02:55.587Z",
     "totalConversations": 20
   },
   "conversations": [
     {
-      "timestamp": "2025-08-26T17:27:56.579Z",
-      "analysis": "Órale mijo, qué chido ese camino, parece que llevan a la casa de mi primito Pedro. ",
-      "imageHash": "6081488_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_b+5U8esDG18uaXi0YOHFuotPD0p5uuPm5qbEpxt4vKljb1HL3d0i3tx08vrYzN+8LuPNLQsvbjt4fWLgNx+V8ObAxAfrWl5s6Pn8_45ZxIs5jc8Bx6WPo9e/XjPexZD5ZRxLxH8Zj8HXWZ9b/EGN0jK3HnBfksy+DzT7t50LfN9f//1EIYCd6WVpNAAAAAElFTkSuQmCC",
+      "timestamp": "2025-08-26T20:51:36.336Z",
+      "analysis": "Por cierto, ¿te imaginas si los NPCs hicieran misiones de pesca? Sería como ver a tu primo en acción, pero en lugar de algas, ¡atrapando dragones! Aunque, a ese ritmo, seguro le darían un pez de papel. ¿Qué tipo",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 83
+        "responseLength": 211,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T17:27:57.918Z",
-      "analysis": "Órale mijo, esos kobolds sí que son unos chismosos. ¿Qué no saben que nadie los quiere?",
-      "imageHash": "4371608_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_wCnxsZK0RCNpVjMJcTqSzXF0NjVwaNcutg+PsG/7DqqKS8hNS58VwB3NbYz2DzLa109BRioWrZipp6DQapQJMlH9JJLdBj83YrzE_cSLOeXNA45LFUNe/vmY8iyXzSXVEIv6l8Sj5Wu4z678UY3Tkrcc4L8jHvpRsZmk2F7K+af3/B1DUiMQnWHmMAAAAAElFTkSuQmCC",
+      "timestamp": "2025-08-26T20:58:40.682Z",
+      "analysis": "A todo esto, ¿alguna vez pensaste en la cantidad de polígonos que tiene cada flor? Capaz que por eso tu primo prefiere los dragones, menos detalles que arruinen la tasa de frames.",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 87
+        "responseLength": 179,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T17:28:07.674Z",
-      "analysis": "Órale mijo, qué intensa esa fogata. ¿No se te antoja un malteado?",
-      "imageHash": "4362244_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_zun47Fopd6AFeOtY2a5C/tk9O+2TyKdOxUhslz0jfFsjodiSIVjjCJ4Ntilwh7ggi5A0zQ5UfA6duG3+F9a5kIrU/b035+MgJYbe_xTgR57I5oHHJYqjrX18znsWS+aQ6IhH/YjwKX6t9Zv0XMUZH2XqM84J87EthM0uzuZD1Tev/P8r/Mr3c7y1NAAAAAElFTkSuQmCC",
+      "timestamp": "2025-08-26T20:59:16.415Z",
+      "analysis": "Oye, cambiando de tema, ¿recuerdas cuando Pedro intentó vender pieles de dragón \"exclusivas\" a los NPCs? Terminó baneado por \"estafa creativa\". Como te iba diciendo, mi primo tiene unas ideas...",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 65
+        "responseLength": 194,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T17:28:18.117Z",
-      "analysis": "Órale mijo, ese lugar se ve más muerto que mi primito Pedro en clase.",
-      "imageHash": "4658472_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6G/rlAy0d2GooxvDXb0Y7enHRP8QpgZHMDM8JtvBBMNWgvipWazMzGN1dkEg8frCEjYXV+BY5Rb8ptMUJhz+nC3MnDq2nTm2b+LI_EeemOeBxqWLo699fM17FkvnkOjIR/3o8al87fWb91zFGR9N6zPOCfO5LbbNKq7lQ9c3r/z+x6Bkh87KPnQAAAABJRU5ErkJggg==",
+      "timestamp": "2025-08-26T20:59:25.944Z",
+      "analysis": "Como te iba diciendo, mi primo y sus \"ideas\". Al día siguiente Pedro seguía ahí, pero ya hablaba con los NPCs sobre texturas. ¿Habrá intentado venderles polígonos sueltos?\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 69
+        "responseLength": 172,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:16:10.424Z",
-      "analysis": "Órale, ¿ya viste esas imágenes? Parece que mi primito Pedro diseñó eso. ¡Qué cosas tan raras!",
-      "imageHash": "2683696_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_ue6Hspj1aMg4xH3AHUWn0Vl6lk3gztJz3AtMFnB70RkGw72VlxgGUyw0xT/3VYsZqL2CzsrrOHdkA7zd3LFoYRBCQo7hypVw7N11_HnP6PNqfsXdMGbNnHY91icN5bH8hPttsoyl856X1jdlrY3vh8w8rR060b+Gh17G0L+fU8v8F/7uhs9Ycqj4AAAAASUVORK5CYII=",
+      "timestamp": "2025-08-26T21:00:07.774Z",
+      "analysis": "Ya recordé otra cosa... hablando de polígonos, su mamá le llevó comida y Pedro le dijo 'espera, estoy en raid', ¡seguro estaba negociando UVs de dragón!\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 93
+        "responseLength": 153,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:16:25.936Z",
-      "analysis": "Órale, ese lugar se ve más vacío que el salón de clases de mi primo.",
-      "imageHash": "6821260_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_AklaJAQWA78n0nk+drR47PRLJ9JpDnZ6d2/jYnejKYF8ii8nCVwdwg6qLcSfeaTJrnZNI9Jyu0zfKWfcGTyPLWIy1gL9nrK7EjXe_55J0r/ETv/hxAllkr46J21T692lNAuvTx+MyWCeADR5/KIcnyl6V9hXh+x8EsF4CT3nsF/x/wnqUd99paD0AAAAASUVORK5CYII=",
+      "timestamp": "2025-08-26T21:00:40.638Z",
+      "analysis": "Ya que estamos, ¿te acuerdas de la vez que Pedro intentó \"rolear\" como un goblin financiero? Cuando por fin se levantó, Pedro caminaba como si fuera su personaje...\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 68
+        "responseLength": 165,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:16:30.477Z",
-      "analysis": "Órale, esa zona parece más peligrosa que el examen de matemáticas de mi primito Pedro.",
-      "imageHash": "5741672_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_3FppwOebTHi4M0HcuATAPxxIxbcHUvDDYXaYpuBnRiofcYr+0gDwlkQ8PytC1kEgSXcqRQfp9VUx+P6oimb+27Nl+ONcMX4/WyT6_YjlD2Ihr0ZJj6GuXa9UQ2J0vAgC7KGj/GP62e67Zv34NgP1rHePYngMYzwUA99KPqJcywuv/HwdkHPXoi+kxAAAAAElFTkSuQmCC",
+      "timestamp": "2025-08-26T21:00:45.279Z",
+      "analysis": "Oye, hablando de goblins financieros, ¿seguirá creyendo que las monedas de oro son inversión? Y desde entonces, Pedro cree que es un paladín en la vida real, vaya ironía.\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 86
+        "responseLength": 171,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:16:45.619Z",
-      "analysis": "Órale, esos personajes parecen sacados de un meme. ¡Qué locura!",
-      "imageHash": "5778136_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_EXJ0lRjodBtjoDshHNnP4mQtKtKMqIwA4NxEHUqSWNFoR23IipC9iwxgoYQh0VGsVVNxGROKEsqyrzfi2CW0JYdqL1kWAbT/UF1+_OUPYiGvRkmPoa5dr1RDYnS8CALsoaP8Y/rYHrtm/fg2A/Wud4NieAxjPBQD3M4+onzbC6/8f4aycucMGCmcAAAAASUVORK5CYII=",
+      "timestamp": "2025-08-26T21:01:03.504Z",
+      "analysis": "¿Cuál es la cosa más random que has visto en chat general, carnal?",
+      "imageHash": "7636160_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_pLWNtKudtLuDpLuDuKeDjBDFfH1E3SIDsYdcdFBy9ooSTt+Qt4mQr4mAS3NQbuHM1eIXjmBvCxFvuyToVpKTEjY1GxsjkxyXRJiQ_oWNEniUz8zgZz/AJZvcusPv9HV7+YyYPv72J71EanavJ9G+mEHiSzvDzswSfnmVw9ywtE2n8H6DmZgWQjC81AAAAAElFTkSuQmCC",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 63
+        "responseLength": 66
       }
     },
     {
-      "timestamp": "2025-08-26T20:16:49.947Z",
-      "analysis": "¡Híjole! Esa zona parece un parque de diversiones para el primito Pedro.",
-      "imageHash": "7878232_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_pGLEo2JIkpvu9HaULl+By32i/RZYLWlogdcybNUmSVUVAyYVSTF7mFQMtWuYsuoZ9+qY9mmZ7tIwLNaA2zqiFzX0X9QwdFvHWGk6_X6vmf98v5R9vF/N3V3L5uys5/GI+h1/OZ/PtTApv98ZKQ91goSNd2WdoTDtGdeIhssJ38n8BdCRPw1CaTdkAAAAASUVORK5CYII=",
+      "timestamp": "2025-08-26T21:01:05.479Z",
+      "analysis": "A todo esto, ¿será más raro que Pedro creyéndose paladín o los ninjas looteando en raid? Apuesto a que si los juntas, harían un buen grupo de farmeo.\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 72
+        "responseLength": 150,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:16:59.213Z",
-      "analysis": "Órale, esa zona parece un camino para el primito Pedro. ¡Qué bonito lugar para perderse!",
-      "imageHash": "7115344_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_iMv0RBDtgqwWRHdVsMBybrYrjHE3Lq7hKQ4KJtUEZb2TMzEUjKVk5gqiv2NlVLFyUBexzsJuzcqgbKRfNLBTNtAvTn12QzkZFmx0_IZ2NoWRshorDfaJNUZnno3QMZwm4+fuqIzhS3dpCTRRHwduGV2MK5mv5fP5/nHZfozvaw38AwiihkH/VdDAAAAAASUVORK5CYII=",
+      "timestamp": "2025-08-26T21:01:15.704Z",
+      "analysis": "Como te iba diciendo, el chat general es un circo. He visto gente pidiendo \"novia elfa\" más seguido de lo que debería ser socialmente aceptable. Y pensar que luego se quejan de los ninjas.\n",
+      "imageHash": "conversational",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 189,
+        "type": "conversational"
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:01:25.574Z",
+      "analysis": "Oye, cambiando de tema, ¿te acuerdas cuando aquel mago intentó vender pociones de invisibilidad \"premium\"? Una vez fue al super y le pidió descuento al 'vendor' argumentando que era un NPC.\n",
+      "imageHash": "conversational",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 190,
+        "type": "conversational"
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:01:41.187Z",
+      "analysis": "Ahí va, ¿será que Pedro también intentó vender esas pociones?\nEn el trabajo intentaba hacer 'trade' con los compañeros...",
+      "imageHash": "7489856_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_3nvVvKwT51SyLfzGkxx++FQ0kn0yX/hlvgiIpVJ8xaK5q4TIbol3tRLvxcBAhcQDgRIvTeLMxRKu6Ve1at54dLyt1/NZ0MjHmIVf_ScY32FD2c/BHLzpAhOkWQfGTA8mgDTtbFhzumBHxmRAj7GVP4liPpTrUi/vH+jHCZ0L00IT/D3qQivpfAld9AAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 121
+      }
+    },
+    {
+      "timestamp": "2025-08-26T21:01:54.378Z",
+      "analysis": "Ay güey, esa caminata me recuerda que su novia lo dejó. \"Necesito más maná\", le decía...",
+      "imageHash": "7391320_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_MyUjW0UtS+mT8Fcgn0UAvCIawDkRABuZi+vI/xwAi9snbme9RWRuZrYLjVxcbOPSYju3NrqJuR2/vR8jnQYS404qXhcrfifbMzb2_ROO3+ep7IJyuOfBQceCBn88NW+yNr5i4F1isPs738Tn8IUf4q4up/rbgwjt23Zd9mGe8+H+MAuq1n4JAUQAAAABJRU5ErkJggg==",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
@@ -106,110 +146,84 @@
       }
     },
     {
-      "timestamp": "2025-08-26T20:17:14.679Z",
-      "analysis": "¡Híjole! Esa zona parece un buen lugar para perderse. ¿Dónde está mi primito Pedro?",
-      "imageHash": "7521612_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_UOnt0UdlfwhocIlAZwhY1sxYxsRbX4C2oyu2rqlxrajxoyOxrCebXkK1pcE0ipMcr7LryhRfJ7bg4+paWV7ThwxadxBkcI5ScJ5C_/HdXsfOfbuPdvz7G3/7fw/jzf5/Af/1fQvzDfx/H5/82hJf/5xOs/O1t+J5fPgfAslwb/j/E1+mWDn8hsAAAAABJRU5ErkJggg==",
+      "timestamp": "2025-08-26T21:01:55.722Z",
+      "analysis": "Oye, cambiando de tema, esa soledad del personaje me recuerda a tu primo. Pero al final encontró amor... con una maga nivel 80. ¿Será que ahora pide \"maná\" para dos?\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 83
+        "responseLength": 166,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:17:21.220Z",
-      "analysis": "Híjole, ese camino se ve perfecto para un paseo... ¡o para que se pierda el primito!",
-      "imageHash": "8052632_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_FwY2n+s5+iyF7Y8pbL0VbfR0tt9nsf5JPpPPc+k/eoBv5gbukauEV27QMZRBRY2JnFxRANMQsSsZa1bSFdYTCRmlv/EbWo2E+030_hAX/RVYXS9hYLWYlWCzVRPq1RThHCyUDrktTgNdSiN9ZiM9VgNcty2HORzeZy3hfNs2P0/j/ASTyHfJo1ycUAAAAAElFTkSuQmCC",
+      "timestamp": "2025-08-26T21:02:05.590Z",
+      "analysis": "Por cierto, hablando de magos y \"maná\", chin, a ver si esta vez no le toca farmear ingredientes raros como la otra vez. ¿Te acuerdas cuando juntó 50 colas de escorpión? El pobre sudaba frío.\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 84
+        "responseLength": 191,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:17:33.193Z",
-      "analysis": "No manches, ese camino es ideal para que ande mi primito Pedro. ¡Qué risa!",
-      "imageHash": "7996384_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_ezjyrnAXBJZ1RVLhiKTYGk5hYyhltihqOmNR9yVgHL6KaeQKFa2R5FtCyJALUCKCypoY2isiMdxMpPpqLurMq9TcKqDwag0F1ypJ_VaiKjpYwGidhIknCtELCvAB91TYAvKiSsJglYUmAwAoJi2kSltIkLGfasaa0Z13MDkYTHPi/ASnRgzPBhGFEAAAAAElFTkSuQmCC",
+      "timestamp": "2025-08-26T21:02:15.906Z",
+      "analysis": "A todo esto, ¿crees que el \"maná\" sea tan esencial como las horas que Pedro gasta farmeando oro? Por cierto, hablando de vicios... ¿qué addon no puedes vivir sin él?\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 74
+        "responseLength": 166,
+        "type": "conversational"
       }
     },
     {
-      "timestamp": "2025-08-26T20:17:48.666Z",
-      "analysis": "¡Ay güey! Ese camino parece un lugar perfecto para... ¡perderse como el primito!",
-      "imageHash": "8173204_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6w7LjInOMscwLm1HOObQE1Gr7JaugKc54LzHouMm47Sdx8hIi5iNhACWnvSWaDJ5gNHGPCeZSxgSOMdh9i1JJP3FHAuLuQsD2XUX_EXMCMUsS0yIBbFEyZVYSMyuYtiQyZU6Q6V8x05YEps2JLJUp2HSq2anWytlyCAislo0J/x92kSw3SPq0CgAAAABJRU5ErkJggg==",
+      "timestamp": "2025-08-26T21:02:30.245Z",
+      "analysis": "Está cabrón que siempre andes en esas zonas tan... \"campestres\".",
+      "imageHash": "7361304_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_pEnHZwkGDQzuLAweWaiNrNSSE5zj+qKWbMNINGTAL5PcQT07awbm56ZZXzWwt2dkbUPP6qaJoByztxfINZfwpW0k+i7S+3Jc5CZY_jCYq+hcY/PBXGIwjGBCM7vio6Ad303p0N9bj+7GePIjtffXp/UhPH0T6/VGkN79Fqv7/e4j/Dz1OVKwWGn3jAAAAAElFTkSuQmCC",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 80
+        "responseLength": 64
       }
     },
     {
-      "timestamp": "2025-08-26T20:17:59.435Z",
-      "analysis": "¡Chale! Ese camino parece ideal para que se pierda el primito.",
-      "imageHash": "7867068_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_dMZzOyplxmGkUMa7bUESo6GyVHXG+11ONn6i3HJKJBuwuwCDglQE17Oqb2dMwCzrSmoG9JwtqdjaM3D1tPPq6hMgkIGvqrMQ23oB_YqETk/SSMhP6z5Mcp5MYpZMYoRmX18JJMWKjEBAQbKe4JK+VR7eoBf7Ghmgmhmkmh8kFvPx/LDcyNTnZ5G8AAAAASUVORK5CYII=",
+      "timestamp": "2025-08-26T21:02:43.742Z",
+      "analysis": "Mijo, ¿andas buscando setas mágicas como tu primo \"accidentalmente\"?",
+      "imageHash": "7894312_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_tlNTZzcHNRqa7LQ226mrslNUZCcxw06M30FKoZPGXi+dI0Fs3oxg6+k2Jm6F0zQfRmFXMKk1Pk7JyfpMF1XtIQx2h9BeZqOxxEZb_vrWPDgHBZ/fSMLWX+qG91HfvoalzH+OTr3P/o8j/AQAn8qu/jeYXfxvMxz8/zNVHb9I99gz/D76MPqs6avNHAAAAAElFTkSuQmCC",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 62
+        "responseLength": 68
       }
     },
     {
-      "timestamp": "2025-08-26T20:18:09.810Z",
-      "analysis": "Órale, ese camino se ve ideal para perderse como el compa. ¡Qué chido!",
-      "imageHash": "7752396_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_xzkpsPLtDVE8twtYT+jlDuvDzO1qOj3Hh6lKGGYFZdMtp6g5m8s5fpZ4cYvnWAu/MJfPe+h3/+/SC/fFnEpzsp/M0n2fzT6zB+t+_ACs3grxYC7ayFmJVxxvBXtptQV4shlqYiZQaDRMj8UaGkvV4MvUM5etw5+lwy7FQ6iH0/D/M+/MkWY/5/gAAAABJRU5ErkJggg==",
+      "timestamp": "2025-08-26T21:02:55.350Z",
+      "analysis": "Se ve que dejaste las \"setas\" de tu primo, ¿no?",
+      "imageHash": "7833972_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_L09PO5FImzSRIXk0QH9U+9vtESV+Mk7iRI3IqVuCz6fkMlLsVIXHdI3BYpYfG4xkjMBclM+JuYDrWwO9jM6ViVcwky55NlDjskHc_ozh3N919+ynI/SV9ZfFEfG5aml9jZHw/Q32ZRIZLiFzIZXH1NDful/DFEz+/+59WPv22kr8Ccz/zv6adKywAAAAASUVORK5CYII=",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 70
+        "responseLength": 47
       }
     },
     {
-      "timestamp": "2025-08-26T20:18:19.207Z",
-      "analysis": "Órale, ¿esa sombra es el primito Pedro tratando de esconderse? ¡Qué risa!",
-      "imageHash": "7500032_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_DSM5FYMxLUvmfDbbd7HWu4vxsIrBlIZYUInDIhUNeM1VeUz2bmO86yMmzNuY929jJrybmFvHrG8nfW152AUkblyBa15LbFygGKnp_OsFA8Un6i0/QL7eLTtJfeEJVQ/faj9EjyWDbUfrtx+aSwGPFZ5go81dCz4+cExBuNEbw/wB5brpuIY6AvAAAAABJRU5ErkJggg==",
+      "timestamp": "2025-08-26T21:02:55.587Z",
+      "analysis": "Oye, cambiando de tema, ¿ya checaste si ese chamán tiene el \"encantar\" de velocidad aumentado? Igual y corres más rápido que Pedro huyendo de sus responsabilidades.\n",
+      "imageHash": "conversational",
       "isRepeatedImage": false,
       "sessionInfo": {
         "cycleNumber": 21,
-        "responseLength": 73
-      }
-    },
-    {
-      "timestamp": "2025-08-26T20:18:35.126Z",
-      "analysis": "¡Híjole! Ese paisaje se ve perfecto para que se esconda el primito.",
-      "imageHash": "7440736_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_GJlUiOoyR9yEd8lITljMfFxAaFPDkF9Nt1DucChptAqzbDkjDh09gqvcpsYZMdI3qqBtXMWY18hssoSdzVpO95tJz5XjEdQQ4WI8_Jz3oFUbCFUY19nm6Vospn+0yMNtjYG5AExrMR40sp4zMbxeysdnL/RtRHlwNsTt3ktFALv8/SfNFzm8FyusAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 67
-      }
-    },
-    {
-      "timestamp": "2025-08-26T20:18:35.627Z",
-      "analysis": "Híjole, ese paisaje parece ideal para que el compa se ahogue. ¡Qué chido!",
-      "imageHash": "6281880_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_jTp783F6kKB5Fo7QeXen4LAlg/uVD9tycMiazcD2RH8JO3jpvI/SOfcX4+RgKYvGj9kLcXqwFGeGS3CyrwBHrLlSBHyLcLyvHIfM_ior31JYQaylT0eCh2hy81WIDpysQ7Khare4pHkMufqkZ0KWq/19s4NZC6Qd+Vv3Z+qxF/P/4NA5+CtOaPgAAAABJRU5ErkJggg==",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 73
-      }
-    },
-    {
-      "timestamp": "2025-08-26T20:18:40.281Z",
-      "analysis": "Óyeme, ese gato parece que se perdió como el primo. ¡Qué risa!",
-      "imageHash": "5920444_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_VrNv8/yv6yvY09X9dFuwcGzCTJkgUGmZmZmSVZLDND4jCzwxwnMYSZkxEYGRlM3T27d88955prrX1gz3Vgvzlvzoe4z/UvSbbipH_NUvNqo7HgSrue8u45SzkhjWXS8Zsbtry1MdXHcVcdZVzzV3JVVcF5xy1nHE2ct5Rz4G+Kv5/QrSZmlScSjwAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 62
+        "responseLength": 165,
+        "type": "conversational"
       }
     }
   ],
-  "lastAnalysis": "Híjole, ese paisaje parece ideal para que el compa se ahogue. ¡Qué chido!",
+  "lastAnalysis": "Se ve que dejaste las \"setas\" de tu primo, ¿no?",
   "statistics": {
     "totalComments": 20,
-    "firstComment": "2025-08-26T17:27:56.579Z",
-    "lastComment": "2025-08-26T20:18:40.281Z"
+    "firstComment": "2025-08-26T20:51:36.336Z",
+    "lastComment": "2025-08-26T21:02:55.587Z"
   }
 }

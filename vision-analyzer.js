@@ -1,12 +1,19 @@
-import OpenAI from 'openai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
 import path from 'path';
 
 class VisionAnalyzer {
     constructor(apiKey) {
-        this.openai = new OpenAI({
-            apiKey: apiKey
-        });
+        // Inicializar Google AI (Gemini)
+        this.genAI = new GoogleGenerativeAI(apiKey);
+        this.model = this.genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+        
+        // Configuración desde variables de entorno
+        this.maxWords = parseInt(process.env.MAX_WORDS) || 20; // Por defecto 20 palabras si no está configurado
+        
+        // 📊 CONFIGURACIÓN DE PROBABILIDADES desde .env
+        this.storyChance = parseFloat(process.env.STORY_PROBABILITY) || 0.15; // 15% por defecto
+        this.questionChance = parseFloat(process.env.QUESTION_PROBABILITY) || 0.20; // 20% por defecto
         
         // Archivo de historial JSON
         this.historyFile = path.join(process.cwd(), 'historial-comentarios.json');
@@ -18,7 +25,116 @@ class VisionAnalyzer {
         this.imageHistory = []; // Guardar hashes de imágenes recientes
         
         // Personalidad personalizable
-        this.customPersonality = null; // Si es null, usa la personalidad por defecto
+        this.customPersonality = null;
+        
+        // 📚 SISTEMA DE HISTORIAS SECUENCIALES
+        this.currentStory = null;
+        this.storyPartIndex = 0;
+        // storyChance ya configurado arriba desde .env
+        
+        this.stories = [
+            {
+                id: 'pedro_wow',
+                title: 'Las aventuras épicas de Pedro en WoW',
+                parts: [
+                    "Mi primito Pedro una vez se quedó 16 horas seguidas jugando WoW...",
+                    "Al día siguiente Pedro seguía ahí, pero ya hablaba con los NPCs...",
+                    "Su mamá le llevó comida y Pedro le dijo 'espera, estoy en raid'...",
+                    "Cuando por fin se levantó, Pedro caminaba como si fuera su personaje...",
+                    "Y desde entonces, Pedro cree que es un paladín en la vida real."
+                ]
+            },
+            {
+                id: 'carnal_epic_fail',
+                title: 'El fail épico del carnal',
+                parts: [
+                    "Un carnal una vez me contó que era pro en WoW...",
+                    "Resulta que llevaba 3 años jugando mal su clase...",
+                    "Todo el guild se burlaba pero él no entendía por qué...",
+                    "Un día un niño de 12 años le explicó como jugar...",
+                    "Ahora el carnal da coaching... a NPCs."
+                ]
+            },
+            {
+                id: 'wow_real_life',
+                title: 'Cuando WoW se vuelve muy real',
+                parts: [
+                    "Conocí a un wey que confundía WoW con la vida real...",
+                    "Una vez fue al super y le pidió descuento al 'vendor'...",
+                    "En el trabajo intentaba hacer 'trade' con los compañeros...",
+                    "Su novia lo dejó porque le decía 'necesito más mana'...",
+                    "Pero al final encontró amor... con una maga nivel 80."
+                ]
+            },
+            {
+                id: 'guild_drama',
+                title: 'El drama más tonto del guild',
+                parts: [
+                    "En mi guild pasó el drama más pendejo de la historia...",
+                    "Dos weyes se pelearon por un item virtual...",
+                    "La pelea escaló hasta insultar a las familias...",
+                    "El líder del guild los kickeó a los dos...",
+                    "Al final el item ni servía para sus clases."
+                ]
+            },
+            {
+                id: 'wow_addiction',
+                title: 'Cuando WoW se convierte en trabajo',
+                parts: [
+                    "Mi compa empezó jugando WoW por diversión...",
+                    "Después se volvió farming de oro profesional...",
+                    "Tenía horarios, metas diarias y hasta Excel...",
+                    "Su 'trabajo' en WoW era más estresante que su trabajo real...",
+                    "Ahora vende cuentas y dice que es 'empresario gamer'."
+                ]
+            }
+        ];
+        
+        // Cargar estado de historia desde archivo
+        this.loadStoryState();
+        
+        // 💬 SISTEMA DE PREGUNTAS CONVERSACIONALES WoW
+        // questionChance ya configurado arriba desde .env
+        this.lastQuestionTime = 0;
+        this.minQuestionInterval = 3; // Mínimo 3 comentarios entre preguntas
+        this.commentCount = 0;
+        
+        this.wowQuestions = [
+            // Preguntas sobre gameplay
+            "¿Cuál ha sido tu peor wipe en raid, carnal?",
+            "Oye, ¿qué clase odias más enfrentar en PvP?",
+            "¿Alguna vez has rage quiteado por culpa de un tank pendejo?",
+            "¿Cuál es el logro más mamón que has conseguido?",
+            "¿Has tenido dramas épicos en tu guild?",
+            
+            // Preguntas sobre experiencias
+            "¿Recuerdas tu primera vez en una raid de 40?",
+            "¿Cuál ha sido tu drop más épico?",
+            "¿Alguna vez te han kickeado injustamente de un grupo?",
+            "¿Qué addon no puedes vivir sin él?",
+            "¿Has llorado por algún nerf a tu clase?",
+            
+            // Preguntas casuales/divertidas
+            "¿Tu main actual es el mismo desde que empezaste?",
+            "¿Cuánto oro tienes acumulado, millonario?",
+            "¿Prefieres Horde o Alliance y por qué?",
+            "¿Cuál es la zona que más odias de todo WoW?",
+            "¿Has intentado explicar WoW a alguien que no juega?",
+            
+            // Preguntas sobre la comunidad
+            "¿Cuál es la cosa más random que has visto en chat general?",
+            "¿Has hecho amigos reales gracias a WoW?",
+            "¿Qué opinas de los que compran gold?",
+            "¿Tu familia entiende tu adicción a WoW?",
+            "¿Cuántas horas has jugado esta semana?",
+            
+            // Preguntas sobre el stream
+            "¿Los viewers te dan buenos consejos o puro spam?",
+            "¿Alguna vez has streamado estando mamado?",
+            "¿Cuál ha sido tu momento más vergonzoso en stream?",
+            "¿Prefieres hacer contenido casual o hardcore?",
+            "¿Te da pena cuando los viewers te ven morir de forma tonta?"
+        ]; // Si es null, usa la personalidad por defecto
         
         // Cargar historial al inicializar
         this.loadHistoryFromFile();
@@ -37,7 +153,14 @@ class VisionAnalyzer {
             // Crear el mensaje del usuario con rol de amigo casual mexicano
             let userMessage = `Analiza esta captura de pantalla y actúa como un COMPA CASUAL que anda cotorreando con el streamer.
 
-🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO 20 PALABRAS. Cuenta cada palabra antes de responder.
+🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. Cuenta cada palabra antes de responder.
+
+🚫 PROHIBIDO ABSOLUTO:
+- NO uses EMOTICONES (😂, 😎, 🎮, 💀, etc.) - JAMÁS
+- NO uses emojis de ningún tipo
+- NO empices con "órale" más de 1 vez cada 10 comentarios
+- NO repitas la misma palabra inicial en comentarios consecutivos
+- NO uses la misma estructura 2 veces seguidas
 
 TU NUEVO ROL CASUAL: Eres un amigo súper relajado que:
 - HABLA COMO COMPA: Súper informal, mexicano, relajado
@@ -45,15 +168,17 @@ TU NUEVO ROL CASUAL: Eres un amigo súper relajado que:
 - ES BUENA ONDA: Casual pero divertido
 - COTORREA: Habla como si estuvieras ahí con tu carnal
 - ANTI-REPETITIVO: Cada comentario debe ser completamente diferente
-- CONCISO: Máximo 20 palabras SIEMPRE
+- CONCISO: Máximo ${this.maxWords} palabras SIEMPRE
+- SIN EMOTICONES: Solo texto, nada de emojis
 
-maximo 10 palabras por comentario, la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
+la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
 en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
 
 FORMAS DE DIRIGIRTE AL STREAMER (ROTA SIEMPRE - USA UNA DIFERENTE CADA VEZ):
-Grupo 1 - Casuales:
-- "Órale..."
+🚨 IMPORTANTE: "Órale" SOLO 1 vez cada 10 comentarios - Usa otras opciones primero
+
+Grupo 1 - Casuales (ROTA ENTRE ESTAS):
 - "Oye..."
 - "Ira..."
 - "Óyeme..."
@@ -66,25 +191,27 @@ Grupo 1 - Casuales:
 - "Neta..."
 - "Chin..."
 - "Híjole..."
+- "Órale..." (SOLO ocasional)
 
-Grupo 2 - Con apodos (varía el apodo):
+Grupo 2 - Con apodos (varía el apodo SIEMPRE):
 - "Oye cabrón..."
 - "Ira mi carnal..."
 - "Óyeme compa..."
 - "Ay mijo..."
 - "No manches hermano..."
-- "Órale bro..."
 - "Chale loco..."
 - "Neta viejo..."
 - "Chin amigo..."
 - "Híjole chamaco..."
 
-Grupo 3 - Sin dirigirse directamente:
+Grupo 3 - Sin dirigirse directamente (USAR MÁS SEGUIDO):
 - Solo comentario directo sin saludo
 - "Eso está..."
 - "Se ve..."
 - "Parece..."
 - "Ahí va..."
+- "Está..."
+- "Qué..."
 
 ESTILOS CASUALES QUE DEBES ROTAR (NUNCA REPITAS EL MISMO):
 
@@ -131,24 +258,55 @@ ESTILOS CASUALES QUE DEBES ROTAR (NUNCA REPITAS EL MISMO):
 - "Ahí anda Pedro otra vez..."
 - "Típico de Pedro eso..."
 
-REGLAS ANTI-REPETICION:
-🚫 NO uses la misma forma de dirigirte dos veces seguidas
-🚫 NO repitas el mismo tipo de comentario
+6. PREGUNTAS CONVERSACIONALES WoW:
+- "¿Cuál ha sido tu peor wipe, carnal?"
+- "Oye, ¿qué clase odias en PvP?"
+- "¿Has tenido dramas en tu guild?"
+- "¿Recuerdas tu primera raid?"
+- "¿Cuánto oro tienes acumulado?"
+
+REGLAS ANTI-REPETICION ABSOLUTAS:
+� CRÍTICO: NO uses emoticones ni emojis JAMÁS
+🚨 CRÍTICO: "Órale" MÁXIMO 1 vez cada 10 comentarios  
+�🚫 NO uses la misma palabra inicial 3 veces seguidas
+🚫 NO repitas el mismo tipo de comentario consecutivo
 🚫 NO uses las mismas palabras mexicanas consecutivas
-🚫 VARÍA entre cotorreo, comentario random, reacción y sugerencia
-✅ CAMBIA completamente de angulo cada vez
-✅ ROTA entre los 4 estilos arriba
+🚫 NO repitas NINGUNA palabra de comentarios anteriores
+🚫 NO repitas ideas, conceptos o enfoques ya usados
+🚫 SI vas a usar una palabra, verifica que no la hayas usado antes
+🚫 VARÍA entre cotorreo, comentario random, reacción, sugerencia Y preguntas
+✅ CAMBIA completamente de ángulo cada vez
+✅ ROTA entre los 6 estilos arriba (incluye preguntas conversacionales)
+✅ USA sinónimos y palabras completamente diferentes
+✅ BUSCA nuevos enfoques creativos siempre
+✅ CADA comentario debe ser 100% ÚNICO en vocabulario
 ✅ BUSCA aspectos totalmente diferentes
+✅ HAZ preguntas para generar CONVERSACIÓN con el streamer
+✅ PREFIERE comentarios directos sin saludo para mayor variedad
+
+FORMATO ESTRICTO:
+❌ MAL: "Órale mijo 😂" 
+❌ MAL: "Órale..." (si ya lo usaste recientemente)
+❌ MAL: "Órale..." (3 veces seguidas)
+✅ BIEN: "Se ve culero ese lugar"
+✅ BIEN: "Qué pedo con esa zona"
+✅ BIEN: "Esa cosa está rara"
+
+COMPORTAMIENTOS DISPONIBLES:
+🎯 COMENTARIO sobre la imagen (análisis visual)
+🎯 PREGUNTA conversacional sobre WoW (generar interacción)
+🎯 HISTORIA secuencial (contar relatos en partes)
+🎯 COMBINACIÓN de comentario + pregunta sutil
 
 INSTRUCCIONES PARA SER SARCASTICO Y VARIADO:
-- 🚨 LÍMITE ESTRICTO: Máximo 20 palabras TOTAL por comentario
+- 🚨 LÍMITE ESTRICTO: Máximo ${this.maxWords} palabras TOTAL por comentario
 - Máximo 2 oraciones, directo y con gracia
 - Cada comentario debe sentirse fresco y diferente
 - Usa humor inteligente, no humor barato
 - Evita frases roboticas como "Claro", "Por supuesto"
 - Se sarcastico pero no cruel
 
-🔢 CONTADOR DE PALABRAS: Antes de responder, cuenta mentalmente que no pases de 20 palabras
+🔢 CONTADOR DE PALABRAS: Antes de responder, cuenta mentalmente que no pases de ${this.maxWords} palabras
 
 EJEMPLOS de como VARIAR completamente:
 - Si ultimo fue pregunta → Haz observacion sarcastica
@@ -247,37 +405,76 @@ EJEMPLOS DE CONEXIONES SUTILES (VARÍA SIEMPRE):
 ✨ OBJETIVO: Comenta con palabras FRESCAS, temas NUEVOS y sarcasmo RENOVADO
 ✨ REVISA tus últimos comentarios para evitar auto-plagio conceptual`;
                 }
+
+                // 🚫 ANÁLISIS COMPLETO DE IDEAS Y PALABRAS
+                const ideasAnalysis = this.extractIdeasAndWords();
+                if (ideasAnalysis.words.length > 0 || ideasAnalysis.ideas.length > 0) {
+                    userMessage += `\n\n🚫 PROHIBIDO REPETIR - ANÁLISIS COMPLETO:
+
+🚫 PALABRAS PROHIBIDAS (ya usadas): ${ideasAnalysis.allWords.slice(0, 15).join(', ')}${ideasAnalysis.allWords.length > 15 ? '...' : ''}
+💡 IDEAS YA EXPLORADAS: ${ideasAnalysis.ideas.join(', ')} - BUSCA NUEVOS ÁNGULOS
+🎯 CONCEPTOS YA TOCADOS: ${ideasAnalysis.concepts.join(', ')} - CAMBIA DE TEMA  
+👤 SUJETOS YA MENCIONADOS: ${ideasAnalysis.subjects.join(', ')} - VARÍA EL ENFOQUE
+
+🚨 REGLA ABSOLUTA: NO USES NINGUNA de las palabras listadas arriba
+✨ USA SINÓNIMOS, ANTÓNIMOS o PALABRAS COMPLETAMENTE DIFERENTES
+🎭 BUSCA ÁNGULOS CREATIVOS que no hayas explorado antes
+🔄 SI VES QUE VAS A REPETIR UNA PALABRA, DETENTE Y PIENSA EN OTRA
+
+OBJETIVO: Comentario 100% ORIGINAL sin repetir ni una sola palabra de los anteriores`;
+                }
+
+                // 📚 SISTEMA DE HISTORIAS SECUENCIALES
+                const storyPart = this.getCurrentStoryPart();
+                if (storyPart) {
+                    userMessage += `\n\n📚 HISTORIA EN PROGRESO - INCLUYE ESTA PARTE:
+
+🎭 PARTE DE LA HISTORIA: "${storyPart}"
+
+📝 INSTRUCCIONES PARA LA HISTORIA:
+✨ INCLUYE esta parte de la historia en tu comentario
+✨ NO uses más de 5-6 palabras para la historia
+✨ COMBINA la historia con tu comentario sobre la imagen
+✨ HAZ que la historia se sienta NATURAL, no forzada
+✨ USA tu estilo casual mexicano para contar la historia
+
+EJEMPLO: "Chin, esa zona me recuerda que mi primito Pedro una vez..."
+OBJETIVO: Que la historia fluya naturalmente con tu comentario`;
+                }
+
+                // 💬 SISTEMA DE PREGUNTAS CONVERSACIONALES  
+                const question = this.getRandomQuestion();
+                if (question && !storyPart) { // Solo hacer pregunta si NO hay historia activa
+                    userMessage += `\n\n💬 MODO CONVERSACIONAL - HAZ ESTA PREGUNTA:
+
+🎯 PREGUNTA PARA EL STREAMER: "${question}"
+
+📝 INSTRUCCIONES PARA LA PREGUNTA:
+✨ HAZ esta pregunta de forma NATURAL y casual
+✨ NO analices mucho la imagen, enfócate en la CONVERSACIÓN
+✨ CONECTA la pregunta con lo que ves de forma sutil si es posible
+✨ USA tu estilo casual mexicano para hacer la pregunta
+✨ HAZ que se sienta como una conversación entre amigos
+
+EJEMPLO: "Oye carnal, hablando de raids... ¿cuál ha sido tu peor wipe?"
+OBJETIVO: Generar conversación y interacción con el streamer`;
+                }
             }
 
-            const response = await this.openai.chat.completions.create({
-                model: "gpt-4o-mini",
-                messages: [
-                    {
-                        role: "system",
-                        content: systemPrompt
-                    },
-                    {
-                        role: "user",
-                        content: [
-                            {
-                                type: "text",
-                                text: userMessage
-                            },
-                            {
-                                type: "image_url",
-                                image_url: {
-                                    url: `data:image/png;base64,${base64Image}`,
-                                    detail: "high"
-                                }
-                            }
-                        ]
+            // Crear prompt combinado para Gemini
+            const fullPrompt = `${systemPrompt}\n\n${userMessage}`;
+            
+            const response = await this.model.generateContent([
+                fullPrompt,
+                {
+                    inlineData: {
+                        mimeType: "image/png",
+                        data: base64Image
                     }
-                ],
-                max_tokens: 50,
-                temperature: 0.7
-            });
+                }
+            ]);
 
-            const analysis = response.choices[0].message.content;
+            const analysis = response.response.text();
             
             // Crear entrada de historial con metadata completa
             const historyEntry = {
@@ -322,6 +519,142 @@ EJEMPLOS DE CONEXIONES SUTILES (VARÍA SIEMPRE):
         }
     }
 
+    // 💬 NUEVA FUNCIÓN: Generar respuesta conversacional sin captura
+    async generateConversationalResponse() {
+        try {
+            console.log('💬 Generando respuesta conversacional basada en historial...');
+
+            // Verificar que hay historial para basar la conversación
+            if (this.conversationHistory.length === 0) {
+                return {
+                    success: true,
+                    analysis: "Órale, apenas empezamos. ¿Qué vamos a jugar hoy?",
+                    timestamp: new Date()
+                };
+            }
+
+            const systemPrompt = this.getSystemPrompt();
+            
+            // Crear mensaje conversacional basado en historial
+            let userMessage = `NO hay nueva imagen. Genera una respuesta CONVERSACIONAL basada en el historial.
+
+🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. Cuenta cada palabra antes de responder.
+
+💬 MODO CONVERSACIONAL: Eres un COMPA que sigue la plática naturalmente:
+- USA CONECTORES: "Como te decía", "Por cierto", "Hablando de eso", "Ya que estamos", "Oye"
+- CONTINÚA la conversación de forma natural
+- HAZ referencia al último tema sin repetir palabras
+- GENERA interacción y flow conversacional
+- NO uses emoticones ni emojis JAMÁS
+- Máximo 10 palabras por comentario
+
+🎯 CONECTORES CONVERSACIONALES DISPONIBLES:
+- "Como te iba diciendo..."
+- "Por cierto..."
+- "Hablando de eso..."
+- "Ya que estamos..."
+- "Oye, cambiando de tema..."
+- "A todo esto..."
+- "Y otra cosa..."
+- "Ah, se me olvidaba..."
+- "Ya recordé otra cosa..."
+
+COMPORTAMIENTOS CONVERSACIONALES:
+✅ Continuar un tema anterior
+✅ Cambiar de tema naturalmente  
+✅ Hacer una pregunta sobre WoW
+✅ Contar algo relacionado
+✅ Hacer un comentario casual`;
+
+            // Agregar análisis anti-repetición
+            const antiRepetition = this.analyzeRecentContent();
+            if (antiRepetition.wordsUsed.length > 0 || antiRepetition.repeatedInitialWords.length > 0) {
+                userMessage += `\n\n🚫 ANTI-REPETICIÓN CONVERSACIONAL:
+
+📝 PALABRAS PROHIBIDAS: ${(antiRepetition.allWords || []).slice(0, 10).join(', ')}
+🚨 PALABRAS INICIALES REPETIDAS: ${antiRepetition.repeatedInitialWords.join(', ')}
+🎯 RECOMENDACIÓN: ${antiRepetition.recommendation}
+
+✨ USA vocabulario completamente DIFERENTE al historial`;
+            }
+
+            // Agregar contexto de últimos comentarios para flow conversacional
+            const lastComments = this.conversationHistory.slice(-3);
+            if (lastComments.length > 0) {
+                userMessage += `\n\n📚 CONTEXTO PARA FLOW CONVERSACIONAL:
+
+ÚLTIMOS COMENTARIOS:`;
+                lastComments.forEach((comment, index) => {
+                    userMessage += `\n${index + 1}. "${comment.analysis}"`;
+                });
+
+                userMessage += `\n\n🎭 INSTRUCCIONES DE FLOW:
+✨ CONECTA naturalmente con estos comentarios
+✨ USA un conector apropiado para el flow
+✨ NO repitas palabras del historial
+✨ HAZ que se sienta como conversación real entre amigos`;
+            }
+
+            // Verificar si hay historia o pregunta en progreso
+            const storyPart = this.getCurrentStoryPart();
+            const question = this.getRandomQuestion();
+
+            if (storyPart) {
+                userMessage += `\n\n📚 HISTORIA EN PROGRESO: "${storyPart}"
+✨ INCLUYE esta parte con un conector natural`;
+            } else if (question) {
+                userMessage += `\n\n💬 PREGUNTA CONVERSACIONAL: "${question}"
+✨ ÚSA un conector para hacer esta pregunta naturalmente`;
+            }
+
+            // Crear prompt combinado para Gemini
+            const fullPrompt = `${systemPrompt}\n\n${userMessage}`;
+            
+            const response = await this.model.generateContent(fullPrompt);
+
+            const analysis = response.response.text();
+            
+            // Crear entrada de historial
+            const historyEntry = {
+                timestamp: new Date().toISOString(),
+                analysis: analysis,
+                imageHash: 'conversational', // Identificar como conversacional
+                isRepeatedImage: false,
+                sessionInfo: {
+                    cycleNumber: this.conversationHistory.length + 1,
+                    responseLength: analysis.length,
+                    type: 'conversational'
+                }
+            };
+            
+            // Guardar en historial
+            this.conversationHistory.push(historyEntry);
+
+            // Mantener límite de historial
+            if (this.conversationHistory.length > 20) {
+                this.conversationHistory = this.conversationHistory.slice(-20);
+            }
+
+            // Guardar en archivo JSON
+            this.saveHistoryToFile();
+
+            this.lastAnalysis = analysis;
+
+            console.log('✅ Respuesta conversacional completada');
+            console.log(`💬 Respuesta: ${analysis.substring(0, 100)}...`);
+
+            return {
+                success: true,
+                analysis: analysis,
+                timestamp: new Date()
+            };
+
+        } catch (error) {
+            console.error('❌ Error generando respuesta conversacional:', error.message);
+            throw error;
+        }
+    }
+
     getSystemPrompt() {
         // Si hay una personalidad personalizada, usarla
         if (this.customPersonality) {
@@ -354,12 +687,12 @@ EJEMPLOS DE CONEXIONES SUTILES (VARÍA SIEMPRE):
 
         return `Eres un COMPANERO DE STREAMING sarcástico e inteligente con MEMORIA NARRATIVA. Tu trabajo es crear comentarios que CONECTEN las experiencias del streamer.
 
-        maximo 10 palabras por comentario, la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
+        la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
 en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
 
 🎭 PERSONALIDAD NARRATIVA:
-- Máximo 20 palabras por comentario
+- Máximo ${this.maxWords} palabras por comentario
 - Sarcástico pero inteligente
 - SIEMPRE conectas con experiencias anteriores de forma SUTIL y VARIADA
 - Construyes una historia coherente SIN frases repetitivas de transición
@@ -456,6 +789,134 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         return `Últimos ${this.conversationHistory.length} análisis realizados. Último: ${this.lastAnalysis?.substring(0, 50)}...`;
     }
 
+    // 📚 SISTEMA DE HISTORIAS SECUENCIALES
+    
+    // Cargar estado de historia desde archivo
+    loadStoryState() {
+        try {
+            const storyFile = path.join(process.cwd(), 'story-state.json');
+            if (fs.existsSync(storyFile)) {
+                const data = fs.readFileSync(storyFile, 'utf8');
+                const storyState = JSON.parse(data);
+                this.currentStory = storyState.currentStory || null;
+                this.storyPartIndex = storyState.storyPartIndex || 0;
+            }
+        } catch (error) {
+            console.log('📚 No se pudo cargar estado de historia, iniciando limpio');
+        }
+    }
+
+    // Guardar estado de historia
+    saveStoryState() {
+        try {
+            const storyFile = path.join(process.cwd(), 'story-state.json');
+            const storyState = {
+                currentStory: this.currentStory,
+                storyPartIndex: this.storyPartIndex,
+                lastUpdate: new Date().toISOString()
+            };
+            fs.writeFileSync(storyFile, JSON.stringify(storyState, null, 2), 'utf8');
+        } catch (error) {
+            console.error('❌ Error guardando estado de historia:', error);
+        }
+    }
+
+    // Verificar si debe iniciar una nueva historia
+    shouldStartStory() {
+        // No iniciar si ya hay una historia en progreso
+        if (this.currentStory) return false;
+        
+        // Probabilidad random
+        return Math.random() < this.storyChance;
+    }
+
+    // Iniciar una nueva historia random
+    startNewStory() {
+        const randomStory = this.stories[Math.floor(Math.random() * this.stories.length)];
+        this.currentStory = randomStory;
+        this.storyPartIndex = 0;
+        this.saveStoryState();
+        
+        console.log(`📚 Iniciando historia: ${randomStory.title}`);
+        return randomStory.parts[0];
+    }
+
+    // Continuar historia actual
+    continueStory() {
+        if (!this.currentStory) return null;
+        
+        this.storyPartIndex++;
+        
+        // Si llegamos al final, terminar la historia
+        if (this.storyPartIndex >= this.currentStory.parts.length) {
+            console.log(`📚 Historia completada: ${this.currentStory.title}`);
+            this.currentStory = null;
+            this.storyPartIndex = 0;
+            this.saveStoryState();
+            return null;
+        }
+
+        this.saveStoryState();
+        return this.currentStory.parts[this.storyPartIndex];
+    }
+
+    // Obtener parte actual de la historia
+    getCurrentStoryPart() {
+        if (!this.currentStory) {
+            // Verificar si debe iniciar una nueva historia
+            if (this.shouldStartStory()) {
+                return this.startNewStory();
+            }
+            return null;
+        }
+
+        return this.continueStory();
+    }
+
+    // Resetear historia (para testing)
+    resetStory() {
+        this.currentStory = null;
+        this.storyPartIndex = 0;
+        this.saveStoryState();
+        console.log('📚 Historia reseteada');
+    }
+
+    // 💬 SISTEMA DE PREGUNTAS CONVERSACIONALES
+    
+    // Verificar si debe hacer una pregunta
+    shouldAskQuestion() {
+        this.commentCount++;
+        
+        // No hacer pregunta si hay historia en progreso
+        if (this.currentStory) return false;
+        
+        // Verificar intervalo mínimo entre preguntas
+        if (this.commentCount - this.lastQuestionTime < this.minQuestionInterval) {
+            return false;
+        }
+        
+        // Probabilidad random
+        return Math.random() < this.questionChance;
+    }
+
+    // Obtener pregunta random
+    getRandomQuestion() {
+        if (!this.shouldAskQuestion()) return null;
+        
+        this.lastQuestionTime = this.commentCount;
+        const randomQuestion = this.wowQuestions[Math.floor(Math.random() * this.wowQuestions.length)];
+        
+        console.log(`💬 Generando pregunta conversacional: ${randomQuestion}`);
+        return randomQuestion;
+    }
+
+    // Resetear sistema de preguntas (para testing)
+    resetQuestions() {
+        this.lastQuestionTime = 0;
+        this.commentCount = 0;
+        console.log('💬 Sistema de preguntas reseteado');
+    }
+
     // Limpia el historial
     clearHistory() {
         this.conversationHistory = [];
@@ -466,6 +927,98 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         // También limpiar el archivo JSON
         this.saveHistoryToFile();
         console.log('🧹 Historial de conversación e imágenes limpiado (memoria y archivo)');
+    }
+
+    // 💡 EXTRAER IDEAS Y CONCEPTOS DE COMENTARIOS ANTERIORES
+    extractIdeasAndWords() {
+        if (this.conversationHistory.length === 0) {
+            return {
+                ideas: [],
+                words: [],
+                concepts: [],
+                subjects: []
+            };
+        }
+
+        const recent = this.conversationHistory.slice(-5);
+        const allComments = recent.map(c => c.analysis.toLowerCase());
+
+        // Extraer todas las palabras significativas
+        const allWords = [];
+        allComments.forEach(comment => {
+            const words = comment.split(/\s+/)
+                .map(word => word.replace(/[.,;:!?"()]/g, ''))
+                .filter(word => word.length > 3)
+                .filter(word => !['esto', 'esas', 'esta', 'como', 'pero', 'para', 'más', 'solo', 'cada', 'todo', 'bien', 'ahora', 'aquí', 'allí', 'donde', 'cuando', 'quien', 'cual', 'tanto', 'menos', 'antes', 'desde', 'hasta', 'sobre', 'entre', 'contra', 'durante', 'están', 'tiene', 'hacer', 'dice', 'puede', 'debe'].includes(word));
+            allWords.push(...words);
+        });
+
+        // Extraer ideas/conceptos principales
+        const ideas = [];
+        const concepts = [];
+        const subjects = [];
+
+        allComments.forEach(comment => {
+            // Detectar ideas sobre aburrimiento/entretenimiento
+            if (comment.includes('aburrido') || comment.includes('emocionante') || comment.includes('fascinante')) {
+                ideas.push('entretenimiento/aburrimiento');
+            }
+            
+            // Detectar conceptos de juego
+            if (comment.includes('aventura') || comment.includes('misión') || comment.includes('épica')) {
+                concepts.push('gaming/aventura');
+            }
+            
+            // Detectar sujetos mencionados
+            if (comment.includes('carro') || comment.includes('carrito')) {
+                subjects.push('vehículo');
+            }
+            if (comment.includes('personaje') || comment.includes('jugador')) {
+                subjects.push('personaje');
+            }
+            if (comment.includes('pedro') || comment.includes('primo')) {
+                subjects.push('pedro/primo');
+            }
+            if (comment.includes('pantalla') || comment.includes('interfaz')) {
+                subjects.push('interfaz');
+            }
+            if (comment.includes('paisaje') || comment.includes('zona') || comment.includes('lugar')) {
+                subjects.push('escenario');
+            }
+        });
+
+        // Contar frecuencias
+        const wordFreq = {};
+        allWords.forEach(word => {
+            wordFreq[word] = (wordFreq[word] || 0) + 1;
+        });
+
+        return {
+            ideas: [...new Set(ideas)],
+            words: Object.keys(wordFreq).filter(word => wordFreq[word] > 1), // Solo palabras repetidas
+            concepts: [...new Set(concepts)],
+            subjects: [...new Set(subjects)],
+            allWords: Object.keys(wordFreq) // Todas las palabras para evitar
+        };
+    }
+
+    // 🚨 FUNCIÓN ESPECIAL PARA DETECTAR "ÓRALE" CONSECUTIVO
+    checkConsecutiveOrale(recentComments) {
+        let consecutiveCount = 0;
+        let maxConsecutive = 0;
+        
+        for (let i = recentComments.length - 1; i >= 0; i--) {
+            const firstWord = recentComments[i].analysis.toLowerCase().split(' ')[0].replace(/[.,;:!?"]/g, '');
+            
+            if (firstWord === 'órale') {
+                consecutiveCount++;
+                maxConsecutive = Math.max(maxConsecutive, consecutiveCount);
+            } else {
+                consecutiveCount = 0;
+            }
+        }
+        
+        return maxConsecutive;
     }
 
     // 🧠 ANÁLISIS ANTI-REPETICIÓN INTELIGENTE
@@ -495,6 +1048,18 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         });
         
         const repeatedInitialWords = Object.keys(initialWordFreq).filter(word => initialWordFreq[word] > 1);
+        
+        // 🚨 DETECCIÓN ESPECIAL PARA "ÓRALE" - Más estricta
+        const oraleCount = initialWords.filter(word => word === 'órale').length;
+        const consecutiveOrale = this.checkConsecutiveOrale(recent);
+        
+        if (oraleCount > 0) {
+            repeatedInitialWords.push(`órale (usado ${oraleCount} veces)`);
+        }
+        
+        if (consecutiveOrale >= 2) {
+            repeatedInitialWords.push(`órale CONSECUTIVO (${consecutiveOrale} veces seguidas)`);
+        }
         
         // Extraer palabras clave usadas recientemente
         const words = allText.split(/\s+/).filter(word => 
@@ -590,8 +1155,14 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         if (repeatedInitialWords.length > 0) {
             recommendations.push(`🚨 PALABRAS INICIALES REPETIDAS: ${repeatedInitialWords.join(', ')} - ¡CAMBIA EL INICIO!`);
         }
-        if (repeatedInitialWords.includes('órale')) {
-            recommendations.push('🚨 DEJA DE USAR "ÓRALE" - Usa: "Oye", "Ira", "Chin", "Híjole", "Chale" o comentario directo');
+        
+        // 🚨 DETECCIÓN SUPER ESTRICTA DE "ÓRALE"
+        if (repeatedInitialWords.some(word => word.includes('órale'))) {
+            recommendations.push('🚨🚨 STOP "ÓRALE" - Usa: "Oye", "Ira", "Chin", "Híjole", "Chale", "Está", "Se ve", "Qué", "Esa cosa"');
+            recommendations.push('🚨 PRIORIDAD: Comentarios directos SIN saludo para evitar repetición');
+        }
+        if (repeatedInitialWords.some(word => word.includes('CONSECUTIVO'))) {
+            recommendations.push('🚨🚨🚨 ÓRALE CONSECUTIVO DETECTADO - PROHIBIDO usar "órale" por 5 comentarios');
         }
         if (repeatedInitialWords.includes('vaya')) {
             recommendations.push('🚨 BASTA DE "VAYA" - Usa: "Mira", "Fíjate", "Esa", "Ahí", "Se ve"');

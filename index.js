@@ -13,7 +13,8 @@ dotenv.config();
 class AsistenteStream {
     constructor(autoStart = false) {
         this.config = {
-            openaiApiKey: process.env.OPENAI_API_KEY,
+            googleApiKey: process.env.GOOGLE_API_KEY,
+            openaiApiKey: process.env.OPENAI_API_KEY, // Mantener como fallback
             screenshotInterval: parseInt(process.env.SCREENSHOT_INTERVAL) || 30000,
             applioUrl: process.env.APPLIO_URL || 'http://127.0.0.1:6969',
             ttsModel: process.env.TTS_MODEL || 'fr-FR-RemyMultilingualNeural',
@@ -26,7 +27,12 @@ class AsistenteStream {
         };
 
         this.screenCapture = new ScreenCapture(this.config.screenshotsDir, this.config.monitorIndex);
-        this.visionAnalyzer = new VisionAnalyzer(this.config.openaiApiKey);
+        // Usar Google AI por defecto, fallback a OpenAI si no está disponible
+        const apiKey = this.config.googleApiKey || this.config.openaiApiKey;
+        if (!apiKey) {
+            throw new Error('Se requiere GOOGLE_API_KEY o OPENAI_API_KEY en el archivo .env');
+        }
+        this.visionAnalyzer = new VisionAnalyzer(apiKey);
         this.applioClient = new ApplioClient(this.config.applioUrl);
         this.audioPlayer = new AudioPlayer();
         
@@ -78,13 +84,34 @@ class AsistenteStream {
             // Notificar a la interfaz web
             this.webInterface?.broadcastLog('info', `Iniciando ciclo ${this.cycleCount}`);
 
-            // 1. Capturar pantalla
-            const capture = await this.screenCapture.captureToBase64(this.config.saveScreenshots);
-            this.webInterface?.broadcastLog('success', `Captura realizada: ${(capture.size / 1024).toFixed(1)} KB`);
+            // 🎲 ALEATORIEDAD CONFIGURABLE: Leer probabilidad desde .env
+            const screenshotProbability = parseFloat(process.env.SCREENSHOT_PROBABILITY) || 0.30; // 30% por defecto
+            const shouldTakeScreenshot = Math.random() < screenshotProbability;
             
-            // 2. Analizar con OpenAI
-            const analysis = await this.visionAnalyzer.analyzeScreenshot(capture.base64);
-            this.webInterface?.broadcastLog('success', `Análisis completado: "${analysis.analysis?.substring(0, 100)}..."`);
+            let analysis;
+            
+            if (shouldTakeScreenshot) {
+                const percentage = (screenshotProbability * 100).toFixed(0);
+                console.log(`📸 Modo CAPTURA (${percentage}%) - Analizando pantalla actual`);
+                this.webInterface?.broadcastLog('info', `Modo CAPTURA - Tomando screenshot`);
+                
+                // 1. Capturar pantalla
+                const capture = await this.screenCapture.captureToBase64(this.config.saveScreenshots);
+                this.webInterface?.broadcastLog('success', `Captura realizada: ${(capture.size / 1024).toFixed(1)} KB`);
+                
+                // 2. Analizar con OpenAI
+                analysis = await this.visionAnalyzer.analyzeScreenshot(capture.base64);
+                this.webInterface?.broadcastLog('success', `Análisis completado: "${analysis.analysis?.substring(0, 100)}..."`);
+                
+            } else {
+                const percentage = ((1 - screenshotProbability) * 100).toFixed(0);
+                console.log(`💬 Modo CONVERSACIÓN (${percentage}%) - Basado en historial`);
+                this.webInterface?.broadcastLog('info', `Modo CONVERSACIÓN - Sin captura`);
+                
+                // 2. Generar respuesta conversacional basada en historial
+                analysis = await this.visionAnalyzer.generateConversationalResponse();
+                this.webInterface?.broadcastLog('success', `Respuesta conversacional: "${analysis.analysis?.substring(0, 100)}..."`);
+            }
             
             // 3. Convertir a voz y reproducir
             if (analysis.success) {
