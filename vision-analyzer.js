@@ -231,13 +231,18 @@ EJEMPLOS DE CONEXIONES SUTILES (VARÍA SIEMPRE):
 
                 // 🧠 ANÁLISIS ANTI-REPETICIÓN INTELIGENTE
                 const antiRepetition = this.analyzeRecentContent();
-                if (antiRepetition.wordsUsed.length > 0 || antiRepetition.themesUsed.length > 0) {
+                if (antiRepetition.wordsUsed.length > 0 || antiRepetition.themesUsed.length > 0 || antiRepetition.repeatedInitialWords.length > 0) {
                     userMessage += `\n\n🚫 ANTI-REPETICIÓN INTELIGENTE:
 
 📝 PALABRAS YA USADAS: ${antiRepetition.wordsUsed.join(', ')} - USA SINÓNIMOS
 🎭 TEMAS YA TOCADOS: ${antiRepetition.themesUsed.join(', ')} - CAMBIA DE ENFOQUE  
-💭 FRASES SARCÁSTICAS USADAS: ${antiRepetition.sarcasticPhrases.join(', ')} - RENUEVA TU SARCASMO
-🎯 RECOMENDACIÓN: ${antiRepetition.recommendation}
+💭 FRASES SARCÁSTICAS USADAS: ${antiRepetition.sarcasticPhrases.join(', ')} - RENUEVA TU SARCASMO`;
+
+                    if (antiRepetition.repeatedInitialWords.length > 0) {
+                        userMessage += `\n🚨 PALABRAS INICIALES REPETIDAS: ${antiRepetition.repeatedInitialWords.join(', ')} - ¡NO EMPICES IGUAL!`;
+                    }
+
+                    userMessage += `\n🎯 RECOMENDACIÓN: ${antiRepetition.recommendation}
 
 ✨ OBJETIVO: Comenta con palabras FRESCAS, temas NUEVOS y sarcasmo RENOVADO
 ✨ REVISA tus últimos comentarios para evitar auto-plagio conceptual`;
@@ -478,6 +483,19 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         const recent = this.conversationHistory.slice(-5); // Últimos 5 comentarios
         const allText = recent.map(c => c.analysis.toLowerCase()).join(' ');
         
+        // 🚨 DETECTAR PALABRAS INICIALES REPETIDAS (MÁS CRÍTICO)
+        const initialWords = recent.map(comment => {
+            const firstWord = comment.analysis.toLowerCase().split(' ')[0];
+            return firstWord.replace(/[.,;:!?"]/g, '');
+        });
+        
+        const initialWordFreq = {};
+        initialWords.forEach(word => {
+            initialWordFreq[word] = (initialWordFreq[word] || 0) + 1;
+        });
+        
+        const repeatedInitialWords = Object.keys(initialWordFreq).filter(word => initialWordFreq[word] > 1);
+        
         // Extraer palabras clave usadas recientemente
         const words = allText.split(/\s+/).filter(word => 
             word.length > 4 && 
@@ -525,13 +543,14 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
             themesUsed: Object.keys(themes).filter(t => themes[t]),
             structuresUsed: Object.keys(structures).filter(s => structures[s]),
             sarcasticPhrases,
+            repeatedInitialWords, // 🚨 NUEVO: Palabras iniciales repetidas
             recentComments: recent.map(c => c.analysis),
-            recommendation: this.generateVariationRecommendation(Object.keys(themes).filter(t => themes[t]), sarcasticPhrases)
+            recommendation: this.generateVariationRecommendation(Object.keys(themes).filter(t => themes[t]), sarcasticPhrases, repeatedInitialWords)
         };
     }
 
     // Generar recomendaciones para variar el contenido
-    generateVariationRecommendation(usedThemes, usedPhrases) {
+    generateVariationRecommendation(usedThemes, usedPhrases, repeatedInitialWords = []) {
         const alternatives = {
             themes: {
                 gaming: ['programación', 'tecnología', 'productividad', 'organización'],
@@ -566,6 +585,21 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         if (usedThemes.includes('casual')) {
             recommendations.push('Prueba comentarios más técnicos o serios');
         }
+        
+        // 🚨 CRÍTICO: Palabras iniciales repetidas
+        if (repeatedInitialWords.length > 0) {
+            recommendations.push(`🚨 PALABRAS INICIALES REPETIDAS: ${repeatedInitialWords.join(', ')} - ¡CAMBIA EL INICIO!`);
+        }
+        if (repeatedInitialWords.includes('órale')) {
+            recommendations.push('🚨 DEJA DE USAR "ÓRALE" - Usa: "Oye", "Ira", "Chin", "Híjole", "Chale" o comentario directo');
+        }
+        if (repeatedInitialWords.includes('vaya')) {
+            recommendations.push('🚨 BASTA DE "VAYA" - Usa: "Mira", "Fíjate", "Esa", "Ahí", "Se ve"');
+        }
+        if (repeatedInitialWords.includes('no')) {
+            recommendations.push('🚨 EVITA EMPEZAR CON "NO" - Usa: "Está", "Se ve", "Qué", "Esa cosa"');
+        }
+        
         if (usedPhrases.includes('órale')) {
             recommendations.push('Usa "oye", "ira", "chin" o "híjole" en lugar de "órale"');
         }

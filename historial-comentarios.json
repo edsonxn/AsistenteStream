@@ -1,170 +1,10 @@
 {
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2025-08-26T17:28:18.117Z",
+    "lastUpdated": "2025-08-26T20:18:40.281Z",
     "totalConversations": 20
   },
   "conversations": [
-    {
-      "timestamp": "2025-08-26T16:52:23.349Z",
-      "analysis": "¡Vaya, mira eso! Un archivo que parece la carta de renuncia de alguien a las aventuras épicas. ¿Quién necesita una misión cuando puedes leer \"ip aplito.txt\"? \n\nRecordando que antes discutimos listas de compras emocionantes, esto es como una fiesta de disfraces, pero con menos diversión. ¿Alguien tiene un dragón que derrotar?",
-      "imageHash": "2996524_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_jFldDiSmnxZM9x50Xlsw5vUcJXMeCvGmXxG6gaiHaspLfH8VX1+OsS4Y4ZX0NIYI2Mq6omUFLjL6vxVjUERDqvbCRZtJLK24hndc_OBHnpjngcali6OvfXzNexZL55DoyEf96PGpfO31m/dcxRkfTeszzgnzuS22zSqu5UPXN6/8/b8KZtXupAq8AAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 11,
-        "responseLength": 326
-      }
-    },
-    {
-      "timestamp": "2025-08-26T16:52:33.597Z",
-      "analysis": "¡Vaya, otro archivo que parece un diario de un aventurero aburrido! ¿Quién necesita acción cuando puedes leer \"ip aplito.txt\"? Recuerdo que antes hablábamos de aventuras épicas, y aquí estamos, en una montaña de texto.\n\nY pensar que hay quienes consideran esto una \"táctica de entretenimiento\". Tal vez deberías buscar algo que realmente te haga sentir como un héroe, ¿no crees?",
-      "imageHash": "3006532_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_FrjEHbTq0okolryCV1FFK/Jp2QSMUlkjETobBJGV33+C24fRacbgORmJ1QeIxkappI1M6OW8DlFYlGJaIRgVRYR0oeMk+v8v2PXu_RJzz5oDGJYuhrn99zXgWS+aT6ohE/EvjUfK13GfWfynG6Mhbj3FekI99KdnM0mwuZH3T+v8Pz+PSEDM6AjsAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 12,
-        "responseLength": 378
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:04:33.498Z",
-      "analysis": "Vaya, mira eso. Un grupo de aventureros parece estar buscando una nueva forma de perder el tiempo... ¡Qué emocionante!",
-      "imageHash": "5918476_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_B9vIV0AFfEmskO4JLj7t8ok685gAUALk34B/fv/xsALOKfk0IVJIYqSAhVEB+qIC7k6wD4GAInRwm4ayQjnpOijWTcc2SwQkrGPo_frQ+x63jRJxPNeC47Bh6//sz4zuW1JNlNBD/ycfYerWZ/T8xRsZpP3ZdMG9fRucedy1s30z/A8U40efdBsMfAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 13,
-        "responseLength": 118
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:05:03.784Z",
-      "analysis": "Tras esa emocionante búsqueda de tiempo perdido, ahora vemos... ¡un menú de bar! ¿Quién necesita aventuras épicas, verdad?",
-      "imageHash": "5026300_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_45xPCX9J9MEXzdHMNnXTF8xOnH7UYzrjaacanFjnNZC/+tOZ+z4nzWhrMdDobA5/J2nCd1UqKGHedpgFiPtQiAaTDV0YwKBxsluN_iTg3zQGPSxVDX//+mvEqlswn15GJ+NfjUfva6TPrv44xOprWY54X5HNfaptVWs2Fqm9e//8BOYTUg+5DIR8AAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 14,
-        "responseLength": 122
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:05:12.806Z",
-      "analysis": "Después de esa emocionante búsqueda de tiempo perdido, ahora vemos una taberna. ¿Quién está listo para otra ronda de aburrimiento?",
-      "imageHash": "3955376_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_MZLCtaEErgzEcIGu60oA+90hnCd8749jryciCws3SwGslwLYKIdkTLrVE8W53piMP6m9gQQOhlI4P5wW96128jYAX8u+HfRaXbZW_c9waJ+J82gOOy4qh89+fGV+xZD9ZRoH47/XYtt5tJv93jJFxysfuC/r1Zetc7doLyzfT/wAcR+dhaqXJowAAAABJRU5ErkJggg==",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 15,
-        "responseLength": 130
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:09:50.601Z",
-      "analysis": "Vaya, tras esa emocionante taberna, ahora estamos en una tienda. ¡Qué innovador! ¿Quién no ama la moda de la tela?",
-      "imageHash": "4421128_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6yqwF3td3H8z2I2FvVdb91YBOBYQYx8Xn422E79OfJRzqYDwRlH2QRxLLLjGY298Yvc5FkdjAffVIh4fe7zxEBvf4vm1AvArvQbx_x4k4N80Bj0sVQ1///prxKpbMJ9eRifjX41H72ukz67+OMTqa1mOeF+RzX2qbVVrNhapvXv//AW5KZJJL8AF6AAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 16,
-        "responseLength": 114
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:09:57.772Z",
-      "analysis": "Después de esa emocionante ronda de taberna, ahora estamos... ¡en la oficina de correos! ¿Quién necesita acción, verdad?",
-      "imageHash": "4785132_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_a8v2Pt6HlVzwCYQDABYBFCmq6lthAMJvfwo9IGh9CmsNhXQ2342wHAMziJLbQ1j2vROVyhXLZhyuU7wyLnL5VJbmORh5hzE8eXcS_40Scp+aA4zLE0OvfrxkfYsl8so4k4j+Ox+jros+s/zHG6JhajzkvyGdfRptDOsyFoW+u//8BlJcz/u1XjPkAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 17,
-        "responseLength": 120
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:09:58.452Z",
-      "analysis": "Vaya, tras la emocionante tienda, ahora estamos enviando cartas. ¿Quién necesita acción cuando hay burocracia?",
-      "imageHash": "1234660_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_a/C4O5JgznUpjvz6OzMYI6t4z+TBzt9dVUFg/nkhhqSWBhoAMjrSkkAgZG25roMr3pOvpKxDBZbrQ1g55kPfqbGpEKejDbk0cuWo_Eee8OaBxyWKo619fM57FkvmkOiIR/9J4lHwt95n1X4oxOvLWY5wX5GNfSjazNJsLWd+0/v8DNNK39IZBzJYAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 18,
-        "responseLength": 110
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:19:34.832Z",
-      "analysis": "Vaya, explorando mapas y enviando cartas. ¿Quién necesita aventuras épicas? ¡Qué emocionante, de verdad!",
-      "imageHash": "6425508_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_439jt9ORvUcU/0g3aoOen14+GQH4/0vhy3ezBfaktfjj0ng+Ec92gZLHKjKdON/YkwDqdCueNkTGh5Bu7V2WiTfSlIUdNd7slafy_TsS5NQccly6GXv9+zXgXS+aTdWQi/v149L6O+sz672OMjtZ6zPOCfO5Lb7NLu7nQ9c31/x/Nkg8bM08AXQAAAABJRU5ErkJggg==",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 19,
-        "responseLength": 104
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:19:48.929Z",
-      "analysis": "Vaya, un mapa. Justo lo que necesitábamos tras esa intensa aventura en la oficina de correos, ¿no?",
-      "imageHash": "6301476_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_mMinvx3hcTuiZVnM5mcrGUx8ViHudCsxmcTol9UvmwkcfNsoajmXQO5nM4WtZxsl7AxXImJ7OpvJtP4e18Et9vpvLTYyU/babyfi_xTgR57I5oHHJYqjrX18znsWS+aQ6IhH/YjwKX6t9Zv0XMUZH2XqM84J87EthM0uzuZD1Tev/P2X0MP+GmYPrAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 20,
-        "responseLength": 98
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:19:52.162Z",
-      "analysis": "¿Un carro de madera? Vaya, esto sí que grita \"aventura extrema\". ¿Quién necesita explosiones? ",
-      "imageHash": "6091152_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_2Yy/ML8Nv724G78xvxO/PLMdP5rYhu+Ob8XnxU34LL8Jn9YP4Wm4GytndVjrM+N+eDteSW7HW+lteCezFe9mt+G93A68m+extx0v_nIhz3hzQuGQx1PWvrxnPYsl8Uh2RiH9pPEq+lvvM+i/FGB156zHOC/KxLyWbWZrNhaxvWv//AbOqtvlodkbIAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 94
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:20:03.386Z",
-      "analysis": "Vaya, un carrito. Justo lo que necesitábamos para una aventura tan emocionante como ver crecer la hierba.",
-      "imageHash": "5613392_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6bAvRQmX9SjGzEj69XL+eKZ4EtP5EwKgmeqZZIXakFbOefGcHzXcqUK4T4W8X2EEiREjAkzE4zFvSIP4kBpxGi08OmTZqes3Ie3V_YpyIc9kc0LhkMdT1r68Zz2LJfFIdkYh/MR6Fr9U+s/6LGKOjbD3GeUE+9qWwmaXZXMj6pvX/H4dIqeAaP7wAAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 105
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:20:06.481Z",
-      "analysis": "Vaya, un carro de madera bajo un cielo tan emocionante. ¿Qué sigue, una carrera de caracoles?",
-      "imageHash": "4259000_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_8LY5iEvJ4G7zNorDZwTnxRGcFUYElhLyKe6gIXHUMuqR/XvcV3UEK5GMCkQWkNx0eBK2EfRxSfBHAEgXJwGeOIUWpmXgmE7gnVi3_iHPbHPC4VDH09e+vGa9iyXxyHZmIfzMeja/dPrP+mxijo2095nlBPvelsVml1Vyo+ub1/z83RSbtLMyQYAAAAABJRU5ErkJggg==",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 93
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:20:19.976Z",
-      "analysis": "\"Ah, un carro de madera. Perfecto para una travesía tan emocionante como ver pintura secarse. ¡Increíble!\"",
-      "imageHash": "5413708_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_nfHcLeEgCm7etr1cgE+cd+uxqBNo5OhpHPHa0WAcCE1wKAO2wSN5zylyPucSLYakagxSBRx+FOvVjFpeH98P64Ajjlt4ihGuy0wc_t4wTcR7NAcdliqHXv18zPsWS+WQdScR/Ho/Z16XPrP85xugYrcecF+SzL7PNKZ3mwtQ31/9/mncYBbR/xfAAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 106
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:20:35.470Z",
-      "analysis": "Vaya, un carro de madera. Ideal para una aventura tan emocionante como ver crecer la hierba. ¡Bravo!",
-      "imageHash": "5440080_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_4sPXdqL49n4I39jx41s7QXxzJ4ivbgbwuVW/7J/HlRk8KN3EbvoSjgrX8YX9HN4Z+PCVvQQ+uxHCy+acdOt+/40ePt5K4Fl9AS8a_+hy3jhNxPtWA47Jj6P3vz4zvWFJPltFA/CcfY+vVZvb/xBgZp/3YdcG8fRmde9y1sH0z/S983wRxuSo2TAAAAABJRU5ErkJggg==",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 100
-      }
-    },
-    {
-      "timestamp": "2025-08-26T17:20:41.200Z",
-      "analysis": "\"Qué emocionante ver un carro en un camino. ¿Estoy soñando o es pura adrenalina?\" (17 palabras)",
-      "imageHash": "5560720_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_9eIsyqV5pFMTCAUtCNBSjtgR4u+KmUlEgspnJerXylC4iDBiO8j4agJbk0Smc3g8yO5lvx6h665315YBG+sGrD42YnvLjq0Ni8Q4_W40TcR6bA45LH0Ovf79mvI8l88k6KhH/YTwGX2d9Zv0PMUbH2Hqs84J87ctgs0/7udD3zfX/D8HUg5HYCZEGAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 95
-      }
-    },
     {
       "timestamp": "2025-08-26T17:27:56.579Z",
       "analysis": "Órale mijo, qué chido ese camino, parece que llevan a la casa de mi primito Pedro. ",
@@ -204,12 +44,172 @@
         "cycleNumber": 21,
         "responseLength": 69
       }
+    },
+    {
+      "timestamp": "2025-08-26T20:16:10.424Z",
+      "analysis": "Órale, ¿ya viste esas imágenes? Parece que mi primito Pedro diseñó eso. ¡Qué cosas tan raras!",
+      "imageHash": "2683696_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_ue6Hspj1aMg4xH3AHUWn0Vl6lk3gztJz3AtMFnB70RkGw72VlxgGUyw0xT/3VYsZqL2CzsrrOHdkA7zd3LFoYRBCQo7hypVw7N11_HnP6PNqfsXdMGbNnHY91icN5bH8hPttsoyl856X1jdlrY3vh8w8rR060b+Gh17G0L+fU8v8F/7uhs9Ycqj4AAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 93
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:16:25.936Z",
+      "analysis": "Órale, ese lugar se ve más vacío que el salón de clases de mi primo.",
+      "imageHash": "6821260_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_AklaJAQWA78n0nk+drR47PRLJ9JpDnZ6d2/jYnejKYF8ii8nCVwdwg6qLcSfeaTJrnZNI9Jyu0zfKWfcGTyPLWIy1gL9nrK7EjXe_55J0r/ETv/hxAllkr46J21T692lNAuvTx+MyWCeADR5/KIcnyl6V9hXh+x8EsF4CT3nsF/x/wnqUd99paD0AAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 68
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:16:30.477Z",
+      "analysis": "Órale, esa zona parece más peligrosa que el examen de matemáticas de mi primito Pedro.",
+      "imageHash": "5741672_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_3FppwOebTHi4M0HcuATAPxxIxbcHUvDDYXaYpuBnRiofcYr+0gDwlkQ8PytC1kEgSXcqRQfp9VUx+P6oimb+27Nl+ONcMX4/WyT6_YjlD2Ihr0ZJj6GuXa9UQ2J0vAgC7KGj/GP62e67Zv34NgP1rHePYngMYzwUA99KPqJcywuv/HwdkHPXoi+kxAAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 86
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:16:45.619Z",
+      "analysis": "Órale, esos personajes parecen sacados de un meme. ¡Qué locura!",
+      "imageHash": "5778136_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_EXJ0lRjodBtjoDshHNnP4mQtKtKMqIwA4NxEHUqSWNFoR23IipC9iwxgoYQh0VGsVVNxGROKEsqyrzfi2CW0JYdqL1kWAbT/UF1+_OUPYiGvRkmPoa5dr1RDYnS8CALsoaP8Y/rYHrtm/fg2A/Wud4NieAxjPBQD3M4+onzbC6/8f4aycucMGCmcAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 63
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:16:49.947Z",
+      "analysis": "¡Híjole! Esa zona parece un parque de diversiones para el primito Pedro.",
+      "imageHash": "7878232_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_pGLEo2JIkpvu9HaULl+By32i/RZYLWlogdcybNUmSVUVAyYVSTF7mFQMtWuYsuoZ9+qY9mmZ7tIwLNaA2zqiFzX0X9QwdFvHWGk6_X6vmf98v5R9vF/N3V3L5uys5/GI+h1/OZ/PtTApv98ZKQ91goSNd2WdoTDtGdeIhssJ38n8BdCRPw1CaTdkAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 72
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:16:59.213Z",
+      "analysis": "Órale, esa zona parece un camino para el primito Pedro. ¡Qué bonito lugar para perderse!",
+      "imageHash": "7115344_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_iMv0RBDtgqwWRHdVsMBybrYrjHE3Lq7hKQ4KJtUEZb2TMzEUjKVk5gqiv2NlVLFyUBexzsJuzcqgbKRfNLBTNtAvTn12QzkZFmx0_IZ2NoWRshorDfaJNUZnno3QMZwm4+fuqIzhS3dpCTRRHwduGV2MK5mv5fP5/nHZfozvaw38AwiihkH/VdDAAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 88
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:17:14.679Z",
+      "analysis": "¡Híjole! Esa zona parece un buen lugar para perderse. ¿Dónde está mi primito Pedro?",
+      "imageHash": "7521612_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_UOnt0UdlfwhocIlAZwhY1sxYxsRbX4C2oyu2rqlxrajxoyOxrCebXkK1pcE0ipMcr7LryhRfJ7bg4+paWV7ThwxadxBkcI5ScJ5C_/HdXsfOfbuPdvz7G3/7fw/jzf5/Af/1fQvzDfx/H5/82hJf/5xOs/O1t+J5fPgfAslwb/j/E1+mWDn8hsAAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 83
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:17:21.220Z",
+      "analysis": "Híjole, ese camino se ve perfecto para un paseo... ¡o para que se pierda el primito!",
+      "imageHash": "8052632_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_FwY2n+s5+iyF7Y8pbL0VbfR0tt9nsf5JPpPPc+k/eoBv5gbukauEV27QMZRBRY2JnFxRANMQsSsZa1bSFdYTCRmlv/EbWo2E+030_hAX/RVYXS9hYLWYlWCzVRPq1RThHCyUDrktTgNdSiN9ZiM9VgNcty2HORzeZy3hfNs2P0/j/ASTyHfJo1ycUAAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 84
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:17:33.193Z",
+      "analysis": "No manches, ese camino es ideal para que ande mi primito Pedro. ¡Qué risa!",
+      "imageHash": "7996384_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_ezjyrnAXBJZ1RVLhiKTYGk5hYyhltihqOmNR9yVgHL6KaeQKFa2R5FtCyJALUCKCypoY2isiMdxMpPpqLurMq9TcKqDwag0F1ypJ_VaiKjpYwGidhIknCtELCvAB91TYAvKiSsJglYUmAwAoJi2kSltIkLGfasaa0Z13MDkYTHPi/ASnRgzPBhGFEAAAAAElFTkSuQmCC",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 74
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:17:48.666Z",
+      "analysis": "¡Ay güey! Ese camino parece un lugar perfecto para... ¡perderse como el primito!",
+      "imageHash": "8173204_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6w7LjInOMscwLm1HOObQE1Gr7JaugKc54LzHouMm47Sdx8hIi5iNhACWnvSWaDJ5gNHGPCeZSxgSOMdh9i1JJP3FHAuLuQsD2XUX_EXMCMUsS0yIBbFEyZVYSMyuYtiQyZU6Q6V8x05YEps2JLJUp2HSq2anWytlyCAislo0J/x92kSw3SPq0CgAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 80
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:17:59.435Z",
+      "analysis": "¡Chale! Ese camino parece ideal para que se pierda el primito.",
+      "imageHash": "7867068_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_dMZzOyplxmGkUMa7bUESo6GyVHXG+11ONn6i3HJKJBuwuwCDglQE17Oqb2dMwCzrSmoG9JwtqdjaM3D1tPPq6hMgkIGvqrMQ23oB_YqETk/SSMhP6z5Mcp5MYpZMYoRmX18JJMWKjEBAQbKe4JK+VR7eoBf7Ghmgmhmkmh8kFvPx/LDcyNTnZ5G8AAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 62
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:18:09.810Z",
+      "analysis": "Órale, ese camino se ve ideal para perderse como el compa. ¡Qué chido!",
+      "imageHash": "7752396_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_xzkpsPLtDVE8twtYT+jlDuvDzO1qOj3Hh6lKGGYFZdMtp6g5m8s5fpZ4cYvnWAu/MJfPe+h3/+/SC/fFnEpzsp/M0n2fzT6zB+t+_ACs3grxYC7ayFmJVxxvBXtptQV4shlqYiZQaDRMj8UaGkvV4MvUM5etw5+lwy7FQ6iH0/D/M+/MkWY/5/gAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 70
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:18:19.207Z",
+      "analysis": "Órale, ¿esa sombra es el primito Pedro tratando de esconderse? ¡Qué risa!",
+      "imageHash": "7500032_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_DSM5FYMxLUvmfDbbd7HWu4vxsIrBlIZYUInDIhUNeM1VeUz2bmO86yMmzNuY929jJrybmFvHrG8nfW152AUkblyBa15LbFygGKnp_OsFA8Un6i0/QL7eLTtJfeEJVQ/faj9EjyWDbUfrtx+aSwGPFZ5go81dCz4+cExBuNEbw/wB5brpuIY6AvAAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 73
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:18:35.126Z",
+      "analysis": "¡Híjole! Ese paisaje se ve perfecto para que se esconda el primito.",
+      "imageHash": "7440736_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_GJlUiOoyR9yEd8lITljMfFxAaFPDkF9Nt1DucChptAqzbDkjDh09gqvcpsYZMdI3qqBtXMWY18hssoSdzVpO95tJz5XjEdQQ4WI8_Jz3oFUbCFUY19nm6Vospn+0yMNtjYG5AExrMR40sp4zMbxeysdnL/RtRHlwNsTt3ktFALv8/SfNFzm8FyusAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 67
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:18:35.627Z",
+      "analysis": "Híjole, ese paisaje parece ideal para que el compa se ahogue. ¡Qué chido!",
+      "imageHash": "6281880_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_jTp783F6kKB5Fo7QeXen4LAlg/uVD9tycMiazcD2RH8JO3jpvI/SOfcX4+RgKYvGj9kLcXqwFGeGS3CyrwBHrLlSBHyLcLyvHIfM_ior31JYQaylT0eCh2hy81WIDpysQ7Khare4pHkMufqkZ0KWq/19s4NZC6Qd+Vv3Z+qxF/P/4NA5+CtOaPgAAAABJRU5ErkJggg==",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 73
+      }
+    },
+    {
+      "timestamp": "2025-08-26T20:18:40.281Z",
+      "analysis": "Óyeme, ese gato parece que se perdió como el primo. ¡Qué risa!",
+      "imageHash": "5920444_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_VrNv8/yv6yvY09X9dFuwcGzCTJkgUGmZmZmSVZLDND4jCzwxwnMYSZkxEYGRlM3T27d88955prrX1gz3Vgvzlvzoe4z/UvSbbipH_NUvNqo7HgSrue8u45SzkhjWXS8Zsbtry1MdXHcVcdZVzzV3JVVcF5xy1nHE2ct5Rz4G+Kv5/QrSZmlScSjwAAAAASUVORK5CYII=",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 62
+      }
     }
   ],
-  "lastAnalysis": "Órale mijo, qué intensa esa fogata. ¿No se te antoja un malteado?",
+  "lastAnalysis": "Híjole, ese paisaje parece ideal para que el compa se ahogue. ¡Qué chido!",
   "statistics": {
     "totalComments": 20,
-    "firstComment": "2025-08-26T16:52:23.349Z",
-    "lastComment": "2025-08-26T17:28:18.117Z"
+    "firstComment": "2025-08-26T17:27:56.579Z",
+    "lastComment": "2025-08-26T20:18:40.281Z"
   }
 }
