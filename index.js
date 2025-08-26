@@ -217,8 +217,13 @@ class AsistenteStream {
             // Marcar como ejecutándose ANTES del primer ciclo
             this.isRunning = true;
 
-            // Ejecutar primer ciclo inmediatamente
-            await this.processCycle();
+            // Esperar 5 segundos antes del primer ciclo
+            console.log('⏳ Esperando 5 segundos antes del primer ciclo...');
+            setTimeout(async () => {
+                if (this.isRunning) {
+                    await this.processCycle();
+                }
+            }, 5000);
 
             // Programar ciclos siguientes
             this.intervalId = setInterval(() => {

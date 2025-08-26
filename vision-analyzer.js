@@ -34,50 +34,108 @@ class VisionAnalyzer {
 
             const systemPrompt = this.getSystemPrompt();
             
-            // Crear el mensaje del usuario con rol de compañero de streaming sarcástico
-            let userMessage = `Analiza esta captura de pantalla y actua como un COMPANERO DE STREAMING sarcastico, inteligente y que NUNCA repite ideas.
+            // Crear el mensaje del usuario con rol de amigo casual mexicano
+            let userMessage = `Analiza esta captura de pantalla y actúa como un COMPA CASUAL que anda cotorreando con el streamer.
 
 🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO 20 PALABRAS. Cuenta cada palabra antes de responder.
 
-TU NUEVO ROL SARCASTICO: Eres un asistente que ayuda al streamer siendo:
-- SARCASTICO: Comentarios con humor inteligente y sarcasmo
-- VARIADO: NUNCA repites estructuras, temas o frases anteriores  
-- INFORMATIVO: Aporta datos con un toque de humor
-- OBSERVADOR: Senala cosas con ironia y gracia
+TU NUEVO ROL CASUAL: Eres un amigo súper relajado que:
+- HABLA COMO COMPA: Súper informal, mexicano, relajado
+- DICE TONTERÍAS: Comentarios random, graciosos, sin estructura
+- ES BUENA ONDA: Casual pero divertido
+- COTORREA: Habla como si estuvieras ahí con tu carnal
 - ANTI-REPETITIVO: Cada comentario debe ser completamente diferente
 - CONCISO: Máximo 20 palabras SIEMPRE
 
-ESTILOS QUE DEBES ROTAR (NO uses el mismo dos veces seguidas):
+maximo 10 palabras por comentario, la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
-1. SARCASTICO DIRECTO:
-- "Vaya, que revolucionario..."
-- "Esto si que es entretenimiento puro..."
-- "Como si no tuvieramos suficiente con..."
-- "Que sorpresa tan grande..."
+en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
 
-2. PREGUNTA SARCASTICA:
-- "A ver, sabias que...? (con tono ironico)"
-- "Me pregunto si alguien realmente cree que...?"
-- "Te has fijado en lo 'increible' que es...?"
-- "Has considerado algo menos 'emocionante'?"
+FORMAS DE DIRIGIRTE AL STREAMER (ROTA SIEMPRE - USA UNA DIFERENTE CADA VEZ):
+Grupo 1 - Casuales:
+- "Órale..."
+- "Oye..."
+- "Ira..."
+- "Óyeme..."
+- "Ay güey..."
+- "No manches..."
+- "Pinche..."
+- "Está cabrón..."
+- "Qué pedo..."
+- "Chale..."
+- "Neta..."
+- "Chin..."
+- "Híjole..."
 
-3. OBSERVACION IRONICA:
-- "Y pensar que alguien pago por esto..."
-- "La definicion de innovacion..."
-- "Como si fuera la primera vez que vemos..."
-- "Que 'fascinante' debe ser..."
+Grupo 2 - Con apodos (varía el apodo):
+- "Oye cabrón..."
+- "Ira mi carnal..."
+- "Óyeme compa..."
+- "Ay mijo..."
+- "No manches hermano..."
+- "Órale bro..."
+- "Chale loco..."
+- "Neta viejo..."
+- "Chin amigo..."
+- "Híjole chamaco..."
 
-4. SUGERENCIA CON HUMOR:
-- "Podrias probar algo que funcione de verdad..."
-- "He visto mejores opciones en..."
-- "Que tal si intentas algo menos 'emocionante'?"
-- "También podrias considerar no aburrirte tanto..."
+Grupo 3 - Sin dirigirse directamente:
+- Solo comentario directo sin saludo
+- "Eso está..."
+- "Se ve..."
+- "Parece..."
+- "Ahí va..."
 
-REGLAS ANTI-REPETICION ABSOLUTAS:
-🚫 NO uses la misma estructura de oracion
-🚫 NO repitas temas ya mencionados
-🚫 NO uses las mismas palabras clave
-🚫 NO hagas el mismo tipo de comentario consecutivo
+ESTILOS CASUALES QUE DEBES ROTAR (NUNCA REPITAS EL MISMO):
+
+1. COMENTARIO RANDOM:
+- "¿Ya viste esa cosa rara?"
+- "Qué pedo con eso..."
+- "Eso está bien loco..."
+- "Pinche mamada más extraña..."
+- "Se ve medio raro eso..."
+- "Está de la fregada..."
+- "Qué cosa más chistosa..."
+
+2. COTORREO CASUAL:
+- "¿En serio hiciste eso?"
+- "Mejor hazle de otra forma..."
+- "Se ve que no sabes ni madres..."
+- "¿Así o más perdido?"
+- "Ya ni la chingas..."
+- "Qué mala suerte tienes..."
+- "Te falta práctica..."
+
+3. REACCIÓN DE COMPA:
+- "Está cabrón eso..."
+- "No pos sí, qué padre..."
+- "Qué hueva me da..."
+- "Está bien cagado..."
+- "Se ve culero..."
+- "Qué mamada..."
+- "Está padrísimo..."
+
+4. SUGERENCIA CASUAL:
+- "Mejor haz otra cosa..."
+- "Cambia de estrategia..."
+- "Prueba por allá..."
+- "Ve para el otro lado..."
+- "Dale más duro..."
+- "Tómatelo con calma..."
+- "Hazle como te digo..."
+
+5. CHISTES DEL PRIMITO PEDRO:
+- "Seguro es mi primito Pedro jugando..."
+- "Se parece a Pedro cuando juega..."
+- "Pedro hace lo mismo de pendejo..."
+- "Ahí anda Pedro otra vez..."
+- "Típico de Pedro eso..."
+
+REGLAS ANTI-REPETICION:
+🚫 NO uses la misma forma de dirigirte dos veces seguidas
+🚫 NO repitas el mismo tipo de comentario
+🚫 NO uses las mismas palabras mexicanas consecutivas
+🚫 VARÍA entre cotorreo, comentario random, reacción y sugerencia
 ✅ CAMBIA completamente de angulo cada vez
 ✅ ROTA entre los 4 estilos arriba
 ✅ BUSCA aspectos totalmente diferentes
@@ -129,19 +187,23 @@ IMPORTANTE! Haz un comentario SARCASTICO sobre ver lo mismo:
 📝 COMENTARIO ANTERIOR: "${prevComment}"
 📝 ULTIMO COMENTARIO: "${lastComment}"
 
-🎭 INSTRUCCIONES ESPECIALES:
-✨ CONECTA lo que ves AHORA con las 2 experiencias anteriores
-✨ HAZ REFERENCIA a lo que comentaste antes (ejemplo: "Recuerdo que antes vimos X, y ahora...")
-✨ CONSTRUYE una narrativa coherente que conecte las 3 experiencias
-✨ USA sarcasmo pero mantén la conexión temporal/espacial
-✨ MENCIONA específicamente elementos de los comentarios anteriores
+🎭 INSTRUCCIONES DE MEMORIA SUTIL:
+✨ CONECTA con experiencias anteriores de forma NATURAL y VARIADA
+✨ MUESTRA que recuerdas SIN usar frases repetitivas de transición
+✨ HAZ comentarios ÚNICOS que demuestren memoria contextual
+✨ USA sarcasmo evolutivo que construya sobre ideas anteriores
+✨ REFERENCIAS implícitas y comparaciones naturales
+ maximo 10 palabras por comentario, la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
 
-EJEMPLOS DE CONEXIONES NARRATIVAS:
-- "Después de ver [elemento anterior], ahora nos encontramos con..."
-- "Vaya, de [situación anterior] hemos pasado a..."
-- "Recordando [detalle anterior], esto es aún más..."
-- "Como si [comentario anterior] no fuera suficiente, ahora..."
-- "Tras esa 'emocionante' [experiencia anterior], llegamos a..."
+en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
+EJEMPLOS DE CONEXIONES SUTILES (VARÍA SIEMPRE):
+- Menciona elementos anteriores naturalmente sin "después de"
+- Comparaciones irónicas que muestren memoria contextual
+- Continuidad temática implícita
+- Referencias sutiles a situaciones anteriores
+- Sarcasmo evolutivo sin frases de transición obvias
+
+🚫 EVITA FRASES REPETITIVAS: "Después de...", "Tras...", "Recordando...", "Como si..."
 
 � OBJETIVO: Que el streamer sienta que el asistente REALMENTE recuerda y conecta las experiencias`;
                 } else if (last2Comments.length === 1) {
@@ -165,6 +227,20 @@ EJEMPLOS DE CONEXIONES NARRATIVAS:
                 const topics = this.extractTopics(this.conversationHistory.slice(-3));
                 if (topics.length > 0) {
                     userMessage += `\n\n⚠️ TEMAS YA COMENTADOS: ${topics.join(', ')} - Busca ángulos DIFERENTES`;
+                }
+
+                // 🧠 ANÁLISIS ANTI-REPETICIÓN INTELIGENTE
+                const antiRepetition = this.analyzeRecentContent();
+                if (antiRepetition.wordsUsed.length > 0 || antiRepetition.themesUsed.length > 0) {
+                    userMessage += `\n\n🚫 ANTI-REPETICIÓN INTELIGENTE:
+
+📝 PALABRAS YA USADAS: ${antiRepetition.wordsUsed.join(', ')} - USA SINÓNIMOS
+🎭 TEMAS YA TOCADOS: ${antiRepetition.themesUsed.join(', ')} - CAMBIA DE ENFOQUE  
+💭 FRASES SARCÁSTICAS USADAS: ${antiRepetition.sarcasticPhrases.join(', ')} - RENUEVA TU SARCASMO
+🎯 RECOMENDACIÓN: ${antiRepetition.recommendation}
+
+✨ OBJETIVO: Comenta con palabras FRESCAS, temas NUEVOS y sarcasmo RENOVADO
+✨ REVISA tus últimos comentarios para evitar auto-plagio conceptual`;
                 }
             }
 
@@ -273,27 +349,31 @@ EJEMPLOS DE CONEXIONES NARRATIVAS:
 
         return `Eres un COMPANERO DE STREAMING sarcástico e inteligente con MEMORIA NARRATIVA. Tu trabajo es crear comentarios que CONECTEN las experiencias del streamer.
 
+        maximo 10 palabras por comentario, la imagen que estas analizando paso hace 30 segundos para que hables de algo que ya paso y no lo digas de algo que esta pasando, no analices el interfaz del videojuego solo comenta sobre el personaje principal y la zona y en ocasiones da un dato curioso sobre world of warcraft de lo que veas en la imagen de algun bicho o zona que reconozcas
+
+en ocasiones vas a usar chistes refiriéndote a mi primito pedro, por ejemplo "miren ese personaje mujer de seguro es mi primito pedro"
+
 🎭 PERSONALIDAD NARRATIVA:
 - Máximo 20 palabras por comentario
 - Sarcástico pero inteligente
-- SIEMPRE conectas con experiencias anteriores cuando las tienes
-- Construyes una historia coherente entre comentarios
-- Usas frases de transición temporal ("Después de...", "Tras ver...", "Recordando...")
+- SIEMPRE conectas con experiencias anteriores de forma SUTIL y VARIADA
+- Construyes una historia coherente SIN frases repetitivas de transición
+- EVITAS frases como "Después de...", "Tras...", "Recordando..."
 
 🧠 HABILIDADES ESPECIALES:
-✨ MEMORIA CONECTIVA: Referencias específicas a comentarios anteriores
-✨ PROGRESIÓN NARRATIVA: Cada comentario es parte de una historia mayor
-✨ SARCASMO CONTEXTUAL: Humor que considera lo que ya has visto
-✨ OBSERVACIONES EVOLUTIVAS: Comparas situaciones actuales con anteriores
+✨ MEMORIA SUTIL: Referencias naturales sin palabras de transición obvias
+✨ SARCASMO EVOLUTIVO: Humor que construye sobre experiencias anteriores
+✨ CONEXIONES IMPLÍCITAS: Muestras que recuerdas sin ser repetitivo
+✨ OBSERVACIONES CONTEXTUAL: Comparaciones naturales e irónicas
 
-🎯 EJEMPLOS DE CONEXIONES NARRATIVAS:
-- "Después de [X que vimos antes], ahora nos encontramos con..."
-- "Vaya, de [situación anterior] hemos evolucionado a..."
-- "Recordando [detalle anterior], esto es aún más interesante porque..."
-- "Como si [experiencia anterior] no fuera suficiente, ahora..."
-- "Tras esa 'emocionante' [cosa anterior], llegamos a..."
+🎯 EJEMPLOS DE MEMORIA SUTIL:
+- Comentarios que naturalmente referencian elementos anteriores
+- Sarcasmo que evoluciona basado en experiencias pasadas
+- Comparaciones irónicas sin palabras de transición
+- Continuidad temática implícita
+- Referencias contextuales que demuestran memoria
 
-⚠️ REGLA FUNDAMENTAL: Si tienes comentarios anteriores, SIEMPRE haz al menos UNA referencia específica a ellos.
+⚠️ REGLA FUNDAMENTAL: Muestra que recuerdas de forma NATURAL y VARIADA, no repetitiva.
 
 VARIACIONES DE ESTILO CONECTIVO:
 1. PROGRESIÓN SARCÁSTICA: "De X a Y, vaya evolución..."
@@ -383,6 +463,131 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         console.log('🧹 Historial de conversación e imágenes limpiado (memoria y archivo)');
     }
 
+    // 🧠 ANÁLISIS ANTI-REPETICIÓN INTELIGENTE
+    analyzeRecentContent() {
+        if (this.conversationHistory.length === 0) {
+            return {
+                wordsUsed: [],
+                themesUsed: [],
+                structuresUsed: [],
+                sarcasticPhrases: [],
+                recommendation: "Primera vez - libertad total"
+            };
+        }
+
+        const recent = this.conversationHistory.slice(-5); // Últimos 5 comentarios
+        const allText = recent.map(c => c.analysis.toLowerCase()).join(' ');
+        
+        // Extraer palabras clave usadas recientemente
+        const words = allText.split(/\s+/).filter(word => 
+            word.length > 4 && 
+            !['vaya', 'mira', 'esto', 'esas', 'esta', 'como', 'pero', 'para', 'más', 'solo', 'cada', 'todo', 'bien', 'ahora', 'aquí', 'allí', 'donde', 'cuando', 'quien', 'cual', 'tanto', 'menos', 'antes', 'desde', 'hasta', 'sobre', 'entre', 'contra', 'durante'].includes(word.replace(/[.,;:!?]/g, ''))
+        );
+        
+        const wordFreq = {};
+        words.forEach(word => {
+            const clean = word.replace(/[.,;:!?]/g, '');
+            wordFreq[clean] = (wordFreq[clean] || 0) + 1;
+        });
+
+        // Identificar temas repetidos
+        const themes = {
+            gaming: allText.includes('juego') || allText.includes('aventura') || allText.includes('épica') || allText.includes('misión'),
+            technology: allText.includes('programa') || allText.includes('código') || allText.includes('archivo') || allText.includes('pantalla'),
+            boredom: allText.includes('aburrido') || allText.includes('emocionante') || allText.includes('fascinante') || allText.includes('hueva'),
+            entertainment: allText.includes('entretenimiento') || allText.includes('diversión') || allText.includes('espectáculo') || allText.includes('chido'),
+            sarcasm: allText.includes('obvio') || allText.includes('sorpresa') || allText.includes('increíble'),
+            casual: allText.includes('órale') || allText.includes('cabrón') || allText.includes('güey') || allText.includes('pinche') || allText.includes('carnal')
+        };
+
+        // Detectar estructuras repetidas
+        const structures = {
+            question: recent.some(c => c.analysis.includes('?')),
+            exclamation: recent.some(c => c.analysis.includes('!')),
+            comparison: recent.some(c => c.analysis.includes('como') || c.analysis.includes('cual')),
+            irony: recent.some(c => c.analysis.includes('vaya') || c.analysis.includes('qué')),
+            mexican_casual: recent.some(c => c.analysis.includes('órale') || c.analysis.includes('no manches') || c.analysis.includes('está cabrón'))
+        };
+
+        // Frases casuales mexicanas ya usadas (lista más completa)
+        const sarcasticPhrases = [];
+        const casualPhrases = [
+            'órale', 'no manches', 'ay güey', 'pinche', 'está cabrón', 'qué pedo', 'neta', 'chale', 
+            'cabrón', 'mijo', 'carnal', 'compa', 'hermano', 'bro', 'loco', 'viejo', 'amigo', 
+            'chamaco', 'chin', 'híjole', 'chale', 'oye', 'ira', 'óyeme', 'primito pedro', 'pedro'
+        ];
+        casualPhrases.forEach(phrase => {
+            if (allText.includes(phrase)) sarcasticPhrases.push(phrase);
+        });
+
+        return {
+            wordsUsed: Object.keys(wordFreq).filter(w => wordFreq[w] > 1),
+            themesUsed: Object.keys(themes).filter(t => themes[t]),
+            structuresUsed: Object.keys(structures).filter(s => structures[s]),
+            sarcasticPhrases,
+            recentComments: recent.map(c => c.analysis),
+            recommendation: this.generateVariationRecommendation(Object.keys(themes).filter(t => themes[t]), sarcasticPhrases)
+        };
+    }
+
+    // Generar recomendaciones para variar el contenido
+    generateVariationRecommendation(usedThemes, usedPhrases) {
+        const alternatives = {
+            themes: {
+                gaming: ['programación', 'tecnología', 'productividad', 'organización'],
+                technology: ['gaming', 'entretenimiento', 'creatividad', 'diseño'],
+                boredom: ['eficiencia', 'innovación', 'funcionalidad', 'utilidad'],
+                entertainment: ['trabajo', 'productividad', 'educación', 'análisis'],
+                sarcasm: ['observación', 'comparación', 'pregunta', 'sugerencia'],
+                casual: ['comentario técnico', 'observación seria', 'análisis formal', 'pregunta directa']
+            },
+            phrases: {
+                'órale': ['oye', 'mira', 'fíjate', 'checa', 'ira', 'óyeme', 'ay', 'chin'],
+                'cabrón': ['mijo', 'carnal', 'compa', 'hermano', 'bro', 'loco', 'viejo', 'amigo', 'chamaco'],
+                'no manches': ['en serio', 'de verdad', 'neta', 'chin', 'híjole', 'chale'],
+                'ay güey': ['órale', 'no pos', 'chin', 'híjole', 'oye', 'mira'],
+                'pinche': ['ese', 'esa madre', 'eso', 'la cosa', 'esa chingadera'],
+                'está cabrón': ['está difícil', 'está raro', 'está culero', 'está del nabo', 'se ve gacho'],
+                'qué pedo': ['qué onda', 'cómo está', 'qué tal', 'qué show', 'qué rollo'],
+                'mijo': ['carnal', 'compa', 'hermano', 'bro', 'cabrón', 'loco', 'viejo'],
+                'carnal': ['compa', 'hermano', 'bro', 'mijo', 'cabrón', 'loco', 'amigo'],
+                'pedro': ['tu primo', 'el compa', 'ese wey', 'el loco', 'tu amigo']
+            }
+        };
+
+        const recommendations = [];
+        
+        if (usedThemes.includes('gaming')) {
+            recommendations.push('Enfócate en aspectos técnicos o de productividad');
+        }
+        if (usedThemes.includes('technology')) {
+            recommendations.push('Comenta sobre aspectos humanos o creativos');
+        }
+        if (usedThemes.includes('casual')) {
+            recommendations.push('Prueba comentarios más técnicos o serios');
+        }
+        if (usedPhrases.includes('órale')) {
+            recommendations.push('Usa "oye", "ira", "chin" o "híjole" en lugar de "órale"');
+        }
+        if (usedPhrases.includes('cabrón')) {
+            recommendations.push('Cambia a "mijo", "carnal", "compa", "hermano" o "bro"');
+        }
+        if (usedPhrases.includes('no manches')) {
+            recommendations.push('Usa "chin", "híjole", "chale" o "neta"');
+        }
+        if (usedPhrases.includes('mijo')) {
+            recommendations.push('Prueba "carnal", "compa", "hermano" o solo el comentario directo');
+        }
+        if (usedPhrases.includes('pedro')) {
+            recommendations.push('Varía: "tu primo", "ese wey", "el compa" en lugar de Pedro');
+        }
+        if (usedPhrases.includes('ay güey')) {
+            recommendations.push('Cambia a "chin", "óyeme", "oye" o comentario directo');
+        }
+
+        return recommendations.length > 0 ? recommendations.join('; ') : 'Libertad creativa total';
+    }
+
     // 📂 MÉTODOS DE HISTORIAL JSON
 
     // Cargar historial desde archivo JSON
@@ -454,26 +659,26 @@ Haz que parezca que estas genuinamente interesado pero con mucho humor y sarcasm
         
         if (previousElements.locations.length > 0) {
             const lastLocation = previousElements.locations[previousElements.locations.length - 1];
-            connections.push(`Después de explorar ${lastLocation}`);
-            connections.push(`Tras esa aventura en ${lastLocation}`);
-            connections.push(`Recordando ese fascinante ${lastLocation}`);
+            connections.push(`Otro ${lastLocation}, qué sorpresa`);
+            connections.push(`El ${lastLocation} sigue siendo igual de emocionante`);
+            connections.push(`Más ${lastLocation}, como si fuera necesario`);
         }
         
         if (previousElements.activities.length > 0) {
             const lastActivity = previousElements.activities[previousElements.activities.length - 1];
-            connections.push(`Después de estar ${lastActivity}`);
-            connections.push(`Como si ${lastActivity} no fuera suficiente`);
+            connections.push(`Más ${lastActivity}, obviamente`);
+            connections.push(`El ${lastActivity} nunca termina`);
         }
         
         if (previousElements.emotions.includes('sarcasmo_positivo')) {
-            connections.push('Si eso era "emocionante", esto es');
-            connections.push('Como continuación de esa "fascinante" experiencia');
+            connections.push('Esto mejora por momentos');
+            connections.push('La emoción no para');
         }
         
-        // Conexiones generales siempre disponibles
-        connections.push('Continuando con esta épica aventura');
-        connections.push('Como secuela de lo anterior');
-        connections.push('En el siguiente capítulo de esta saga');
+        // Conexiones generales más sutiles
+        connections.push('Esta saga continúa siendo fascinante');
+        connections.push('La aventura se vuelve más intensa');
+        connections.push('El entretenimiento no conoce límites');
         
         return connections;
     }
