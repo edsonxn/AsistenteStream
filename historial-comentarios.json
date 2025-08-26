@@ -1,51 +1,10 @@
 {
   "metadata": {
     "version": "1.0",
-    "lastUpdated": "2025-08-26T21:59:22.463Z",
+    "lastUpdated": "2025-08-26T22:08:30.858Z",
     "totalConversations": 20
   },
   "conversations": [
-    {
-      "timestamp": "2025-08-26T21:26:22.623Z",
-      "analysis": "Híjole, esos paisajes parecen más confusos que las direcciones de mi primo Pedro cuando quiere ir al OXXO. En esta zona, los \"troggs\" son como esos amigos que siempre llegan a la fiesta sin invitación. ¿Sabías que pueden ser un",
-      "imageHash": "5333868_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_6/spmxIZF2IaQbEImZUajoCGdjKBS8aNcD6DSokAqoTItSGNWKD7WqF9GEG6mcR0BvtuBbgV1CIJdkA1OZHU5rCCU1uDWHDKp/7U_aA4W93ZIpSvZ66LeDizs65TBGB7fBMi8v0vXj34j47HJXHXo0fZhfucizG2bj9beNjy28DH8/wN0W5qXWl97AAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 227
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:26:41.026Z",
-      "analysis": "Chale, al día siguiente Pedro seguía ahí, pero ya hablaba con los NPCs como si fueran sus amigos de la primaria. Y hablando de rarezas, ¿sabías que en esta zona hay un bicho llamado \"murloc\"? Se dice que sus gritos son la versión",
-      "imageHash": "conversational",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 229,
-        "type": "conversational"
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:36:48.446Z",
-      "analysis": "No manches, esos árboles se ven más tristes que la cara de alguien que se pierde en un laberinto. Y hablando de laberintos, ¿sabías que en esta zona se encuentran los \"elementales de aire\"? Se dice que son más escurridizos que tu primo cuando",
-      "imageHash": "6284416_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_2eHZxWhJ6Mm06Ez2H58f4ubZufSPXt4cCzB99vIcf/j1FX75/Qs8f3GOp89P8dNPz/APf36Ln354ht//8EyAL6Hwy1fnGM36ODia_3uHuswfYe3qEu88f4tGXz3D39RM8/PBMeoG//eU9/vy37/HtL1/ixdevcPz+OQ5fPcLU2gL+/5pyrwUQjMjeAAAAAElFTkSuQmCC",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 242
-      }
-    },
-    {
-      "timestamp": "2025-08-26T21:39:30.413Z",
-      "analysis": "Chale, esos campos se ven más vacíos que una fiesta sin comida. Y hablando de soledad, ¿sabías que en esta zona los “murlocs” son unos verdaderos fanáticos de los bailes? Se dice que en sus fiestas hacen un desmadre que ni el",
-      "imageHash": "6214124_iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMA_mQFB3/n8m32yOtCNdEe1EgPB/Z8JVr8/jxswXc25rDUXcOrZIRvdICWsVFVHMLKGXmkU3MIRW9ikpmEVt1CsAcBLPTkEIyhwPEf2_nm1Ad7YZnal2cfy2JLvQn0VlGzM0J/pYICk2yLk6kKNHXYITo+kGtGbQb2zGXIEVZb814v8H0TytBcKgnCsAAAAASUVORK5CYII=",
-      "isRepeatedImage": false,
-      "sessionInfo": {
-        "cycleNumber": 21,
-        "responseLength": 225
-      }
-    },
     {
       "timestamp": "2025-08-26T21:39:48.778Z",
       "analysis": "Está cabrón ver esos árboles tan tristes, parecen los únicos que no recibieron la invitación a la fiesta. Y ya que estamos en eso, en esta zona los “guardabosques” son unos expertos en espiar a los curiosos, como Pedro cuando cree que nadie lo",
@@ -208,12 +167,56 @@
         "cycleNumber": 21,
         "responseLength": 357
       }
+    },
+    {
+      "timestamp": "2025-08-26T22:04:44.901Z",
+      "analysis": "Ah, se me olvidaba. Hablando de criaturas molestas, esos elementales son como ese amigo que siempre se aparece sin avisar. Te prometen grandes aventuras, pero solo traen caos. Y como te iba diciendo, antes tenía horarios, metas diarias y hasta Excel para organizar mis incursiones. Ahora solo busco un poco de paz... y a veces, ni eso se",
+      "imageHash": "conversational",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 337,
+        "type": "conversational"
+      }
+    },
+    {
+      "timestamp": "2025-08-26T22:05:40.822Z",
+      "analysis": "Oye, cambiando de tema, esos paisajes desérticos pueden ser tan desoladores como el día que mi primo se olvidó de su cita de incursión. Y hablando de desiertos, sabías que en WoW hay un lugar llamado Silithus que está lleno de criaturas como los escorpiones, que son tan amables como un vendedor de autos usados. Su \"",
+      "imageHash": "conversational",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 317,
+        "type": "conversational"
+      }
+    },
+    {
+      "timestamp": "2025-08-26T22:07:00.538Z",
+      "analysis": "Por cierto, hablando de vendedores, ¿sabías que en Silithus esos escorpiones tienen una resistencia que haría que cualquier vendedor de cuentas se sonrojara de vergüenza? Te imaginas a tu primo tratando de convencer a alguien que puede hacer oro de la nada mientras evita un par de esos bichos. Es como su nuevo negocio: parece genial hasta que te das cuenta de",
+      "imageHash": "conversational",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 361,
+        "type": "conversational"
+      }
+    },
+    {
+      "timestamp": "2025-08-26T22:08:30.858Z",
+      "analysis": "Oye, cambiando de tema, esos desiertos tienen un encanto único, como cuando intentas recordar dónde dejaste tu montura. Por cierto, en Silithus, hay un grupo de criaturas llamadas \"perros de la guerra\". Aparentemente son bastante leales, al menos más que algunos compañeros de incursión que conocí. ¿Te imaginas tener uno de esos en la vida real? ¡Sería el único que no se quejaría de la cena!",
+      "imageHash": "conversational",
+      "isRepeatedImage": false,
+      "sessionInfo": {
+        "cycleNumber": 21,
+        "responseLength": 393,
+        "type": "conversational"
+      }
     }
   ],
-  "lastAnalysis": "Oye, carnal, hablando de esos árboles que parecen tener vida propia, me acuerdo de cuando un amigo trató de cultivar un \"item\" que resultó ser más inútil que un paraguas en el desierto. En World of Warcraft, hay plantas que realmente pueden ayudarte, aunque algunas solo sirven para adornar. ¿Te imaginas si fueran tan sencillas de cuidar como las de",
+  "lastAnalysis": "Ah, se me olvidaba. Hablando de criaturas molestas, esos elementales son como ese amigo que siempre se aparece sin avisar. Te prometen grandes aventuras, pero solo traen caos. Y como te iba diciendo, antes tenía horarios, metas diarias y hasta Excel para organizar mis incursiones. Ahora solo busco un poco de paz... y a veces, ni eso se",
   "statistics": {
     "totalComments": 20,
-    "firstComment": "2025-08-26T21:26:22.623Z",
-    "lastComment": "2025-08-26T21:59:22.463Z"
+    "firstComment": "2025-08-26T21:39:48.778Z",
+    "lastComment": "2025-08-26T22:08:30.858Z"
   }
 }

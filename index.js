@@ -3,6 +3,7 @@ import VisionAnalyzer from './vision-analyzer.js';
 import ApplioClient from './applio-client.js';
 import AudioPlayer from './audio-player.js';
 import WebInterface from './web-server.js';
+import MicListener from './mic-listener.js';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
@@ -38,6 +39,15 @@ class AsistenteStream {
         this.visionAnalyzer = new VisionAnalyzer(primaryApiKey, fallbackApiKey);
         this.applioClient = new ApplioClient(this.config.applioUrl);
         this.audioPlayer = new AudioPlayer();
+        
+        // Configurar MicListener si está habilitado
+        this.micListenerEnabled = process.env.MIC_LISTENER_ENABLED === 'true';
+        if (this.micListenerEnabled) {
+            this.micListener = new MicListener({
+                maxHistoryWords: parseInt(process.env.MIC_HISTORY_WORDS) || 50,
+                recordingDuration: parseInt(process.env.MIC_RECORDING_DURATION) || 10000
+            });
+        }
         
         this.isRunning = false;
         this.intervalId = null;
@@ -91,6 +101,18 @@ class AsistenteStream {
             const screenshotProbability = parseFloat(process.env.SCREENSHOT_PROBABILITY) || 0.30; // 30% por defecto
             const shouldTakeScreenshot = Math.random() < screenshotProbability;
             
+            // 🎤 Obtener contexto del micrófono si está habilitado
+            let streamerContext = '';
+            if (this.micListenerEnabled && this.micListener) {
+                const contextStats = this.micListener.getContextStats();
+                streamerContext = contextStats.contextText;
+                if (streamerContext) {
+                    console.log(`🎤 Contexto del streamer: "${streamerContext.substring(0, 100)}..." (${contextStats.totalWords} palabras)`);
+                } else {
+                    console.log(`🎤 Sin contexto de audio reciente`);
+                }
+            }
+            
             let analysis;
             
             if (shouldTakeScreenshot) {
@@ -102,8 +124,8 @@ class AsistenteStream {
                 const capture = await this.screenCapture.captureToBase64(this.config.saveScreenshots);
                 this.webInterface?.broadcastLog('success', `Captura realizada: ${(capture.size / 1024).toFixed(1)} KB`);
                 
-                // 2. Analizar con OpenAI
-                analysis = await this.visionAnalyzer.analyzeScreenshot(capture.base64);
+                // 2. Analizar con OpenAI incluyendo contexto del micrófono
+                analysis = await this.visionAnalyzer.analyzeScreenshot(capture.base64, streamerContext);
                 this.webInterface?.broadcastLog('success', `Análisis completado: "${analysis.analysis?.substring(0, 100)}..."`);
                 
             } else {
@@ -111,8 +133,8 @@ class AsistenteStream {
                 console.log(`💬 Modo CONVERSACIÓN (${percentage}%) - Basado en historial`);
                 this.webInterface?.broadcastLog('info', `Modo CONVERSACIÓN - Sin captura`);
                 
-                // 2. Generar respuesta conversacional basada en historial
-                analysis = await this.visionAnalyzer.generateConversationalResponse();
+                // 2. Generar respuesta conversacional basada en historial y contexto del micrófono
+                analysis = await this.visionAnalyzer.generateConversationalResponse(streamerContext);
                 this.webInterface?.broadcastLog('success', `Respuesta conversacional: "${analysis.analysis?.substring(0, 100)}..."`);
             }
             
@@ -248,8 +270,25 @@ class AsistenteStream {
             console.log(`   🎛️ Modelo TTS: ${this.config.ttsModel}`);
             console.log(`   🎵 Auto-reproducir: ${this.config.autoPlay ? 'Sí' : 'No'}`);
             console.log(`   🎮 Método reproducción: ${this.config.playbackMethod}`);
+            if (this.micListenerEnabled) {
+                console.log(`   🎤 Escucha micrófono: HABILITADA`);
+                console.log(`   📝 Palabras historial: ${this.micListener?.maxHistoryWords || 50}`);
+            } else {
+                console.log(`   🎤 Escucha micrófono: DESHABILITADA`);
+            }
             
             console.log('');
+
+            // Iniciar escucha del micrófono si está habilitado
+            if (this.micListenerEnabled && this.micListener) {
+                try {
+                    await this.micListener.startListening();
+                    console.log('✅ Escucha del micrófono iniciada');
+                } catch (error) {
+                    console.warn('⚠️ Error iniciando micrófono:', error.message);
+                    console.log('ℹ️ Continuando sin escucha de micrófono');
+                }
+            }
 
             // Marcar como ejecutándose ANTES del primer ciclo
             this.isRunning = true;
@@ -286,6 +325,12 @@ class AsistenteStream {
         this.isRunning = false;
         if (this.intervalId) {
             clearInterval(this.intervalId);
+        }
+        
+        // Detener escucha del micrófono si está habilitado
+        if (this.micListenerEnabled && this.micListener) {
+            this.micListener.stopListening();
+            console.log('🎤 Escucha del micrófono detenida');
         }
         
         // Detener reproducción de audio si está en curso

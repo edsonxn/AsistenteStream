@@ -239,7 +239,7 @@ class VisionAnalyzer {
         }
     }
 
-    async analyzeScreenshot(base64Image) {
+    async analyzeScreenshot(base64Image, streamerContext = '') {
         try {
             console.log('🧠 Analizando imagen con OpenAI...');
 
@@ -255,7 +255,10 @@ class VisionAnalyzer {
             // Crear el mensaje del usuario con rol de amigo casual mexicano
             let userMessage = `Analiza esta captura de pantalla y actúa como un COMPA CASUAL que anda cotorreando con el streamer.
 
-🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. COMPLETA siempre tus frases - no las cortes a la mitad.
+${streamerContext ? `🎤 CONTEXTO DEL STREAMER (últimas palabras que dijo): "${streamerContext}"
+💡 Puedes referenciar o comentar sobre lo que acaba de decir de forma natural.
+
+` : ''}🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. COMPLETA siempre tus frases - no las cortes a la mitad.
 
 🚫 PROHIBIDO ABSOLUTO:
 - NO uses EMOTICONES (😂, 😎, 🎮, 💀, etc.) - JAMÁS
@@ -612,15 +615,19 @@ OBJETIVO: Generar conversación y interacción con el streamer`;
     }
 
     // 💬 NUEVA FUNCIÓN: Generar respuesta conversacional sin captura
-    async generateConversationalResponse() {
+    async generateConversationalResponse(streamerContext = '') {
         try {
             console.log('💬 Generando respuesta conversacional basada en historial...');
 
             // Verificar que hay historial para basar la conversación
             if (this.conversationHistory.length === 0) {
+                const defaultResponse = streamerContext 
+                    ? `Órale, apenas empezamos pero ya andas diciendo "${streamerContext.split(' ').slice(-5).join(' ')}". ¿Qué vamos a jugar hoy?`
+                    : "Órale, apenas empezamos. ¿Qué vamos a jugar hoy?";
+                
                 return {
                     success: true,
-                    analysis: "Órale, apenas empezamos. ¿Qué vamos a jugar hoy?",
+                    analysis: defaultResponse,
                     timestamp: new Date()
                 };
             }
@@ -630,7 +637,10 @@ OBJETIVO: Generar conversación y interacción con el streamer`;
             // Crear mensaje conversacional basado en historial
             let userMessage = `NO hay nueva imagen. Genera una respuesta CONVERSACIONAL basada en el historial.
 
-🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. Cuenta cada palabra antes de responder.
+${streamerContext ? `🎤 CONTEXTO DEL STREAMER (últimas palabras que dijo): "${streamerContext}"
+💡 Puedes referenciar o comentar sobre lo que acaba de decir de forma natural.
+
+` : ''}🚨 LÍMITE CRÍTICO: Tu respuesta debe tener MÁXIMO ${this.maxWords} PALABRAS. Cuenta cada palabra antes de responder.
 
 💬 MODO CONVERSACIONAL: Eres un COMPA que sigue la plática naturalmente:
 - USA CONECTORES: "Como te decía", "Por cierto", "Hablando de eso", "Ya que estamos", "Oye"
